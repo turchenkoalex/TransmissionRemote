@@ -15,6 +15,7 @@
     self = [super init];
     if (self) {
         self.torrentsArray = [NSMutableArray array];
+        self.sortingType = 0;
         [self registerNotifications];
     }
     return self;
@@ -63,6 +64,30 @@
         _arrayController.filterPredicate = [NSPredicate predicateWithFormat:filter];
     } else {
         _arrayController.filterPredicate = nil;
+    }
+}
+
+-(NSUInteger)sortingType {
+    return _sortingType;
+}
+
+-(void)setSortingType:(NSUInteger)sortingType {
+    _sortingType = sortingType;
+    NSArray *sortingDescriptors = nil;
+    switch (sortingType) {
+        case 0:
+            sortingDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"torrentName" ascending:YES]];
+            break;
+
+        case 1:
+            sortingDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"torrentId" ascending:YES]];
+            break;
+            
+        default:
+            break;
+    }
+    if (sortingDescriptors) {
+        self.torrentsSortDescriptor = sortingDescriptors;
     }
 }
 
@@ -226,10 +251,21 @@
     }
 }
 
-- (IBAction)filterTorrentAction:(id)sender {
+- (IBAction)filterTorrentsAction:(id)sender {
     NSInteger stateGroup = [self.torrentStatusSegmentedControl selectedSegment];
     NSString *searchString = [self.torrentNameSearchField stringValue];
     [self updateFilterPredicateWithSearch:searchString andGroup:stateGroup];
+}
+
+- (IBAction)sortingTorrentsAction:(id)sender {
+    NSMenuItem *item = sender;
+    if (item) {
+        self.menuSortByName.state = 0;
+        self.menuSortByRatio.state = 0;
+        self.menuSortBySize.state = 0;
+        item.state = 1;
+        self.sortingType = [item tag];
+    }
 }
 
 @end

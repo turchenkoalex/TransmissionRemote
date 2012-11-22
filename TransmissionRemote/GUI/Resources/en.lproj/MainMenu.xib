@@ -1890,6 +1890,7 @@
 							<string key="NSFrame">{{17, 6}, {503, 11}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:1535</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="405860433">
@@ -1984,6 +1985,57 @@
 						</object>
 						<reference key="NSOnImage" ref="35465992"/>
 						<reference key="NSMixedImage" ref="502551668"/>
+					</object>
+					<object class="NSMenuItem" id="223747927">
+						<reference key="NSMenu" ref="498366446"/>
+						<bool key="NSIsDisabled">YES</bool>
+						<bool key="NSIsSeparator">YES</bool>
+						<string key="NSTitle"/>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="35465992"/>
+						<reference key="NSMixedImage" ref="502551668"/>
+					</object>
+					<object class="NSMenuItem" id="824041712">
+						<reference key="NSMenu" ref="498366446"/>
+						<string key="NSTitle">Sorting</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="35465992"/>
+						<reference key="NSMixedImage" ref="502551668"/>
+						<string key="NSAction">submenuAction:</string>
+						<object class="NSMenu" key="NSSubmenu" id="136299069">
+							<string key="NSTitle">Sorting</string>
+							<array class="NSMutableArray" key="NSMenuItems">
+								<object class="NSMenuItem" id="405742417">
+									<reference key="NSMenu" ref="136299069"/>
+									<string key="NSTitle">Name</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<int key="NSState">1</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+								</object>
+								<object class="NSMenuItem" id="386285627">
+									<reference key="NSMenu" ref="136299069"/>
+									<string key="NSTitle">Ratio</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+									<int key="NSTag">1</int>
+								</object>
+								<object class="NSMenuItem" id="664196074">
+									<reference key="NSMenu" ref="136299069"/>
+									<string key="NSTitle">Size</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+									<int key="NSTag">2</int>
+								</object>
+							</array>
+						</object>
 					</object>
 				</array>
 			</object>
@@ -2922,28 +2974,12 @@
 					<int key="connectionID">1275</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">filterTorrentAction:</string>
-						<reference key="source" ref="537023297"/>
-						<reference key="destination" ref="114328257"/>
-					</object>
-					<int key="connectionID">1285</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">torrentNameSearchField</string>
 						<reference key="source" ref="537023297"/>
 						<reference key="destination" ref="114328257"/>
 					</object>
 					<int key="connectionID">1289</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">filterTorrentAction:</string>
-						<reference key="source" ref="537023297"/>
-						<reference key="destination" ref="809544179"/>
-					</object>
-					<int key="connectionID">1321</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -2962,6 +2998,70 @@
 					<int key="connectionID">1329</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">filterTorrentsAction:</string>
+						<reference key="source" ref="537023297"/>
+						<reference key="destination" ref="114328257"/>
+					</object>
+					<int key="connectionID">1340</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">filterTorrentsAction:</string>
+						<reference key="source" ref="537023297"/>
+						<reference key="destination" ref="809544179"/>
+					</object>
+					<int key="connectionID">1341</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">sortingTorrentsAction:</string>
+						<reference key="source" ref="537023297"/>
+						<reference key="destination" ref="405742417"/>
+					</object>
+					<int key="connectionID">1342</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">sortingTorrentsAction:</string>
+						<reference key="source" ref="537023297"/>
+						<reference key="destination" ref="386285627"/>
+					</object>
+					<int key="connectionID">1343</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">sortingTorrentsAction:</string>
+						<reference key="source" ref="537023297"/>
+						<reference key="destination" ref="664196074"/>
+					</object>
+					<int key="connectionID">1344</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">menuSortByName</string>
+						<reference key="source" ref="537023297"/>
+						<reference key="destination" ref="405742417"/>
+					</object>
+					<int key="connectionID">1349</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">menuSortByRatio</string>
+						<reference key="source" ref="537023297"/>
+						<reference key="destination" ref="386285627"/>
+					</object>
+					<int key="connectionID">1350</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">menuSortBySize</string>
+						<reference key="source" ref="537023297"/>
+						<reference key="destination" ref="664196074"/>
+					</object>
+					<int key="connectionID">1351</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">contentArray: self.torrentsArray</string>
 						<reference key="source" ref="420265164"/>
@@ -2976,6 +3076,22 @@
 						</object>
 					</object>
 					<int key="connectionID">1219</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">sortDescriptors: torrentsSortDescriptor</string>
+						<reference key="source" ref="420265164"/>
+						<reference key="destination" ref="537023297"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="420265164"/>
+							<reference key="NSDestination" ref="537023297"/>
+							<string key="NSLabel">sortDescriptors: torrentsSortDescriptor</string>
+							<string key="NSBinding">sortDescriptors</string>
+							<string key="NSKeyPath">torrentsSortDescriptor</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">1332</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -4386,6 +4502,8 @@
 							<reference ref="405734896"/>
 							<reference ref="419693698"/>
 							<reference ref="671721727"/>
+							<reference ref="824041712"/>
+							<reference ref="223747927"/>
 						</array>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Torrent Menu</string>
@@ -4632,6 +4750,44 @@
 						<reference key="object" ref="699363823"/>
 						<reference key="parent" ref="349827688"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1334</int>
+						<reference key="object" ref="824041712"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="136299069"/>
+						</array>
+						<reference key="parent" ref="498366446"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1335</int>
+						<reference key="object" ref="136299069"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="405742417"/>
+							<reference ref="386285627"/>
+							<reference ref="664196074"/>
+						</array>
+						<reference key="parent" ref="824041712"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1336</int>
+						<reference key="object" ref="405742417"/>
+						<reference key="parent" ref="136299069"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1337</int>
+						<reference key="object" ref="386285627"/>
+						<reference key="parent" ref="136299069"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1338</int>
+						<reference key="object" ref="664196074"/>
+						<reference key="parent" ref="136299069"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1339</int>
+						<reference key="object" ref="223747927"/>
+						<reference key="parent" ref="498366446"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -4691,6 +4847,12 @@
 				<string key="1326.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1327.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1328.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="1334.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="1335.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="1336.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="1337.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="1338.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="1339.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="134.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="136.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="143.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -4900,7 +5062,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1329</int>
+			<int key="maxID">1351</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4947,7 +5109,8 @@
 					<string key="superclassName">NSObject</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="deleteTorrentsAction:">id</string>
-						<string key="filterTorrentAction:">id</string>
+						<string key="filterTorrentsAction:">id</string>
+						<string key="sortingTorrentsAction:">id</string>
 						<string key="startTorrentsAction:">id</string>
 						<string key="stopTorrentsAction:">id</string>
 						<string key="verifyTorrentsAction:">id</string>
@@ -4957,8 +5120,12 @@
 							<string key="name">deleteTorrentsAction:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="filterTorrentAction:">
-							<string key="name">filterTorrentAction:</string>
+						<object class="IBActionInfo" key="filterTorrentsAction:">
+							<string key="name">filterTorrentsAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="sortingTorrentsAction:">
+							<string key="name">sortingTorrentsAction:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="startTorrentsAction:">
@@ -4976,6 +5143,9 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="arrayController">NSArrayController</string>
+						<string key="menuSortByName">NSMenuItem</string>
+						<string key="menuSortByRatio">NSMenuItem</string>
+						<string key="menuSortBySize">NSMenuItem</string>
 						<string key="tableView">NSTableView</string>
 						<string key="torrentNameSearchField">NSSearchField</string>
 						<string key="torrentStatusSegmentedControl">NSSegmentedControl</string>
@@ -4984,6 +5154,18 @@
 						<object class="IBToOneOutletInfo" key="arrayController">
 							<string key="name">arrayController</string>
 							<string key="candidateClassName">NSArrayController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="menuSortByName">
+							<string key="name">menuSortByName</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="menuSortByRatio">
+							<string key="name">menuSortByRatio</string>
+							<string key="candidateClassName">NSMenuItem</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="menuSortBySize">
+							<string key="name">menuSortBySize</string>
+							<string key="candidateClassName">NSMenuItem</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="tableView">
 							<string key="name">tableView</string>
