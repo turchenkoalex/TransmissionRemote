@@ -92,25 +92,26 @@
 -(void)torrentDownloadedNotification:(NSNotification *)notification {
     Torrent *torrent = [notification object];
     if (torrent) {
-        [self postUserNotificationWithTitle:@"Downloaded" andMessage:[torrent torrentName]];
+        [self postUserNotificationWithTitle:@"Downloaded" andMessage:[torrent torrentName] andValue:[NSNumber numberWithUnsignedInteger:torrent.torrentId]];
     }
 }
 
 -(void)torrentVerifiedNotification:(NSNotification *)notification {
     Torrent *torrent = [notification object];
     if (torrent) {
-        [self postUserNotificationWithTitle:@"Verified" andMessage:[torrent torrentName]];
+        [self postUserNotificationWithTitle:@"Verified" andMessage:[torrent torrentName] andValue:[NSNumber numberWithUnsignedInteger:torrent.torrentId]];
     }
 }
 
 #pragma mark - NSUserNotifications
 
--(void)postUserNotificationWithTitle:(NSString *)aTitle andMessage:(NSString *)aMessage {
+-(void)postUserNotificationWithTitle:(NSString *)aTitle andMessage:(NSString *)aMessage andValue:(id)value {
     NSUserNotification *notification = [[NSUserNotification alloc] init];
     notification.title = @"Transmission Remote";
     notification.subtitle = aTitle;
     notification.informativeText = aMessage;
     notification.soundName = NSUserNotificationDefaultSoundName;
+    notification.userInfo = @{ @"torrentId": value };
     
     [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 }
@@ -120,7 +121,11 @@
 }
 
 -(void)userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification{
+    NSNumber *torrentId = [[notification userInfo] valueForKey:@"torrentId"];
     [[NSUserNotificationCenter defaultUserNotificationCenter] removeDeliveredNotification:notification];
+    if (torrentId) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"SelectTorrentById" object:torrentId];
+    }
 }
 
 @end

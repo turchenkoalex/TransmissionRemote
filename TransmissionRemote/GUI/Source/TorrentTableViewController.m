@@ -80,9 +80,13 @@
             break;
 
         case 1:
-            sortingDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"uploadRatio" ascending:NO]];
+            sortingDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"uploadRatio" ascending:NO], [NSSortDescriptor sortDescriptorWithKey:@"torrentName" ascending:YES]];
             break;
-            
+
+        case 2:
+            sortingDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"torrentDownloadPercent" ascending:NO], [NSSortDescriptor sortDescriptorWithKey:@"torrentName" ascending:YES]];
+            break;
+
         default:
             break;
     }
@@ -98,10 +102,29 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initializeTorrentsResponse:) name:@"InitializeTorrentsResponse" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTorrentsResponse:) name:@"UpdateTorrentsResponse" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fullUpdateTorrentsResponse:) name:@"FullUpdateTorrentsResponse" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectTorrentById:) name:@"SelectTorrentById" object:nil];
 }
 
 -(void)unRegisterNotifications {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)selectTorrentById:(NSNotification *)notification {
+    NSNumber *torrentIdObject = [notification object];
+    if (torrentIdObject) {
+        NSUInteger torrentId = [torrentIdObject unsignedIntegerValue];
+        NSUInteger findedIndex = [[_arrayController arrangedObjects] indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+            if (obj && ((Torrent*)obj).torrentId == torrentId) {
+                *stop = YES;
+                return YES;
+            } else {
+                return NO;
+            }
+        }];
+        if (findedIndex != NSNotFound) {
+            _arrayController.selectionIndex = findedIndex;
+        }
+    }
 }
 
 -(void)initializeTorrentsResponse:(NSNotification *)notification {
@@ -143,6 +166,9 @@
                                 [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentDownloaded" object:torrent];
                             }
                             torrent.torrentDownloadPercent = update.torrentDownloadPercent;
+                            if (self.sortingType == 2) {
+                                needRearrange = YES;
+                            }
                         }
                         if (torrent.torrentVerifyPercent != update.torrentVerifyPercent) {
                             if (torrent.torrentVerifyPercent > 0 && update.torrentVerifyPercent == 0) {
