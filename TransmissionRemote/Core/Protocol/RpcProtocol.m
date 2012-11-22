@@ -15,8 +15,8 @@
 -(id)init {
     self = [super init];
     if (self) {
-        NSString *fullTorrentFields = @"\"id\", \"name\", \"status\", \"comment\", \"percentDone\", \"recheckProgress\"";
-        NSString *torrentFields = @"\"id\", \"status\", \"percentDone\", \"recheckProgress\"";
+        NSString *fullTorrentFields = @"\"id\", \"name\", \"status\", \"comment\", \"percentDone\", \"recheckProgress\", \"uploadRatio\"";
+        NSString *torrentFields = @"\"id\", \"status\", \"percentDone\", \"recheckProgress\", \"uploadRatio\"";
         
         sessionGet = @"{ \"method\": \"session-get\" }";
         torrentsInitialize = [NSString stringWithFormat: @"{ \"method\": \"torrent-get\", \"arguments\": { \"fields\" : [%@] } }", fullTorrentFields] ;
@@ -184,6 +184,7 @@
     torrent.torrentState = [[aObject valueForKey:@"status"] shortValue];
     torrent.torrentDownloadPercent = [[aObject valueForKey:@"percentDone"] doubleValue] * 100;
     torrent.torrentVerifyPercent = [[aObject valueForKey:@"recheckProgress"] doubleValue] * 100;
+    torrent.uploadRatio = [[aObject valueForKey:@"uploadRatio"] doubleValue];
     return torrent;
 }
 

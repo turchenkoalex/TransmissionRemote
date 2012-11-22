@@ -22,6 +22,10 @@
     }
 }
 
+-(NSString *)uploadRatioFormatted {
+    return [NSString stringWithFormat:@"%.2f", self.uploadRatio];
+}
+
 #pragma mark - State properties
 
 -(BOOL)isDownloading {
@@ -68,6 +72,10 @@
 
 +(NSSet *)keyPathsForValuesAffectingIsWaiting {
     return [NSSet setWithObjects:@"torrentState", nil];
+}
+
++(NSSet *)keyPathsForValuesAffectingUploadRatioFormatted {
+    return [NSSet setWithObjects:@"uploadRatio", nil];
 }
 
 @end

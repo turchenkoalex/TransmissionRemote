@@ -80,7 +80,7 @@
             break;
 
         case 1:
-            sortingDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"torrentId" ascending:YES]];
+            sortingDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"uploadRatio" ascending:NO]];
             break;
             
         default:
@@ -149,6 +149,12 @@
                                 [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentVerified" object:torrent];
                             }
                             torrent.torrentVerifyPercent = update.torrentVerifyPercent;
+                        }
+                        if (torrent.uploadRatio != update.uploadRatio) {
+                            torrent.uploadRatio = update.uploadRatio;
+                            if (self.sortingType == 1) {
+                                needRearrange = YES;
+                            }
                         }
                         [removedTorrents removeObject:torrent];
                     }

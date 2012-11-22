@@ -27,5 +27,6 @@ static const NSString* TorrentStatusImageNames[] = {
 @property (readonly) BOOL isStopping;
 @property (readonly) BOOL isSeeding;
 @property (readonly) BOOL isVerifing;
+@property (readonly) NSString *uploadRatioFormatted;
 
 @end
