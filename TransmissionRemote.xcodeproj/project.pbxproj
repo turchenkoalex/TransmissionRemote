@@ -1,0 +1,657 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1109EE1C1656C3D300E73187 /* Torrent+Viewable.m in Sources */ = {isa = PBXBuildFile; fileRef = 1109EE1B1656C3D300E73187 /* Torrent+Viewable.m */; };
+		1109EE201656C45600E73187 /* GreenDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 1109EE1D1656C45600E73187 /* GreenDot.png */; };
+		1109EE211656C45600E73187 /* PurpleDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 1109EE1E1656C45600E73187 /* PurpleDot.png */; };
+		1109EE221656C45600E73187 /* RedDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 1109EE1F1656C45600E73187 /* RedDot.png */; };
+		1109EE271656C81B00E73187 /* YellowDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 1109EE261656C81B00E73187 /* YellowDot.png */; };
+		11272C1D1659344200506C11 /* NSMutableArray+QueueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11272C1C1659344200506C11 /* NSMutableArray+QueueAdditions.m */; };
+		11272C2016593AB400506C11 /* RpcProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 11272C1F16593AB400506C11 /* RpcProtocol.m */; };
+		1138F380165554F300BCCAAA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1138F37F165554F300BCCAAA /* Cocoa.framework */; };
+		1138F38C165554F300BCCAAA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1138F38B165554F300BCCAAA /* main.m */; };
+		1138F39E165554F300BCCAAA /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1138F39D165554F300BCCAAA /* SenTestingKit.framework */; };
+		1138F39F165554F300BCCAAA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1138F37F165554F300BCCAAA /* Cocoa.framework */; };
+		1138F3A7165554F300BCCAAA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1138F3A5165554F300BCCAAA /* InfoPlist.strings */; };
+		1138F3AA165554F300BCCAAA /* TransmissionRemoteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1138F3A9165554F300BCCAAA /* TransmissionRemoteTests.m */; };
+		1138F3BD1655558400BCCAAA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 1138F3B71655558400BCCAAA /* Credits.rtf */; };
+		1138F3BE1655558400BCCAAA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1138F3B91655558400BCCAAA /* InfoPlist.strings */; };
+		1138F3BF1655558400BCCAAA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1138F3BB1655558400BCCAAA /* MainMenu.xib */; };
+		1138F3C21655559F00BCCAAA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1138F3C11655559F00BCCAAA /* AppDelegate.m */; };
+		1138F3C6165555CF00BCCAAA /* Torrent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1138F3C5165555CF00BCCAAA /* Torrent.m */; };
+		1138F3C91655580400BCCAAA /* ConnectOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1138F3C81655580400BCCAAA /* ConnectOptions.m */; };
+		1138F3E41655713100BCCAAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1138F384165554F300BCCAAA /* Foundation.framework */; };
+		1138F3E51655713900BCCAAA /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1138F382165554F300BCCAAA /* AppKit.framework */; };
+		1138F40916557F1600BCCAAA /* SystemService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1138F40716557F1600BCCAAA /* SystemService.m */; };
+		1164C8E4165AC106001C04F3 /* Transmission.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1164C8E3165AC106001C04F3 /* Transmission.icns */; };
+		11666E0616591782004ACF8B /* RpcRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 11666E0516591782004ACF8B /* RpcRequest.m */; };
+		11666E09165917C3004ACF8B /* RpcHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 11666E08165917C3004ACF8B /* RpcHandler.m */; };
+		11666E0F16591AF7004ACF8B /* ServicedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 11666E0E16591AF7004ACF8B /* ServicedObject.m */; };
+		117185E4165A9108009B3511 /* TorrentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 117185E3165A9108009B3511 /* TorrentTableViewController.m */; };
+		117185EC165AAC83009B3511 /* ServerStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 117185EB165AAC83009B3511 /* ServerStatus.m */; };
+		1195F4E3165D7002003661E6 /* ToolbarPauseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1195F4E2165D7002003661E6 /* ToolbarPauseSelected.png */; };
+		11BA8547165AD0090042CB89 /* BlueDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BA8546165AD0090042CB89 /* BlueDot.png */; };
+		11DD36CF1657E3D900FF69CA /* OptionsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DD36CD1657E3D900FF69CA /* OptionsWindowController.m */; };
+		11DD36D31657E42800FF69CA /* OptionsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11DD36D11657E42800FF69CA /* OptionsWindow.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1138F3A0165554F300BCCAAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1138F372165554F300BCCAAA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1138F37A165554F300BCCAAA;
+			remoteInfo = TransmissionRemote;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1109EE1A1656C3D300E73187 /* Torrent+Viewable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Torrent+Viewable.h"; path = "GUI/Source/Torrent+Viewable.h"; sourceTree = "<group>"; };
+		1109EE1B1656C3D300E73187 /* Torrent+Viewable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Torrent+Viewable.m"; path = "GUI/Source/Torrent+Viewable.m"; sourceTree = "<group>"; };
+		1109EE1D1656C45600E73187 /* GreenDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GreenDot.png; path = GUI/Resources/Images/GreenDot.png; sourceTree = "<group>"; };
+		1109EE1E1656C45600E73187 /* PurpleDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PurpleDot.png; path = GUI/Resources/Images/PurpleDot.png; sourceTree = "<group>"; };
+		1109EE1F1656C45600E73187 /* RedDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RedDot.png; path = GUI/Resources/Images/RedDot.png; sourceTree = "<group>"; };
+		1109EE261656C81B00E73187 /* YellowDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = YellowDot.png; path = GUI/Resources/Images/YellowDot.png; sourceTree = "<group>"; };
+		11272C1B1659344200506C11 /* NSMutableArray+QueueAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+QueueAdditions.h"; path = "Core/Classes/NSMutableArray+QueueAdditions.h"; sourceTree = "<group>"; };
+		11272C1C1659344200506C11 /* NSMutableArray+QueueAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+QueueAdditions.m"; path = "Core/Classes/NSMutableArray+QueueAdditions.m"; sourceTree = "<group>"; };
+		11272C1E16593AB400506C11 /* RpcProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RpcProtocol.h; path = Core/Protocol/RpcProtocol.h; sourceTree = "<group>"; };
+		11272C1F16593AB400506C11 /* RpcProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RpcProtocol.m; path = Core/Protocol/RpcProtocol.m; sourceTree = "<group>"; };
+		1138F37B165554F300BCCAAA /* TransmissionRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransmissionRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1138F37F165554F300BCCAAA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		1138F382165554F300BCCAAA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		1138F383165554F300BCCAAA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		1138F384165554F300BCCAAA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1138F387165554F300BCCAAA /* TransmissionRemote-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TransmissionRemote-Info.plist"; sourceTree = "<group>"; };
+		1138F38B165554F300BCCAAA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1138F38D165554F300BCCAAA /* TransmissionRemote-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TransmissionRemote-Prefix.pch"; sourceTree = "<group>"; };
+		1138F39C165554F300BCCAAA /* TransmissionRemoteTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TransmissionRemoteTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1138F39D165554F300BCCAAA /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		1138F3A4165554F300BCCAAA /* TransmissionRemoteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TransmissionRemoteTests-Info.plist"; sourceTree = "<group>"; };
+		1138F3A6165554F300BCCAAA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1138F3A8165554F300BCCAAA /* TransmissionRemoteTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransmissionRemoteTests.h; sourceTree = "<group>"; };
+		1138F3A9165554F300BCCAAA /* TransmissionRemoteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransmissionRemoteTests.m; sourceTree = "<group>"; };
+		1138F3B81655558400BCCAAA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = GUI/Resources/en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		1138F3BA1655558400BCCAAA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = GUI/Resources/en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1138F3BC1655558400BCCAAA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = GUI/Resources/en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		1138F3C01655559F00BCCAAA /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Core/AppDelegate.h; sourceTree = "<group>"; };
+		1138F3C11655559F00BCCAAA /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Core/AppDelegate.m; sourceTree = "<group>"; };
+		1138F3C4165555CF00BCCAAA /* Torrent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Torrent.h; path = Core/Models/Torrent.h; sourceTree = "<group>"; };
+		1138F3C5165555CF00BCCAAA /* Torrent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Torrent.m; path = Core/Models/Torrent.m; sourceTree = "<group>"; };
+		1138F3C71655580400BCCAAA /* ConnectOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConnectOptions.h; path = Core/Models/ConnectOptions.h; sourceTree = "<group>"; };
+		1138F3C81655580400BCCAAA /* ConnectOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConnectOptions.m; path = Core/Models/ConnectOptions.m; sourceTree = "<group>"; };
+		1138F40616557F1600BCCAAA /* SystemService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SystemService.h; path = Core/SystemService/SystemService.h; sourceTree = "<group>"; };
+		1138F40716557F1600BCCAAA /* SystemService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SystemService.m; path = Core/SystemService/SystemService.m; sourceTree = "<group>"; };
+		1138F40D16557F5D00BCCAAA /* SystemServiced.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SystemServiced.h; path = Core/SystemService/SystemServiced.h; sourceTree = "<group>"; };
+		1164C8E3165AC106001C04F3 /* Transmission.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Transmission.icns; path = ../Transmission.icns; sourceTree = "<group>"; };
+		11666E0416591782004ACF8B /* RpcRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RpcRequest.h; path = Core/Protocol/RpcRequest.h; sourceTree = "<group>"; };
+		11666E0516591782004ACF8B /* RpcRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RpcRequest.m; path = Core/Protocol/RpcRequest.m; sourceTree = "<group>"; };
+		11666E07165917C3004ACF8B /* RpcHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RpcHandler.h; path = Core/Protocol/RpcHandler.h; sourceTree = "<group>"; };
+		11666E08165917C3004ACF8B /* RpcHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RpcHandler.m; path = Core/Protocol/RpcHandler.m; sourceTree = "<group>"; };
+		11666E0D16591AF7004ACF8B /* ServicedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServicedObject.h; path = Core/SystemService/ServicedObject.h; sourceTree = "<group>"; };
+		11666E0E16591AF7004ACF8B /* ServicedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServicedObject.m; path = Core/SystemService/ServicedObject.m; sourceTree = "<group>"; };
+		11666E1016592B2A004ACF8B /* RequestReceieverDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RequestReceieverDelegate.h; path = Core/Protocol/RequestReceieverDelegate.h; sourceTree = "<group>"; };
+		117185E2165A9108009B3511 /* TorrentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TorrentTableViewController.h; path = GUI/Source/TorrentTableViewController.h; sourceTree = "<group>"; };
+		117185E3165A9108009B3511 /* TorrentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TorrentTableViewController.m; path = GUI/Source/TorrentTableViewController.m; sourceTree = "<group>"; };
+		117185EA165AAC83009B3511 /* ServerStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerStatus.h; path = Core/Models/ServerStatus.h; sourceTree = "<group>"; };
+		117185EB165AAC83009B3511 /* ServerStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerStatus.m; path = Core/Models/ServerStatus.m; sourceTree = "<group>"; };
+		1195F4D9165D66B0003661E6 /* RpcProtocolHandlerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RpcProtocolHandlerDelegate.h; path = Core/Protocol/RpcProtocolHandlerDelegate.h; sourceTree = "<group>"; };
+		1195F4E2165D7002003661E6 /* ToolbarPauseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ToolbarPauseSelected.png; path = GUI/Resources/Images/ToolbarPauseSelected.png; sourceTree = "<group>"; };
+		11BA8546165AD0090042CB89 /* BlueDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlueDot.png; path = GUI/Resources/Images/BlueDot.png; sourceTree = "<group>"; };
+		11DD36CC1657E3D900FF69CA /* OptionsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionsWindowController.h; path = GUI/Source/OptionsWindowController.h; sourceTree = "<group>"; };
+		11DD36CD1657E3D900FF69CA /* OptionsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OptionsWindowController.m; path = GUI/Source/OptionsWindowController.m; sourceTree = "<group>"; };
+		11DD36D21657E42800FF69CA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = GUI/Resources/en.lproj/OptionsWindow.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1138F378165554F300BCCAAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1138F3E51655713900BCCAAA /* AppKit.framework in Frameworks */,
+				1138F3E41655713100BCCAAA /* Foundation.framework in Frameworks */,
+				1138F380165554F300BCCAAA /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1138F398165554F300BCCAAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1138F39E165554F300BCCAAA /* SenTestingKit.framework in Frameworks */,
+				1138F39F165554F300BCCAAA /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1109EE101656C04C00E73187 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				11BA8546165AD0090042CB89 /* BlueDot.png */,
+				1164C8E3165AC106001C04F3 /* Transmission.icns */,
+				1195F4E2165D7002003661E6 /* ToolbarPauseSelected.png */,
+				1109EE261656C81B00E73187 /* YellowDot.png */,
+				1109EE1D1656C45600E73187 /* GreenDot.png */,
+				1109EE1E1656C45600E73187 /* PurpleDot.png */,
+				1109EE1F1656C45600E73187 /* RedDot.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		11272C191659341C00506C11 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				11272C1B1659344200506C11 /* NSMutableArray+QueueAdditions.h */,
+				11272C1C1659344200506C11 /* NSMutableArray+QueueAdditions.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1138F370165554F300BCCAAA = {
+			isa = PBXGroup;
+			children = (
+				1138F385165554F300BCCAAA /* TransmissionRemote */,
+				1138F3A2165554F300BCCAAA /* TransmissionRemoteTests */,
+				1138F37E165554F300BCCAAA /* Frameworks */,
+				1138F37C165554F300BCCAAA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1138F37C165554F300BCCAAA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1138F37B165554F300BCCAAA /* TransmissionRemote.app */,
+				1138F39C165554F300BCCAAA /* TransmissionRemoteTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1138F37E165554F300BCCAAA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1138F37F165554F300BCCAAA /* Cocoa.framework */,
+				1138F39D165554F300BCCAAA /* SenTestingKit.framework */,
+				1138F381165554F300BCCAAA /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1138F381165554F300BCCAAA /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1138F382165554F300BCCAAA /* AppKit.framework */,
+				1138F383165554F300BCCAAA /* CoreData.framework */,
+				1138F384165554F300BCCAAA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		1138F385165554F300BCCAAA /* TransmissionRemote */ = {
+			isa = PBXGroup;
+			children = (
+				1138F3B41655550800BCCAAA /* Core */,
+				1138F3B3165554FD00BCCAAA /* GUI */,
+				1138F386165554F300BCCAAA /* Supporting Files */,
+			);
+			path = TransmissionRemote;
+			sourceTree = "<group>";
+		};
+		1138F386165554F300BCCAAA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1138F387165554F300BCCAAA /* TransmissionRemote-Info.plist */,
+				1138F38B165554F300BCCAAA /* main.m */,
+				1138F38D165554F300BCCAAA /* TransmissionRemote-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1138F3A2165554F300BCCAAA /* TransmissionRemoteTests */ = {
+			isa = PBXGroup;
+			children = (
+				1138F3A8165554F300BCCAAA /* TransmissionRemoteTests.h */,
+				1138F3A9165554F300BCCAAA /* TransmissionRemoteTests.m */,
+				1138F3A3165554F300BCCAAA /* Supporting Files */,
+			);
+			path = TransmissionRemoteTests;
+			sourceTree = "<group>";
+		};
+		1138F3A3165554F300BCCAAA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1138F3A4165554F300BCCAAA /* TransmissionRemoteTests-Info.plist */,
+				1138F3A5165554F300BCCAAA /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1138F3B3165554FD00BCCAAA /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				1138F3B61655551400BCCAAA /* Resources */,
+				1138F3B51655550E00BCCAAA /* Source */,
+			);
+			name = GUI;
+			sourceTree = "<group>";
+		};
+		1138F3B41655550800BCCAAA /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				11272C191659341C00506C11 /* Classes */,
+				11666E031659174E004ACF8B /* Protocol */,
+				1138F3F116557ED400BCCAAA /* SystemService */,
+				1138F3C3165555B000BCCAAA /* Models */,
+				1138F3C01655559F00BCCAAA /* AppDelegate.h */,
+				1138F3C11655559F00BCCAAA /* AppDelegate.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		1138F3B51655550E00BCCAAA /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				1109EE1A1656C3D300E73187 /* Torrent+Viewable.h */,
+				1109EE1B1656C3D300E73187 /* Torrent+Viewable.m */,
+				11DD36CC1657E3D900FF69CA /* OptionsWindowController.h */,
+				11DD36CD1657E3D900FF69CA /* OptionsWindowController.m */,
+				117185E2165A9108009B3511 /* TorrentTableViewController.h */,
+				117185E3165A9108009B3511 /* TorrentTableViewController.m */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1138F3B61655551400BCCAAA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1109EE101656C04C00E73187 /* Images */,
+				1138F3B71655558400BCCAAA /* Credits.rtf */,
+				1138F3B91655558400BCCAAA /* InfoPlist.strings */,
+				1138F3BB1655558400BCCAAA /* MainMenu.xib */,
+				11DD36D11657E42800FF69CA /* OptionsWindow.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		1138F3C3165555B000BCCAAA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1138F3C4165555CF00BCCAAA /* Torrent.h */,
+				1138F3C5165555CF00BCCAAA /* Torrent.m */,
+				1138F3C71655580400BCCAAA /* ConnectOptions.h */,
+				1138F3C81655580400BCCAAA /* ConnectOptions.m */,
+				117185EA165AAC83009B3511 /* ServerStatus.h */,
+				117185EB165AAC83009B3511 /* ServerStatus.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		1138F3F116557ED400BCCAAA /* SystemService */ = {
+			isa = PBXGroup;
+			children = (
+				11666E0D16591AF7004ACF8B /* ServicedObject.h */,
+				11666E0E16591AF7004ACF8B /* ServicedObject.m */,
+				1138F40616557F1600BCCAAA /* SystemService.h */,
+				1138F40716557F1600BCCAAA /* SystemService.m */,
+				1138F40D16557F5D00BCCAAA /* SystemServiced.h */,
+			);
+			name = SystemService;
+			sourceTree = "<group>";
+		};
+		11666E031659174E004ACF8B /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				11666E0416591782004ACF8B /* RpcRequest.h */,
+				11666E0516591782004ACF8B /* RpcRequest.m */,
+				11666E07165917C3004ACF8B /* RpcHandler.h */,
+				11666E08165917C3004ACF8B /* RpcHandler.m */,
+				11666E1016592B2A004ACF8B /* RequestReceieverDelegate.h */,
+				11272C1E16593AB400506C11 /* RpcProtocol.h */,
+				11272C1F16593AB400506C11 /* RpcProtocol.m */,
+				1195F4D9165D66B0003661E6 /* RpcProtocolHandlerDelegate.h */,
+			);
+			name = Protocol;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1138F37A165554F300BCCAAA /* TransmissionRemote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1138F3AD165554F300BCCAAA /* Build configuration list for PBXNativeTarget "TransmissionRemote" */;
+			buildPhases = (
+				1138F377165554F300BCCAAA /* Sources */,
+				1138F378165554F300BCCAAA /* Frameworks */,
+				1138F379165554F300BCCAAA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TransmissionRemote;
+			productName = TransmissionRemote;
+			productReference = 1138F37B165554F300BCCAAA /* TransmissionRemote.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1138F39B165554F300BCCAAA /* TransmissionRemoteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1138F3B0165554F300BCCAAA /* Build configuration list for PBXNativeTarget "TransmissionRemoteTests" */;
+			buildPhases = (
+				1138F397165554F300BCCAAA /* Sources */,
+				1138F398165554F300BCCAAA /* Frameworks */,
+				1138F399165554F300BCCAAA /* Resources */,
+				1138F39A165554F300BCCAAA /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1138F3A1165554F300BCCAAA /* PBXTargetDependency */,
+			);
+			name = TransmissionRemoteTests;
+			productName = TransmissionRemoteTests;
+			productReference = 1138F39C165554F300BCCAAA /* TransmissionRemoteTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1138F372165554F300BCCAAA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = TurchenkoAlex;
+			};
+			buildConfigurationList = 1138F375165554F300BCCAAA /* Build configuration list for PBXProject "TransmissionRemote" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1138F370165554F300BCCAAA;
+			productRefGroup = 1138F37C165554F300BCCAAA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1138F37A165554F300BCCAAA /* TransmissionRemote */,
+				1138F39B165554F300BCCAAA /* TransmissionRemoteTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1138F379165554F300BCCAAA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1138F3BD1655558400BCCAAA /* Credits.rtf in Resources */,
+				1138F3BE1655558400BCCAAA /* InfoPlist.strings in Resources */,
+				1138F3BF1655558400BCCAAA /* MainMenu.xib in Resources */,
+				1109EE201656C45600E73187 /* GreenDot.png in Resources */,
+				1109EE211656C45600E73187 /* PurpleDot.png in Resources */,
+				1109EE221656C45600E73187 /* RedDot.png in Resources */,
+				1109EE271656C81B00E73187 /* YellowDot.png in Resources */,
+				11DD36D31657E42800FF69CA /* OptionsWindow.xib in Resources */,
+				1164C8E4165AC106001C04F3 /* Transmission.icns in Resources */,
+				11BA8547165AD0090042CB89 /* BlueDot.png in Resources */,
+				1195F4E3165D7002003661E6 /* ToolbarPauseSelected.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1138F399165554F300BCCAAA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1138F3A7165554F300BCCAAA /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1138F39A165554F300BCCAAA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1138F377165554F300BCCAAA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1138F38C165554F300BCCAAA /* main.m in Sources */,
+				1138F3C21655559F00BCCAAA /* AppDelegate.m in Sources */,
+				1138F3C6165555CF00BCCAAA /* Torrent.m in Sources */,
+				1138F3C91655580400BCCAAA /* ConnectOptions.m in Sources */,
+				1138F40916557F1600BCCAAA /* SystemService.m in Sources */,
+				1109EE1C1656C3D300E73187 /* Torrent+Viewable.m in Sources */,
+				11DD36CF1657E3D900FF69CA /* OptionsWindowController.m in Sources */,
+				11666E0616591782004ACF8B /* RpcRequest.m in Sources */,
+				11666E09165917C3004ACF8B /* RpcHandler.m in Sources */,
+				11666E0F16591AF7004ACF8B /* ServicedObject.m in Sources */,
+				11272C1D1659344200506C11 /* NSMutableArray+QueueAdditions.m in Sources */,
+				11272C2016593AB400506C11 /* RpcProtocol.m in Sources */,
+				117185E4165A9108009B3511 /* TorrentTableViewController.m in Sources */,
+				117185EC165AAC83009B3511 /* ServerStatus.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1138F397165554F300BCCAAA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1138F3AA165554F300BCCAAA /* TransmissionRemoteTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1138F3A1165554F300BCCAAA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1138F37A165554F300BCCAAA /* TransmissionRemote */;
+			targetProxy = 1138F3A0165554F300BCCAAA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1138F3A5165554F300BCCAAA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1138F3A6165554F300BCCAAA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1138F3B71655558400BCCAAA /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1138F3B81655558400BCCAAA /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		1138F3B91655558400BCCAAA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1138F3BA1655558400BCCAAA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1138F3BB1655558400BCCAAA /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1138F3BC1655558400BCCAAA /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		11DD36D11657E42800FF69CA /* OptionsWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				11DD36D21657E42800FF69CA /* en */,
+			);
+			name = OptionsWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1138F3AB165554F300BCCAAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		1138F3AC165554F300BCCAAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		1138F3AE165554F300BCCAAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TransmissionRemote/TransmissionRemote-Prefix.pch";
+				INFOPLIST_FILE = "TransmissionRemote/TransmissionRemote-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1138F3AF165554F300BCCAAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TransmissionRemote/TransmissionRemote-Prefix.pch";
+				INFOPLIST_FILE = "TransmissionRemote/TransmissionRemote-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		1138F3B1165554F300BCCAAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TransmissionRemote.app/Contents/MacOS/TransmissionRemote";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TransmissionRemote/TransmissionRemote-Prefix.pch";
+				INFOPLIST_FILE = "TransmissionRemoteTests/TransmissionRemoteTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		1138F3B2165554F300BCCAAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TransmissionRemote.app/Contents/MacOS/TransmissionRemote";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TransmissionRemote/TransmissionRemote-Prefix.pch";
+				INFOPLIST_FILE = "TransmissionRemoteTests/TransmissionRemoteTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1138F375165554F300BCCAAA /* Build configuration list for PBXProject "TransmissionRemote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1138F3AB165554F300BCCAAA /* Debug */,
+				1138F3AC165554F300BCCAAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1138F3AD165554F300BCCAAA /* Build configuration list for PBXNativeTarget "TransmissionRemote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1138F3AE165554F300BCCAAA /* Debug */,
+				1138F3AF165554F300BCCAAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1138F3B0165554F300BCCAAA /* Build configuration list for PBXNativeTarget "TransmissionRemoteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1138F3B1165554F300BCCAAA /* Debug */,
+				1138F3B2165554F300BCCAAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1138F372165554F300BCCAAA /* Project object */;
+}
