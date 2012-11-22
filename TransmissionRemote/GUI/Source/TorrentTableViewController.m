@@ -173,10 +173,25 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentsVerifyRequest" object:aIds];
 }
 
+-(void)torrentsRemoveRequestWithIds:(NSString *)aIds {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentsRemoveRequest" object:aIds];
+}
+
 #pragma mark - IBActions
 
 -(NSArray *)selectedTorrens {
-    return [_arrayController selectedObjects];
+    NSInteger row = [_tableView clickedRow];
+    if (row != -1) {
+        Torrent *clickedTorrent = [[_arrayController arrangedObjects] objectAtIndex:row];
+        NSArray *selectedTorrents = [_arrayController selectedObjects];
+        if ([selectedTorrents containsObject:clickedTorrent]) {
+            return selectedTorrents;
+        } else {
+            return @[clickedTorrent];
+        }
+    } else {
+        return [_arrayController selectedObjects];
+    }
 }
 
 - (IBAction)startTorrentsAction:(id)sender {
@@ -204,6 +219,11 @@
 }
 
 - (IBAction)deleteTorrentsAction:(id)sender {
+    NSArray *selected = [self selectedTorrens];
+    if ([selected count] > 0) {
+        NSString * ids = [[selected valueForKeyPath:@"torrentId"] componentsJoinedByString:@","];
+        [self torrentsRemoveRequestWithIds:ids];
+    }
 }
 
 - (IBAction)filterTorrentAction:(id)sender {

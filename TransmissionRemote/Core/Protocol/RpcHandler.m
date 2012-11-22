@@ -43,6 +43,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentsStopRequestWithNotification:) name:@"TorrentsStopRequest" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentsStartRequestWithNotification:) name:@"TorrentsStartRequest" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentsVerifyRequestWithNotification:) name:@"TorrentsVerifyRequest" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentsRemoveRequestWithNotification:) name:@"TorrentsRemoveRequest" object:nil];
 }
 
 -(void)updateRequestInterval:(NSNotification *)notification {
@@ -92,6 +93,13 @@
     NSString *ids = [notification object];
     if (ids) {
         [self torrentsVerifyWithIds:ids];
+    }
+}
+
+-(void)torrentsRemoveRequestWithNotification:(NSNotification *)notification {
+    NSString *ids = [notification object];
+    if (ids) {
+        [self torrentsRemoveWithIds:ids andDeleteLocalData:YES];
     }
 }
 
@@ -171,6 +179,10 @@
 
 -(void)torrentsVerifyWithIds:(NSString *)aIds {
     [self requestWithData:[rpcProtocol torrentVerifyQueryWithIds:aIds] andTag:[rpcProtocol torrentVerifyTag]];
+}
+
+-(void)torrentsRemoveWithIds:(NSString *)aIds andDeleteLocalData:(BOOL)useDeleteLocalData {
+    [self requestWithData:[rpcProtocol torrentRemoveQueryWithIds:aIds andDeleteLocalData:useDeleteLocalData] andTag:[rpcProtocol torrentRemoveTag]];
 }
 
 #pragma mark - <ReceiveDataDelegate>

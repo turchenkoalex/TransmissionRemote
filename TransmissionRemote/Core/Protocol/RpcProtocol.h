@@ -17,6 +17,7 @@
     NSString *torrentStop;
     NSString *torrentStart;
     NSString *torrentVerify;
+    NSString *torrentRemove;
 }
 
 @property (weak) id <RpcProtocolHandlerDelegate> delegate;
@@ -43,6 +44,10 @@
 
 -(NSUInteger)torrentVerifyTag;
 -(NSString *)torrentVerifyQueryWithIds:(NSString *)aIds;
+
+-(NSUInteger)torrentRemoveTag;
+-(NSString *)torrentRemoveQueryWithIds:(NSString *)aIds andDeleteLocalData:(BOOL)useDeleteLocalData;
+
 
 -(BOOL)proceedResponse:(NSData *)aResponseData andTag:(NSUInteger)aTag;
 

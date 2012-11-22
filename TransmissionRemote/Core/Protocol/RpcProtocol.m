@@ -26,6 +26,7 @@
         torrentStop = @"{ \"method\": \"torrent-stop\", \"arguments\": { \"ids\": [%@] } }";
         torrentStart = @"{ \"method\": \"torrent-start\", \"arguments\": { \"ids\": [%@] } }";
         torrentVerify = @"{ \"method\": \"torrent-verify\", \"arguments\": { \"ids\": [%@] } }";
+        torrentRemove = @"{ \"method\": \"torrent-remove\", \"arguments\": { \"ids\": [%@], \"delete-local-data\": %@ } }";
     }
     return self;
 }
@@ -98,6 +99,15 @@
     return [NSString stringWithFormat:torrentVerify, aIds];
 }
 
+-(NSUInteger)torrentRemoveTag {
+    return 8;
+}
+
+-(NSString *)torrentRemoveQueryWithIds:(NSString *)aIds andDeleteLocalData:(BOOL)useDeleteLocalData {
+    return [NSString stringWithFormat:torrentRemove, aIds, useDeleteLocalData ? @"true" : @"false"];
+}
+
+
 #pragma mark - Proceeding response
 
 -(BOOL)proceedResponse:(NSData *)aResponseData andTag:(NSUInteger)aTag {
@@ -125,25 +135,28 @@
             break;
             
         case 2:
-            // torrent-get Initialize
+            // torrent-get initialize
             [self proceedTorrentInitializeGetResult:aResult];
             break;
             
         case 3:
-            // torrent-get Update
+            // torrent-get update
             [self proceedTorrentUpdateGetResult:aResult];
             break;
             
         case 4:
-            // torrent-get FullUpdate
+            // torrent-get fullUpdate
             [self proceedTorrentFullUpdateGetResult:aResult];
             break;
             
         case 5:
-        case 6:
-        case 7:
             // torrent-stop
+        case 6:
+            // torrent-start
+        case 7:
             // torrent-verify
+        case 8:
+            // torrent-remove
             break;
             
         default:

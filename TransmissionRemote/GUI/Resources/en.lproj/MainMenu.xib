@@ -1342,7 +1342,6 @@
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{1, 14}, {29, 28}}</string>
 								<reference key="NSSuperview"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:22</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSButtonCell" key="NSCell" id="329538613">
@@ -1392,7 +1391,6 @@
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{17, 14}, {29, 28}}</string>
 								<reference key="NSSuperview"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:22</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSButtonCell" key="NSCell" id="473045902">
@@ -1438,7 +1436,6 @@
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{0, 14}, {105, 22}}</string>
 								<reference key="NSSuperview"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSSearchFieldCell" key="NSCell" id="221120832">
@@ -1528,7 +1525,6 @@
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{0, 14}, {166, 28}}</string>
 								<reference key="NSSuperview"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSSegmentedCell" key="NSCell" id="758284552">
@@ -1610,7 +1606,6 @@
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{2, 14}, {29, 28}}</string>
 								<reference key="NSSuperview"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:22</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSButtonCell" key="NSCell" id="913566140">
@@ -1712,7 +1707,7 @@
 						<reference ref="478339437"/>
 						<reference ref="1050410788"/>
 						<reference ref="854581238"/>
-						<reference ref="832580091"/>
+						<reference ref="103892349"/>
 						<reference ref="806342496"/>
 						<reference ref="103892349"/>
 						<reference ref="895794935"/>
@@ -1895,7 +1890,6 @@
 							<string key="NSFrame">{{17, 6}, {503, 11}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:1535</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="405860433">
@@ -2958,6 +2952,14 @@
 						<reference key="destination" ref="809544179"/>
 					</object>
 					<int key="connectionID">1322</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">tableView</string>
+						<reference key="source" ref="537023297"/>
+						<reference key="destination" ref="483215561"/>
+					</object>
+					<int key="connectionID">1329</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -4898,7 +4900,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1328</int>
+			<int key="maxID">1329</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4974,6 +4976,7 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="arrayController">NSArrayController</string>
+						<string key="tableView">NSTableView</string>
 						<string key="torrentNameSearchField">NSSearchField</string>
 						<string key="torrentStatusSegmentedControl">NSSegmentedControl</string>
 					</dictionary>
@@ -4981,6 +4984,10 @@
 						<object class="IBToOneOutletInfo" key="arrayController">
 							<string key="name">arrayController</string>
 							<string key="candidateClassName">NSArrayController</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="tableView">
+							<string key="name">tableView</string>
+							<string key="candidateClassName">NSTableView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="torrentNameSearchField">
 							<string key="name">torrentNameSearchField</string>

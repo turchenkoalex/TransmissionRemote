@@ -14,6 +14,7 @@
 @property (weak) IBOutlet NSArrayController *arrayController;
 @property (weak) IBOutlet NSSegmentedControl *torrentStatusSegmentedControl;
 @property (weak) IBOutlet NSSearchField *torrentNameSearchField;
+@property (weak) IBOutlet NSTableView *tableView;
 
 - (IBAction)startTorrentsAction:(id)sender;
 - (IBAction)stopTorrentsAction:(id)sender;
