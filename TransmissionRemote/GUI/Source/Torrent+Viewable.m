@@ -22,9 +22,29 @@
     }
 }
 
--(BOOL)isDownload {
+#pragma mark - State properties
+
+-(BOOL)isDownloading {
     return (self.torrentState == STATE_DOWNLOAD);
 }
+
+-(BOOL)isSeeding {
+    return (self.torrentState == STATE_SEED);
+}
+
+-(BOOL)isStopping {
+    return (self.torrentState == STATE_STOPPED);
+}
+
+-(BOOL)isVerifing {
+    return (self.torrentState == STATE_CHECK);
+}
+
+-(BOOL)isWaiting {
+    return (self.torrentState == STATE_CHECK_WAIT || self.torrentState == STATE_SEED_WAIT || self.torrentState == STATE_DOWNLOAD_WAIT);
+}
+
+#pragma mark - KeyPathes
 
 +(NSSet *)keyPathsForValuesAffectingStatusImage {
     return [NSSet setWithObjects:@"torrentState", nil];
@@ -34,7 +54,19 @@
     return [NSSet setWithObjects:@"torrentDownloadPercent", @"torrentVerifyPercent", nil];
 }
 
-+(NSSet *)keyPathsForValuesAffectingIsDownload {
++(NSSet *)keyPathsForValuesAffectingIsSeeding {
+    return [NSSet setWithObjects:@"torrentState", nil];
+}
+
++(NSSet *)keyPathsForValuesAffectingIsStopping {
+    return [NSSet setWithObjects:@"torrentState", nil];
+}
+
++(NSSet *)keyPathsForValuesAffectingIsVerifing {
+    return [NSSet setWithObjects:@"torrentState", nil];
+}
+
++(NSSet *)keyPathsForValuesAffectingIsWaiting {
     return [NSSet setWithObjects:@"torrentState", nil];
 }
 

@@ -8,13 +8,24 @@
 
 #import "Torrent.h"
 
-static const NSString* TorrentStatusImageNames[] = {@"YellowDot",@"PurpleDot",@"PurpleDot",@"BlueDot",@"BlueDot",@"GreenDot",@"GreenDot"};
-
+static const NSString* TorrentStatusImageNames[] = {
+    @"RedDot"    , /* Torrent is stopped */
+    @"YellowDot" , /* Queued to check files */
+    @"PurpleDot" , /* Checking files */
+    @"YellowDot" , /* Queued to download */
+    @"BlueDot"   , /* Downloading */
+    @"YellowDot" , /* Queued to seed */
+    @"GreenDot"    /* Seeding */
+};
 
 @interface Torrent (Viewable)
 
 @property (readonly) NSImage *statusImage;
 @property (readonly) NSUInteger torrentComplete;
-@property (readonly) BOOL isDownload;
+@property (readonly) BOOL isDownloading;
+@property (readonly) BOOL isWaiting;
+@property (readonly) BOOL isStopping;
+@property (readonly) BOOL isSeeding;
+@property (readonly) BOOL isVerifing;
 
 @end

@@ -24,32 +24,45 @@
     [self unRegisterNotifications];
 }
 
--(void)updateFilterPredicateWithSearch:(NSString *)search andGroup:(NSInteger)group {
-    NSString *filter;
-    if([search length] > 0) {
-        filter = [NSString stringWithFormat:@"torrentName contains[c] '%@'", search];
+-(void)updateFilterPredicateWithSearch:(NSString *)searchName andGroup:(NSInteger)stateGroup {
+    NSString *nameFilter = nil;
+    if([searchName length] > 0) {
+        nameFilter = [NSString stringWithFormat:@"torrentName contains[c] '%@'", searchName];
     }
-    
-    if (group > 0) {
-        switch (group) {
-            case 1:
-                if ([filter length] > 0) {
-                    filter = [filter stringByAppendingString:@" AND isDownload == YES"];
-                } else {
-                    filter = @"torrentState == 4";
-                }
-                
-                break;
-                
-            default:
-                break;
+    NSString *stateFilter = nil;
+    switch (stateGroup) {
+        case 1:
+            stateFilter = @"isDownloading == YES";
+            break;
+        case 2:
+            stateFilter = @"isSeeding == YES";
+            break;
+        case 3:
+            stateFilter = @"isWaiting == YES";
+            break;
+        case 4:
+            stateFilter = @"isStopping == YES";
+            break;
+        default:
+            break;
+    }
+    NSString *filter = nil;
+    if (nameFilter) {
+        if (stateFilter) {
+            filter = [NSString stringWithFormat:@"%@ AND %@", stateFilter, nameFilter];
+        } else {
+            filter = [nameFilter copy];
+        }
+    } else {
+        if (stateFilter) {
+            filter = [stateFilter copy];
         }
     }
     
-    if ([filter length] == 0) {
-        _arrayController.filterPredicate = nil;
-    } else {
+    if (filter) {
         _arrayController.filterPredicate = [NSPredicate predicateWithFormat:filter];
+    } else {
+        _arrayController.filterPredicate = nil;
     }
 }
 
@@ -118,7 +131,9 @@
                     [newTorrents addObject:update];
                 }
             }
-            [_arrayController rearrangeObjects];
+            if (needRearrange) {
+                [_arrayController rearrangeObjects];
+            }
         }
         if ([newTorrents count] > 0) {
             NSString *ids = [[newTorrents valueForKeyPath:@"torrentId"] componentsJoinedByString:@","];
