@@ -22,5 +22,6 @@
 @property ServerStatus *serverStatus;
 
 - (IBAction)showOptionsWindow:(id)sender;
+- (IBAction)reconnectAction:(id)sender;
 
 @end

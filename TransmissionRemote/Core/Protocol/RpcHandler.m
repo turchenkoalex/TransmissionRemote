@@ -8,6 +8,7 @@
 
 #import "RpcHandler.h"
 #import "RpcRequest.h"
+#import "ServerStatus.h"
 
 @implementation RpcHandler
 
@@ -36,6 +37,7 @@
 
 -(void)registerNotifications {
     [self unRegisterNotifications];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectRequestWithNotification:) name:@"ConnectRequest" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sessionRequestWithNotification:) name:@"SessionRequest" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTorrentsRequestWithNotification:) name:@"UpdateTorrentRequest" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fullUpdateTorrentsRequestWithNotification:) name:@"FullUpdateTorrentsRequest" object:nil];
@@ -58,6 +60,10 @@
 
 -(void)unRegisterNotifications {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)connectRequestWithNotification:(NSNotification *)notification {
+    [self connect];
 }
 
 -(void)sessionRequestWithNotification:(NSNotification *)notification {
@@ -112,11 +118,17 @@
 }
 
 -(void)connect {
-    inProcess = NO;
-    connected = YES;
-    sessionId = nil;
-    [self sessionGet];
-    [self torrentGetInitialize];
+    if (!connected) {
+        ServerStatus *serverStatus = [[ServerStatus alloc] init];
+        serverStatus.version = @"Connecting";
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateServerStatusResponse" object:serverStatus];
+
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(torrentGetUpdate) object:nil];
+        connected = YES;
+        sessionId = nil;
+        [self sessionGet];
+        [self torrentGetInitialize];
+    }
 }
 
 -(void)performUpdateRequest {
@@ -133,6 +145,10 @@
 -(void)abortConnect {
     connected = NO;
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(torrentGetUpdate) object:nil];
+    ServerStatus *serverStatus = [[ServerStatus alloc] init];
+    serverStatus.version = @"Disconnected";
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateServerStatusResponse" object:serverStatus];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"InitializeTorrentsResponse" object:@[]];
 }
 
 #pragma mark - Request Logic
@@ -204,6 +220,11 @@
 -(void)didFailWithAuthorizationErrorOnRpcRequest:(id)aRequest {
     NSLog(@"Request %@: Authorization error", aRequest);
     [self abortConnect];
+
+    ServerStatus *serverStatus = [[ServerStatus alloc] init];
+    serverStatus.version = @"Authorization error";
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateServerStatusResponse" object:serverStatus];
+    
 }
 
 -(void)didFailWithError:(NSError *)error onRpcRequest:(id)aRequest {
