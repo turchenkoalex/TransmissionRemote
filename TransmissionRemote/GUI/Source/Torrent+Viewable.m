@@ -24,7 +24,11 @@
 }
 
 -(NSString *)uploadRatioFormatted {
-    return [NSString stringWithFormat:@"%.2f", self.uploadRatio];
+    if (self.uploadRatio == -1.0) {
+        return @"∞";
+    } else {
+        return [NSString stringWithFormat:@"%.2f", self.uploadRatio];
+    }
 }
 
 #pragma mark - State properties
