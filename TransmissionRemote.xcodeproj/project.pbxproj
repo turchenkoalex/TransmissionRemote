@@ -13,6 +13,7 @@
 		1109EE221656C45600E73187 /* RedDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 1109EE1F1656C45600E73187 /* RedDot.png */; };
 		1109EE271656C81B00E73187 /* YellowDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 1109EE261656C81B00E73187 /* YellowDot.png */; };
 		110C43AF165FFFD400D7D247 /* NSNumber+UnitString.m in Sources */ = {isa = PBXBuildFile; fileRef = 110C43AE165FFFD400D7D247 /* NSNumber+UnitString.m */; };
+		110C43B2166013E500D7D247 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 110C43B1166013E500D7D247 /* NSData+Base64.m */; };
 		11272C1D1659344200506C11 /* NSMutableArray+QueueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11272C1C1659344200506C11 /* NSMutableArray+QueueAdditions.m */; };
 		11272C2016593AB400506C11 /* RpcProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 11272C1F16593AB400506C11 /* RpcProtocol.m */; };
 		1138F380165554F300BCCAAA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1138F37F165554F300BCCAAA /* Cocoa.framework */; };
@@ -60,6 +61,8 @@
 		1109EE261656C81B00E73187 /* YellowDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = YellowDot.png; path = GUI/Resources/Images/YellowDot.png; sourceTree = "<group>"; };
 		110C43AD165FFFD400D7D247 /* NSNumber+UnitString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNumber+UnitString.h"; path = "Core/Classes/NSNumber+UnitString.h"; sourceTree = "<group>"; };
 		110C43AE165FFFD400D7D247 /* NSNumber+UnitString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+UnitString.m"; path = "Core/Classes/NSNumber+UnitString.m"; sourceTree = "<group>"; };
+		110C43B0166013E500D7D247 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Base64.h"; path = "Core/Classes/NSData+Base64.h"; sourceTree = "<group>"; };
+		110C43B1166013E500D7D247 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Base64.m"; path = "Core/Classes/NSData+Base64.m"; sourceTree = "<group>"; };
 		11272C1B1659344200506C11 /* NSMutableArray+QueueAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+QueueAdditions.h"; path = "Core/Classes/NSMutableArray+QueueAdditions.h"; sourceTree = "<group>"; };
 		11272C1C1659344200506C11 /* NSMutableArray+QueueAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+QueueAdditions.m"; path = "Core/Classes/NSMutableArray+QueueAdditions.m"; sourceTree = "<group>"; };
 		11272C1E16593AB400506C11 /* RpcProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RpcProtocol.h; path = Core/Protocol/RpcProtocol.h; sourceTree = "<group>"; };
@@ -148,6 +151,8 @@
 		11272C191659341C00506C11 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				110C43B0166013E500D7D247 /* NSData+Base64.h */,
+				110C43B1166013E500D7D247 /* NSData+Base64.m */,
 				11272C1B1659344200506C11 /* NSMutableArray+QueueAdditions.h */,
 				11272C1C1659344200506C11 /* NSMutableArray+QueueAdditions.m */,
 				110C43AD165FFFD400D7D247 /* NSNumber+UnitString.h */,
@@ -451,6 +456,7 @@
 				117185E4165A9108009B3511 /* TorrentTableViewController.m in Sources */,
 				117185EC165AAC83009B3511 /* ServerStatus.m in Sources */,
 				110C43AF165FFFD400D7D247 /* NSNumber+UnitString.m in Sources */,
+				110C43B2166013E500D7D247 /* NSData+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

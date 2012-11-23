@@ -10,6 +10,6 @@
 
 @protocol RpcProtocolHandlerDelegate <NSObject>
 
--(void)didRequestReceivedWithTag:(NSUInteger)aTag;
+-(void)didRequestReceivedWithTag:(NSUInteger)aTag andData:(id)data;
 
 @end

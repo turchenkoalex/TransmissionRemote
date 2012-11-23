@@ -11,5 +11,6 @@
 @interface ServerStatus : NSObject
 
 @property NSString *version;
+@property BOOL connected;
 
 @end

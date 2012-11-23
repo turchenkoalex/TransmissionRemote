@@ -16,6 +16,7 @@
     if (self) {
         activeRequestInterval = [NSNumber numberWithDouble:1.0];
         unactiveRequestInterval = [NSNumber numberWithDouble:5.0];
+        filesQueue = [NSMutableArray array];
     }
     return self;
 }
@@ -74,10 +75,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateServerStatusResponse:) name:@"UpdateServerStatusResponse" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentDownloadedNotification:) name:@"TorrentDownloaded" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentVerifiedNotification:) name:@"TorrentVerified" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(processFilesQueue) name:@"ProcessFilesQueue" object:nil];
 }
 
 -(void)unRegisterNotifications {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"UpdateServerStatusResponse" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"TorrentDownloaded" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"TorrentVerified" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ProcessFilesQueue" object:nil];
 }
 
 -(void)updateServerStatusResponse:(NSNotification *)notification {
@@ -85,6 +90,9 @@
     if (object) {
         @synchronized(self) {
             self.serverStatus = object;
+            if (self.serverStatus.connected) {
+                [self processFilesQueue];
+            }
         }
     }
 }
@@ -126,6 +134,26 @@
     if (torrentId) {
         [[self window] makeKeyAndOrderFront:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"SelectTorrentById" object:torrentId];
+    }
+}
+
+#pragma mark - Files processing
+
+-(BOOL)application:(NSApplication *)sender openFile:(NSString *)filename {
+    [filesQueue enqueue:filename];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ProcessFilesQueue" object:nil];
+    return YES;
+}
+
+-(void)application:(NSApplication *)sender openFiles:(NSArray *)filenames {
+    [filesQueue addObjectsFromArray:filenames];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ProcessFilesQueue" object:nil];
+}
+
+-(void)processFilesQueue {
+    NSString *filename;
+    while ((filename = [filesQueue dequeue])) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"AddTorrentFileRequest" object:filename];
     }
 }
 

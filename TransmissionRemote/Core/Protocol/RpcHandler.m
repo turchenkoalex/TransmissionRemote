@@ -9,6 +9,7 @@
 #import "RpcHandler.h"
 #import "RpcRequest.h"
 #import "ServerStatus.h"
+#import "NSData+Base64.h"
 
 @implementation RpcHandler
 
@@ -46,6 +47,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentsStartRequestWithNotification:) name:@"TorrentsStartRequest" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentsVerifyRequestWithNotification:) name:@"TorrentsVerifyRequest" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentsRemoveRequestWithNotification:) name:@"TorrentsRemoveRequest" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTorrentFileRequestWithNotification:) name:@"AddTorrentFileRequest" object:nil];
+    
 }
 
 -(void)updateRequestInterval:(NSNotification *)notification {
@@ -109,6 +112,13 @@
     }
 }
 
+-(void)addTorrentFileRequestWithNotification:(NSNotification *)notification {
+    NSString *fileName = [notification object];
+    if (fileName) {
+        [self addTorrentFileWithFileName:fileName];
+    }
+}
+
 #pragma mark - Connections
 
 -(void)connectWithConnectOptions:(ConnectOptions *)aConnectOptions {
@@ -121,6 +131,7 @@
     if (!connected) {
         ServerStatus *serverStatus = [[ServerStatus alloc] init];
         serverStatus.version = @"Connecting";
+        serverStatus.connected = NO;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateServerStatusResponse" object:serverStatus];
 
         [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(torrentGetUpdate) object:nil];
@@ -147,6 +158,7 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(torrentGetUpdate) object:nil];
     ServerStatus *serverStatus = [[ServerStatus alloc] init];
     serverStatus.version = @"Disconnected";
+    serverStatus.connected = NO;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateServerStatusResponse" object:serverStatus];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"InitializeTorrentsResponse" object:@[]];
 }
@@ -200,6 +212,12 @@
 -(void)torrentsRemoveWithIds:(NSString *)aIds andDeleteLocalData:(BOOL)useDeleteLocalData {
     [self requestWithData:[rpcProtocol torrentRemoveQueryWithIds:aIds andDeleteLocalData:useDeleteLocalData] andTag:[rpcProtocol torrentRemoveTag]];
 }
+-(void)addTorrentFileWithFileName:(NSString *)fileName {
+    NSString *fileData = [[NSData dataWithContentsOfFile:fileName] encodeBase64];
+    if (fileData) {
+        [self requestWithData:[rpcProtocol torrentAddFileQueryWithData:fileData] andTag:[rpcProtocol torrentAddFileTag]];
+    }
+}
 
 #pragma mark - <ReceiveDataDelegate>
 
@@ -223,6 +241,7 @@
 
     ServerStatus *serverStatus = [[ServerStatus alloc] init];
     serverStatus.version = @"Authorization error";
+    serverStatus.connected = NO;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateServerStatusResponse" object:serverStatus];
     
 }
@@ -234,9 +253,11 @@
 
 #pragma mark - <RpcProtocolHandlerDelegate>
 
--(void)didRequestReceivedWithTag:(NSUInteger)aTag {
+-(void)didRequestReceivedWithTag:(NSUInteger)aTag andData:(id)data {
     if (aTag == [rpcProtocol torrentGetUpdateTag] || aTag == [rpcProtocol torrentGetInitializeTag]) {
         [self performUpdateRequest];
+    } else if (aTag == [rpcProtocol torrentAddFileTag]) {
+        [self torrentGetFullUpdateWithIds:data];
     }
 }
 

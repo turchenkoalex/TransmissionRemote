@@ -10,10 +10,12 @@
 #import "OptionsWindowController.h"
 #import "Service.h"
 #import "ServerStatus.h"
+#import "NSMutableArray+QueueAdditions.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSUserNotificationCenterDelegate> {
     NSNumber *activeRequestInterval;
-    NSNumber *unactiveRequestInterval;    
+    NSNumber *unactiveRequestInterval;
+    NSMutableArray *filesQueue;
 }
 
 @property Service *systemService;
