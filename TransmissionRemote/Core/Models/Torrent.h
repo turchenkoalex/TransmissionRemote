@@ -27,5 +27,6 @@ typedef NS_ENUM(NSUInteger, TorrentState) {
 @property NSUInteger torrentDownloadPercent;
 @property NSUInteger torrentVerifyPercent;
 @property double uploadRatio;
+@property NSUInteger totalSize;
 
 @end
