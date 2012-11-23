@@ -24,7 +24,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    self.systemService = [[SystemService alloc] initWithDefaults];
+    self.systemService = [[Service alloc] initWithDefaults];
     self.serverStatus = [[ServerStatus alloc] init];
         
     [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
@@ -124,6 +124,7 @@
     NSNumber *torrentId = [[notification userInfo] valueForKey:@"torrentId"];
     [[NSUserNotificationCenter defaultUserNotificationCenter] removeDeliveredNotification:notification];
     if (torrentId) {
+        [[self window] makeKeyAndOrderFront:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"SelectTorrentById" object:torrentId];
     }
 }

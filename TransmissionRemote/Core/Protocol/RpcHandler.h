@@ -20,7 +20,7 @@
     NSNumber *requestInterval;
 }
 
--(id)initWithService:(SystemService *)service andConnectOptions:(ConnectOptions *)aConnectOptions;
+-(id)initWithService:(Service *)service andConnectOptions:(ConnectOptions *)aConnectOptions;
 -(void)connectWithConnectOptions:(ConnectOptions *)aConnectOptions;
 -(void)connect;
 -(void)abortConnect;

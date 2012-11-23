@@ -275,11 +275,15 @@
     }
 }
 
-- (IBAction)deleteTorrentsAction:(id)sender {
+- (IBAction)removeWithDataTorrentsAction:(id)sender {
     NSArray *selected = [self selectedTorrens];
     if ([selected count] > 0) {
+        NSString *names = [[selected valueForKeyPath:@"torrentName"] componentsJoinedByString:@", "];
         NSString * ids = [[selected valueForKeyPath:@"torrentId"] componentsJoinedByString:@","];
-        [self torrentsRemoveRequestWithIds:ids];
+        NSAlert *deleteMessage = [NSAlert alertWithMessageText:@"Are you shure?" defaultButton:@"Remove" alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:@"Removing torrents: %@", names];
+        if ([deleteMessage runModal] == 1) {
+            [self torrentsRemoveRequestWithIds:ids];
+        }
     }
 }
 

@@ -6,16 +6,16 @@
 //  Copyright (c) 2012 TurchenkoAlex. All rights reserved.
 //
 
-#import "SystemService.h"
+#import "Service.h"
 #import "RpcHandler.h"
 
-@interface SystemService () {
+@interface Service () {
     RpcHandler *rpcHandler;
 }
 
 @end
 
-@implementation SystemService
+@implementation Service
 
 -(id)init {
     self = [super init];

@@ -22,7 +22,7 @@
     return self;
 }
 
--(id)initWithService:(SystemService *)service andConnectOptions:(ConnectOptions *)aConnectOptions {
+-(id)initWithService:(Service *)service andConnectOptions:(ConnectOptions *)aConnectOptions {
     self = [self initWithService:service];
     if (self) {
         rpcURL = [aConnectOptions rpcURL];

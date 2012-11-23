@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ConnectOptions.h"
 
-@interface SystemService : NSObject
+@interface Service : NSObject
 
 @property ConnectOptions *connectOptions;
 

@@ -14,10 +14,10 @@
 
 @implementation OptionsWindowController
 
--(id) initWithService:(SystemService *)service {
+-(id) initWithService:(Service *)service {
     self = [super initWithWindowNibName:@"OptionsWindow"];
     if (self) {
-        _systemService = service;
+        _service = service;
     }
     return self;
 }
@@ -27,7 +27,7 @@
 }
 
 -(void)showWindow:(id)sender {
-    self.connectOptions = [self.systemService.connectOptions mutableCopy];
+    self.connectOptions = [self.service.connectOptions mutableCopy];
     [NSApp beginSheet:self.window modalForWindow:sender modalDelegate:self didEndSelector:nil contextInfo:nil];
 }
 
@@ -37,7 +37,7 @@
 }
 
 - (IBAction)saveOptions:(id)sender {
-    [self.systemService applyConnectOptions:self.connectOptions];
+    [self.service applyConnectOptions:self.connectOptions];
     [self closeWindow:sender];
 }
 

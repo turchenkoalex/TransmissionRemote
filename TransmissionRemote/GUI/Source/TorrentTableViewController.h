@@ -26,7 +26,7 @@
 - (IBAction)startTorrentsAction:(id)sender;
 - (IBAction)stopTorrentsAction:(id)sender;
 - (IBAction)verifyTorrentsAction:(id)sender;
-- (IBAction)deleteTorrentsAction:(id)sender;
+- (IBAction)removeWithDataTorrentsAction:(id)sender;
 - (IBAction)filterTorrentsAction:(id)sender;
 - (IBAction)sortingTorrentsAction:(id)sender;
 

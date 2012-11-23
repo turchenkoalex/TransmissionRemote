@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SystemService.h"
+#import "Service.h"
 
-@protocol SystemServiced <NSObject>
+@protocol Serviced <NSObject>
 
-@property (readonly) SystemService *systemService;
+@property (readonly) Service *service;
 
--(id)initWithService:(SystemService *)service;
+-(id)initWithService:(Service *)service;
 
 @end

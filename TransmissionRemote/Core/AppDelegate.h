@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "OptionsWindowController.h"
-#import "SystemService.h"
+#import "Service.h"
 #import "ServerStatus.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSUserNotificationCenterDelegate> {
@@ -16,7 +16,7 @@
     NSNumber *unactiveRequestInterval;    
 }
 
-@property SystemService *systemService;
+@property Service *systemService;
 @property (assign) IBOutlet NSWindow *window;
 @property OptionsWindowController *optionsWindowController;
 @property ServerStatus *serverStatus;

@@ -10,10 +10,10 @@
 
 @implementation ServicedObject
 
--(id)initWithService:(SystemService *)service {
+-(id)initWithService:(Service *)service {
     self = [self init];
     if (self) {
-        _systemService = service;
+        _service = service;
     }
     return self;
 }

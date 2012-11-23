@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SystemService.h"
-#import "SystemServiced.h"
+#import "Service.h"
+#import "Serviced.h"
 
-@interface ServicedObject : NSObject <SystemServiced>
+@interface ServicedObject : NSObject <Serviced>
 
-@property (readonly, weak) SystemService *systemService;
+@property (readonly, weak) Service *service;
 
 @end

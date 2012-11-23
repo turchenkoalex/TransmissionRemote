@@ -7,12 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "SystemServiced.h"
+#import "Serviced.h"
 #import "ConnectOptions.h"
 
-@interface OptionsWindowController : NSWindowController <SystemServiced>
+@interface OptionsWindowController : NSWindowController <Serviced>
 
-@property (readonly) SystemService *systemService;
+@property (readonly) Service *service;
 @property ConnectOptions *connectOptions;
 
 - (IBAction)saveOptions:(id)sender;
