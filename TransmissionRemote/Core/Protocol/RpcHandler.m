@@ -253,12 +253,34 @@
 
 #pragma mark - <RpcProtocolHandlerDelegate>
 
--(void)didRequestReceivedWithTag:(NSUInteger)aTag andData:(id)data {
-    if (aTag == [rpcProtocol torrentGetUpdateTag] || aTag == [rpcProtocol torrentGetInitializeTag]) {
-        [self performUpdateRequest];
-    } else if (aTag == [rpcProtocol torrentAddFileTag]) {
-        [self torrentGetFullUpdateWithIds:data];
+-(void)didSessionGetRequestReceived:(ServerStatus *)serverStatus {
+    if (serverStatus) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateServerStatusResponse" object:serverStatus];
     }
+}
+
+-(void)didInitializeTorrentsRequestReceived:(NSArray *)torrents {
+    if (torrents && torrents.count > 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"InitializeTorrentsResponse" object:torrents];
+    }
+    [self performUpdateRequest];
+}
+
+-(void)didUpdateTorrentsRequestReceived:(NSArray *)torrents {
+    if (torrents && torrents.count > 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateTorrentsResponse" object:torrents];
+    }
+    [self performUpdateRequest];
+}
+
+-(void)didFullUpdateTorrentsRequestReceived:(NSArray *)torrents {
+    if (torrents && torrents.count > 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"FullUpdateTorrentsResponse" object:torrents];
+    }
+}
+
+-(void)didAddTorrentsRequestReceived:(NSUInteger)torrentId {
+    [self torrentGetFullUpdateWithIds:[NSString stringWithFormat:@"%ld", torrentId]];
 }
 
 @end

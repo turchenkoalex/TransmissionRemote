@@ -138,8 +138,17 @@
 }
 
 -(void)procceedResult:(NSDictionary *)aResult withTag:(NSUInteger)aTag {
-    id data = nil;
     switch (aTag) {
+        case 3:
+            // torrent-get update
+            [self proceedTorrentUpdateGetResult:aResult];
+            break;
+
+        case 4:
+            // torrent-get fullUpdate
+            [self proceedTorrentFullUpdateGetResult:aResult];
+            break;
+            
         case 1:
             // session-get
             [self proceedSessionGetResult:aResult];
@@ -148,16 +157,6 @@
         case 2:
             // torrent-get initialize
             [self proceedTorrentInitializeGetResult:aResult];
-            break;
-            
-        case 3:
-            // torrent-get update
-            [self proceedTorrentUpdateGetResult:aResult];
-            break;
-            
-        case 4:
-            // torrent-get fullUpdate
-            [self proceedTorrentFullUpdateGetResult:aResult];
             break;
             
         case 5:
@@ -171,15 +170,12 @@
             break;
         case 9:
             // torrent-add
-            data = [self proceedAddTorrentGetResult:aResult];
+            [self proceedAddTorrentGetResult:aResult];
             break;
             
         default:
             // unknown request
             break;
-    }
-    if (_delegate) {
-        [_delegate didRequestReceivedWithTag:aTag andData:data];
     }
 }
 
@@ -188,7 +184,9 @@
         ServerStatus *serverStatus = [[ServerStatus alloc] init];
         serverStatus.connected = YES;
         serverStatus.version = [NSString stringWithFormat:@"Transmission %@", [aResult objectForKey:@"version"]];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateServerStatusResponse" object:serverStatus];
+        if (_delegate) {
+            [_delegate didSessionGetRequestReceived:serverStatus];
+        }
     }
 }
 
@@ -217,27 +215,28 @@
     }
 }
 
--(void)extractTorrentsFromDictionary:(NSDictionary *)aDictionary andPostNotificationWithName:(NSString *)aNotificationName {
-    NSMutableArray *torrents = [self torrentsFromDictionary:aDictionary];
-    if (torrents && torrents.count > 0) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:aNotificationName object:torrents];
+-(void)proceedTorrentInitializeGetResult:(NSDictionary *)aResult {
+    if (_delegate) {
+        [_delegate didInitializeTorrentsRequestReceived:[self torrentsFromDictionary:[aResult valueForKey:@"torrents"]]];
     }
 }
 
--(void)proceedTorrentInitializeGetResult:(NSDictionary *)aResult {
-    [self extractTorrentsFromDictionary:[aResult valueForKey:@"torrents"] andPostNotificationWithName:@"InitializeTorrentsResponse"];
-}
-
 -(void)proceedTorrentUpdateGetResult:(NSDictionary *)aResult {
-    [self extractTorrentsFromDictionary:[aResult valueForKey:@"torrents"] andPostNotificationWithName:@"UpdateTorrentsResponse"];
+    if (_delegate) {
+        [_delegate didUpdateTorrentsRequestReceived:[self torrentsFromDictionary:[aResult valueForKey:@"torrents"]]];
+    }
 }
 
 -(void)proceedTorrentFullUpdateGetResult:(NSDictionary *)aResult {
-    [self extractTorrentsFromDictionary:[aResult valueForKey:@"torrents"] andPostNotificationWithName:@"FullUpdateTorrentsResponse"];
+    if (_delegate) {
+        [_delegate didFullUpdateTorrentsRequestReceived:[self torrentsFromDictionary:[aResult valueForKey:@"torrents"]]];
+    }
 }
 
--(id)proceedAddTorrentGetResult:(NSDictionary *)aResult {
-    return [NSString stringWithFormat:@"%ld", [[[aResult valueForKey:@"torrent-added"] valueForKey:@"id"] unsignedIntegerValue]];
+-(void)proceedAddTorrentGetResult:(NSDictionary *)aResult {
+    if (_delegate) {
+        [_delegate didAddTorrentsRequestReceived:[[[aResult valueForKey:@"torrent-added"] valueForKey:@"id"] unsignedIntegerValue]];
+    }
 }
 
 @end

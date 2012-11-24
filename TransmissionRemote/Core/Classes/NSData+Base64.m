@@ -16,32 +16,30 @@ static const char *alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvw
     char *outputBuffer = malloc(encodedLength);
 	unsigned char *inputBuffer = (unsigned char *)[self bytes];
 	
-	NSInteger i;
-	NSInteger j = 0;
+	NSUInteger j = 0;
 	NSUInteger remain;
     
-	for(i = 0; i < length; i += 3) {
+	for(NSUInteger i = 0; i < length; i += 3) {
 		remain = length - i;
 		
 		outputBuffer[j++] = alphabet[(inputBuffer[i] & 0xFC) >> 2];
-		outputBuffer[j++] = alphabet[((inputBuffer[i] & 0x03) << 4) |
-									 ((remain > 1) ? ((inputBuffer[i + 1] & 0xF0) >> 4): 0)];
+		outputBuffer[j++] = alphabet[((inputBuffer[i] & 0x03) << 4) | ((remain > 1) ? ((inputBuffer[i + 1] & 0xF0) >> 4): 0)];
 		
-		if(remain > 1)
-			outputBuffer[j++] = alphabet[((inputBuffer[i + 1] & 0x0F) << 2)
-										 | ((remain > 2) ? ((inputBuffer[i + 2] & 0xC0) >> 6) : 0)];
-		else
+		if(remain > 1) {
+			outputBuffer[j++] = alphabet[((inputBuffer[i + 1] & 0x0F) << 2) | ((remain > 2) ? ((inputBuffer[i + 2] & 0xC0) >> 6) : 0)];
+        } else {
 			outputBuffer[j++] = '=';
-		
-		if(remain > 2)
+        }
+		if(remain > 2) {
 			outputBuffer[j++] = alphabet[inputBuffer[i + 2] & 0x3F];
-		else
-			outputBuffer[j++] = '=';
+        } else {
+            outputBuffer[j++] = '=';
+        }
 	}
 	
 	outputBuffer[j] = 0;
 	
-    NSString *result =[[NSString alloc] initWithBytes:outputBuffer length:strlen(outputBuffer) encoding:NSASCIIStringEncoding];
+    NSString *result =[[NSString alloc] initWithBytes:outputBuffer length:j encoding:NSASCIIStringEncoding];
 	free(outputBuffer);
 	
 	return result;
