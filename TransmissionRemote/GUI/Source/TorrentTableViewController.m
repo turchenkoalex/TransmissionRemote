@@ -178,7 +178,7 @@
                             }
                         }
                         if (torrent.torrentVerifyPercent != update.torrentVerifyPercent) {
-                            if (torrent.torrentVerifyPercent > 0 && update.torrentVerifyPercent == 0) {
+                            if (torrent.torrentVerifyPercent > 0 && update.torrentVerifyPercent == 0 && torrent.uploadRatio != -1) {
                                 [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentVerified" object:torrent];
                             }
                             torrent.torrentVerifyPercent = update.torrentVerifyPercent;
@@ -241,6 +241,10 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentsStartRequest" object:aIds];
 }
 
+-(void)torrentsStartNowRequestWithIds:(NSString *)aIds {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentsStartNowRequest" object:aIds];
+}
+
 -(void)torrentsVerifyRequestWithIds:(NSString *)aIds {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentsVerifyRequest" object:aIds];
 }
@@ -267,6 +271,14 @@
 }
 
 - (IBAction)startTorrentsAction:(id)sender {
+    NSArray *selected = [self selectedTorrens];
+    if ([selected count] > 0) {
+        NSString * ids = [[selected valueForKeyPath:@"torrentId"] componentsJoinedByString:@","];
+        [self torrentsStartRequestWithIds:ids];
+    }
+}
+
+- (IBAction)startNowTorrentsAction:(id)sender {
     NSArray *selected = [self selectedTorrens];
     if ([selected count] > 0) {
         NSString * ids = [[selected valueForKeyPath:@"torrentId"] componentsJoinedByString:@","];

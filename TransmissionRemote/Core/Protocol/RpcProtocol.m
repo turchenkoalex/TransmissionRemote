@@ -26,6 +26,7 @@
         
         torrentStop = @"{ \"method\": \"torrent-stop\", \"arguments\": { \"ids\": [%@] } }";
         torrentStart = @"{ \"method\": \"torrent-start\", \"arguments\": { \"ids\": [%@] } }";
+        torrentStartNow = @"{ \"method\": \"torrent-start-now\", \"arguments\": { \"ids\": [%@] } }";
         torrentVerify = @"{ \"method\": \"torrent-verify\", \"arguments\": { \"ids\": [%@] } }";
         torrentRemove = @"{ \"method\": \"torrent-remove\", \"arguments\": { \"ids\": [%@], \"delete-local-data\": %@ } }";
         torrentAddFile = @"{ \"method\": \"torrent-add\", \"arguments\": { \"paused\": true, \"metainfo\": \"%@\" } }";
@@ -114,6 +115,15 @@
 -(NSString *)torrentStartQueryWithIds:(NSString *)aIds {
     return [NSString stringWithFormat:torrentStart, aIds];
 }
+
+-(NSUInteger)torrentStartNowTag {
+    return 7;
+}
+
+-(NSString *)torrentStartNowQueryWithIds:(NSString *)aIds {
+    return [NSString stringWithFormat:torrentStartNow, aIds];
+}
+
 
 -(NSUInteger)torrentVerifyTag {
     return 8;

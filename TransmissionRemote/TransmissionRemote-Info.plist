@@ -40,9 +40,9 @@
 				<string>torrent</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>Transmission</string>
+			<string>TransmissionDocument.icns</string>
 			<key>CFBundleTypeName</key>
-			<string>Torrent file</string>
+			<string>Torrent File</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 		</dict>

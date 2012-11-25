@@ -46,6 +46,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateRequestInterval:) name:@"UpdateRequestInterval" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentsStopRequestWithNotification:) name:@"TorrentsStopRequest" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentsStartRequestWithNotification:) name:@"TorrentsStartRequest" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentsStartNowRequestWithNotification:) name:@"TorrentsStartNowRequest" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentsVerifyRequestWithNotification:) name:@"TorrentsVerifyRequest" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentsRemoveRequestWithNotification:) name:@"TorrentsRemoveRequest" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTorrentFileRequestWithNotification:) name:@"AddTorrentFileRequest" object:nil];
@@ -103,6 +104,13 @@
     NSString *ids = [notification object];
     if (ids) {
         [self torrentsStartWithIds:ids];
+    }
+}
+
+-(void)torrentsStartNowRequestWithNotification:(NSNotification *)notification {
+    NSString *ids = [notification object];
+    if (ids) {
+        [self torrentsStartNowWithIds:ids];
     }
 }
 
@@ -215,6 +223,10 @@
 
 -(void)torrentsStartWithIds:(NSString *)aIds {
     [self requestWithData:[rpcProtocol torrentStartQueryWithIds:aIds] andTag:[rpcProtocol torrentStartTag]];
+}
+
+-(void)torrentsStartNowWithIds:(NSString *)aIds {
+    [self requestWithData:[rpcProtocol torrentStartNowQueryWithIds:aIds] andTag:[rpcProtocol torrentStartNowTag]];
 }
 
 -(void)torrentsVerifyWithIds:(NSString *)aIds {

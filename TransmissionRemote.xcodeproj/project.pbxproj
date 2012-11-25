@@ -16,6 +16,7 @@
 		110C43B2166013E500D7D247 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 110C43B1166013E500D7D247 /* NSData+Base64.m */; };
 		11272C1D1659344200506C11 /* NSMutableArray+QueueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11272C1C1659344200506C11 /* NSMutableArray+QueueAdditions.m */; };
 		11272C2016593AB400506C11 /* RpcProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 11272C1F16593AB400506C11 /* RpcProtocol.m */; };
+		1131213C166241EA001A7F7B /* TransmissionDocument.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1131213B166241EA001A7F7B /* TransmissionDocument.icns */; };
 		1138F380165554F300BCCAAA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1138F37F165554F300BCCAAA /* Cocoa.framework */; };
 		1138F38C165554F300BCCAAA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1138F38B165554F300BCCAAA /* main.m */; };
 		1138F39E165554F300BCCAAA /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1138F39D165554F300BCCAAA /* SenTestingKit.framework */; };
@@ -40,6 +41,13 @@
 		1178D4C816614AAA00087084 /* TorrentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1178D4C616614AAA00087084 /* TorrentWindowController.m */; };
 		1178D4CD16614B3B00087084 /* TorrentWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1178D4CB16614B3B00087084 /* TorrentWindow.xib */; };
 		1178D4D31662253F00087084 /* TurtleTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 1178D4D21662253F00087084 /* TurtleTemplate.png */; };
+		1178D4D61662335200087084 /* Resume.png in Resources */ = {isa = PBXBuildFile; fileRef = 1178D4D51662335200087084 /* Resume.png */; };
+		1178D4D81662335A00087084 /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 1178D4D71662335A00087084 /* Pause.png */; };
+		1178D4DA166233D000087084 /* ResumeNoWait.png in Resources */ = {isa = PBXBuildFile; fileRef = 1178D4D9166233D000087084 /* ResumeNoWait.png */; };
+		1178D4DC1662346400087084 /* ToolbarResumeSelectedTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 1178D4DB1662346400087084 /* ToolbarResumeSelectedTemplate.png */; };
+		1178D4DE166234B500087084 /* ToolbarOpenWebTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 1178D4DD166234B500087084 /* ToolbarOpenWebTemplate.png */; };
+		1178D4E0166234ED00087084 /* ToolbarPauseSelectedTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 1178D4DF166234ED00087084 /* ToolbarPauseSelectedTemplate.png */; };
+		1178D4E2166236B600087084 /* ToolbarRemoveTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 1178D4E1166236B600087084 /* ToolbarRemoveTemplate.png */; };
 		11BA8547165AD0090042CB89 /* BlueDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BA8546165AD0090042CB89 /* BlueDot.png */; };
 		11DD36CF1657E3D900FF69CA /* OptionsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DD36CD1657E3D900FF69CA /* OptionsWindowController.m */; };
 		11DD36D31657E42800FF69CA /* OptionsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11DD36D11657E42800FF69CA /* OptionsWindow.xib */; };
@@ -70,6 +78,7 @@
 		11272C1C1659344200506C11 /* NSMutableArray+QueueAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+QueueAdditions.m"; path = "Core/Classes/NSMutableArray+QueueAdditions.m"; sourceTree = "<group>"; };
 		11272C1E16593AB400506C11 /* RpcProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RpcProtocol.h; path = Core/Protocol/RpcProtocol.h; sourceTree = "<group>"; };
 		11272C1F16593AB400506C11 /* RpcProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RpcProtocol.m; path = Core/Protocol/RpcProtocol.m; sourceTree = "<group>"; };
+		1131213B166241EA001A7F7B /* TransmissionDocument.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TransmissionDocument.icns; sourceTree = SOURCE_ROOT; };
 		1138F37B165554F300BCCAAA /* TransmissionRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TransmissionRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1138F37F165554F300BCCAAA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1138F382165554F300BCCAAA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -112,6 +121,13 @@
 		1178D4C616614AAA00087084 /* TorrentWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TorrentWindowController.m; path = GUI/Source/TorrentWindowController.m; sourceTree = "<group>"; };
 		1178D4CC16614B3B00087084 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = GUI/Resources/en.lproj/TorrentWindow.xib; sourceTree = "<group>"; };
 		1178D4D21662253F00087084 /* TurtleTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TurtleTemplate.png; path = GUI/Resources/Images/TurtleTemplate.png; sourceTree = "<group>"; };
+		1178D4D51662335200087084 /* Resume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Resume.png; path = GUI/Resources/Images/Resume.png; sourceTree = "<group>"; };
+		1178D4D71662335A00087084 /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pause.png; path = GUI/Resources/Images/Pause.png; sourceTree = "<group>"; };
+		1178D4D9166233D000087084 /* ResumeNoWait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ResumeNoWait.png; path = GUI/Resources/Images/ResumeNoWait.png; sourceTree = "<group>"; };
+		1178D4DB1662346400087084 /* ToolbarResumeSelectedTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ToolbarResumeSelectedTemplate.png; path = GUI/Resources/Images/ToolbarResumeSelectedTemplate.png; sourceTree = "<group>"; };
+		1178D4DD166234B500087084 /* ToolbarOpenWebTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ToolbarOpenWebTemplate.png; path = GUI/Resources/Images/ToolbarOpenWebTemplate.png; sourceTree = "<group>"; };
+		1178D4DF166234ED00087084 /* ToolbarPauseSelectedTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ToolbarPauseSelectedTemplate.png; path = GUI/Resources/Images/ToolbarPauseSelectedTemplate.png; sourceTree = "<group>"; };
+		1178D4E1166236B600087084 /* ToolbarRemoveTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ToolbarRemoveTemplate.png; path = GUI/Resources/Images/ToolbarRemoveTemplate.png; sourceTree = "<group>"; };
 		1195F4D9165D66B0003661E6 /* RpcProtocolHandlerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RpcProtocolHandlerDelegate.h; path = Core/Protocol/RpcProtocolHandlerDelegate.h; sourceTree = "<group>"; };
 		11BA8546165AD0090042CB89 /* BlueDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlueDot.png; path = GUI/Resources/Images/BlueDot.png; sourceTree = "<group>"; };
 		11DD36CC1657E3D900FF69CA /* OptionsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionsWindowController.h; path = GUI/Source/OptionsWindowController.h; sourceTree = "<group>"; };
@@ -146,12 +162,20 @@
 			isa = PBXGroup;
 			children = (
 				11BA8546165AD0090042CB89 /* BlueDot.png */,
+				1131213B166241EA001A7F7B /* TransmissionDocument.icns */,
 				1164C8E3165AC106001C04F3 /* Transmission.icns */,
 				1109EE261656C81B00E73187 /* YellowDot.png */,
 				1109EE1D1656C45600E73187 /* GreenDot.png */,
 				1109EE1E1656C45600E73187 /* PurpleDot.png */,
 				1109EE1F1656C45600E73187 /* RedDot.png */,
 				1178D4D21662253F00087084 /* TurtleTemplate.png */,
+				1178D4D51662335200087084 /* Resume.png */,
+				1178D4D71662335A00087084 /* Pause.png */,
+				1178D4D9166233D000087084 /* ResumeNoWait.png */,
+				1178D4DB1662346400087084 /* ToolbarResumeSelectedTemplate.png */,
+				1178D4DD166234B500087084 /* ToolbarOpenWebTemplate.png */,
+				1178D4DF166234ED00087084 /* ToolbarPauseSelectedTemplate.png */,
+				1178D4E1166236B600087084 /* ToolbarRemoveTemplate.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -420,6 +444,14 @@
 				11BA8547165AD0090042CB89 /* BlueDot.png in Resources */,
 				1178D4CD16614B3B00087084 /* TorrentWindow.xib in Resources */,
 				1178D4D31662253F00087084 /* TurtleTemplate.png in Resources */,
+				1178D4D61662335200087084 /* Resume.png in Resources */,
+				1178D4D81662335A00087084 /* Pause.png in Resources */,
+				1178D4DA166233D000087084 /* ResumeNoWait.png in Resources */,
+				1178D4DC1662346400087084 /* ToolbarResumeSelectedTemplate.png in Resources */,
+				1178D4DE166234B500087084 /* ToolbarOpenWebTemplate.png in Resources */,
+				1178D4E0166234ED00087084 /* ToolbarPauseSelectedTemplate.png in Resources */,
+				1178D4E2166236B600087084 /* ToolbarRemoveTemplate.png in Resources */,
+				1131213C166241EA001A7F7B /* TransmissionDocument.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,6 +17,7 @@
     NSString *torrentsFullUpdate;
     NSString *torrentStop;
     NSString *torrentStart;
+    NSString *torrentStartNow;
     NSString *torrentVerify;
     NSString *torrentRemove;
     NSString *torrentAddFile;
@@ -47,6 +48,9 @@
 
 -(NSUInteger)torrentStartTag;
 -(NSString *)torrentStartQueryWithIds:(NSString *)aIds;
+
+-(NSUInteger)torrentStartNowTag;
+-(NSString *)torrentStartNowQueryWithIds:(NSString *)aIds;
 
 -(NSUInteger)torrentVerifyTag;
 -(NSString *)torrentVerifyQueryWithIds:(NSString *)aIds;

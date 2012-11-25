@@ -26,6 +26,7 @@
 @property (weak) IBOutlet NSMenuItem *menuSortBySize;
 
 - (IBAction)startTorrentsAction:(id)sender;
+- (IBAction)startNowTorrentsAction:(id)sender;
 - (IBAction)stopTorrentsAction:(id)sender;
 - (IBAction)verifyTorrentsAction:(id)sender;
 - (IBAction)removeWithDataTorrentsAction:(id)sender;
