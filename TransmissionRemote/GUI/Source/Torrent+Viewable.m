@@ -19,7 +19,7 @@
     return [NSImage imageNamed:[TorrentStatusImageNames[self.torrentState] copy]];
 }
 
--(NSUInteger)torrentComplete {
+-(double)torrentComplete {
     if (self.torrentState == STATE_CHECK_WAIT || self.torrentState == STATE_CHECK) {
         return self.torrentVerifyPercent;
     } else {

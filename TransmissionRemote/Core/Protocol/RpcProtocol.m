@@ -142,6 +142,32 @@
 
 #pragma mark - Proceeding response
 
+-(Torrent *)torrentFromObject:(id)aObject {
+    Torrent *torrent = [[Torrent alloc] init];
+    torrent.torrentId = [[aObject valueForKey:@"id"] integerValue];
+    torrent.torrentName = [[aObject valueForKey:@"name"] copy];
+    torrent.torrentComment = [aObject valueForKey:@"comment"];
+    torrent.torrentState = [[aObject valueForKey:@"status"] shortValue];
+    torrent.torrentDownloadPercent = [[aObject valueForKey:@"percentDone"] doubleValue] * 100;
+    torrent.torrentVerifyPercent = [[aObject valueForKey:@"recheckProgress"] doubleValue] * 100;
+    torrent.uploadRatio = [[aObject valueForKey:@"uploadRatio"] doubleValue];
+    torrent.totalSize = [[aObject valueForKey:@"totalSize"] unsignedIntegerValue];
+    return torrent;
+}
+
+-(NSMutableArray *)torrentsFromDictionary:(NSDictionary *)aDictionary {
+    if (aDictionary) {
+        NSMutableArray *torrents = [NSMutableArray arrayWithCapacity:[aDictionary count]];
+        for (id item in aDictionary) {
+            [torrents addObject:[self torrentFromObject:item]];
+        }
+        return torrents;
+    } else {
+        return nil;
+    }
+}
+
+
 -(BOOL)proceedResponse:(NSData *)aResponseData andTag:(NSUInteger)aTag {
     NSError *error;
     id jsonData = [NSJSONSerialization JSONObjectWithData:aResponseData options:NSJSONReadingMutableContainers error:&error];
@@ -215,31 +241,6 @@
         if (_delegate) {
             [_delegate didSessionGetRequestReceived:serverStatus];
         }
-    }
-}
-
--(Torrent *)torrentFromObject:(id)aObject {
-    Torrent *torrent = [[Torrent alloc] init];
-    torrent.torrentId = [[aObject valueForKey:@"id"] integerValue];
-    torrent.torrentName = [[aObject valueForKey:@"name"] copy];
-    torrent.torrentComment = [aObject valueForKey:@"comment"];
-    torrent.torrentState = [[aObject valueForKey:@"status"] shortValue];
-    torrent.torrentDownloadPercent = [[aObject valueForKey:@"percentDone"] doubleValue] * 100;
-    torrent.torrentVerifyPercent = [[aObject valueForKey:@"recheckProgress"] doubleValue] * 100;
-    torrent.uploadRatio = [[aObject valueForKey:@"uploadRatio"] doubleValue];
-    torrent.totalSize = [[aObject valueForKey:@"totalSize"] unsignedIntegerValue];
-    return torrent;
-}
-
--(NSMutableArray *)torrentsFromDictionary:(NSDictionary *)aDictionary {
-    if (aDictionary) {
-        NSMutableArray *torrents = [NSMutableArray arrayWithCapacity:[aDictionary count]];
-        for (id item in aDictionary) {
-            [torrents addObject:[self torrentFromObject:item]];
-        }
-        return torrents;
-    } else {
-        return nil;
     }
 }
 
