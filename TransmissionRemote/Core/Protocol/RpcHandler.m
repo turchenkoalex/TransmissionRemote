@@ -40,6 +40,7 @@
     [self unRegisterNotifications];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectRequestWithNotification:) name:@"ConnectRequest" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sessionRequestWithNotification:) name:@"SessionRequest" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sessionSetRequestWithNotification:) name:@"SessionSetRequest" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTorrentsRequestWithNotification:) name:@"UpdateTorrentRequest" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fullUpdateTorrentsRequestWithNotification:) name:@"FullUpdateTorrentsRequest" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateRequestInterval:) name:@"UpdateRequestInterval" object:nil];
@@ -71,6 +72,13 @@
 
 -(void)sessionRequestWithNotification:(NSNotification *)notification {
     [self sessionGet];
+}
+
+-(void)sessionSetRequestWithNotification:(NSNotification *)notification {
+    ServerStatus *status = [notification object];
+    if (status) {
+        [self sessionSetWithStatus:status];
+    }
 }
 
 -(void)updateTorrentsRequestWithNotification:(NSNotification *)notification {
@@ -183,6 +191,10 @@
 
 -(void)sessionGet {
     [self requestWithData:[rpcProtocol sessionGetQuery] andTag:[rpcProtocol sessionGetTag]];
+}
+
+-(void)sessionSetWithStatus:(ServerStatus *)status {
+    [self requestWithData:[rpcProtocol sessionSetQueryWithStatus:status] andTag:[rpcProtocol sessionSetTag]];
 }
 
 -(void)torrentGetInitialize {

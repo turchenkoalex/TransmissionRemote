@@ -15,13 +15,14 @@
 -(id)init {
     self = [super init];
     if (self) {
-        NSString *fullTorrentFields = @"\"id\", \"name\", \"status\", \"comment\", \"percentDone\", \"recheckProgress\", \"uploadRatio\", \"totalSize\"";
-        NSString *torrentFields = @"\"id\", \"status\", \"percentDone\", \"recheckProgress\", \"uploadRatio\"";
+        NSArray *fullTorrentFields = @[@"id", @"name", @"status", @"comment", @"percentDone", @"recheckProgress", @"uploadRatio", @"totalSize"];
+        NSArray *torrentFields = @[@"id", @"status", @"percentDone", @"recheckProgress", @"uploadRatio"];
         
-        sessionGet = @"{ \"method\": \"session-get\" }";
-        torrentsInitialize = [NSString stringWithFormat: @"{ \"method\": \"torrent-get\", \"arguments\": { \"fields\" : [%@] } }", fullTorrentFields] ;
-        torrentsUpdate = [NSString stringWithFormat:@"{ \"method\": \"torrent-get\", \"arguments\": { \"fields\" : [%@] } }", torrentFields];
-        torrentsFullUpdate = [NSString stringWithFormat:@"{ \"method\": \"torrent-get\", \"arguments\": { \"fields\" : [%@], \"ids\": [%@] } }", fullTorrentFields, @"%@"];
+        sessionGet = [self jsonQuery:@{ @"method": @"session-get" }];
+        torrentsInitialize = [self jsonQuery:@{@"method": @"torrent-get", @"arguments": @{ @"fields": fullTorrentFields } }];
+        torrentsUpdate = [self jsonQuery:@{@"method": @"torrent-get", @"arguments": @{ @"fields": torrentFields } }];
+
+        torrentsFullUpdate = [NSString stringWithFormat:@"{ \"method\": \"torrent-get\", \"arguments\": { \"fields\" : [\"%@\"], \"ids\": [%@] } }", [fullTorrentFields componentsJoinedByString:@"\",\""], @"%@"];
         
         torrentStop = @"{ \"method\": \"torrent-stop\", \"arguments\": { \"ids\": [%@] } }";
         torrentStart = @"{ \"method\": \"torrent-start\", \"arguments\": { \"ids\": [%@] } }";
@@ -41,7 +42,18 @@
     return self;
 }
 
-#pragma mark - Requests
+#pragma mark - Query Builder
+
+-(NSString *)jsonQuery:(NSDictionary *)dictionary {
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&error];
+    if (error) {
+        NSLog(@"Json Error: %@", error);
+        return nil;
+    } else {
+        return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+}
 
 #pragma mark - Requests session-get
 -(NSUInteger)sessionGetTag {
@@ -52,17 +64,27 @@
     return sessionGet;
 }
 
+#pragma mark - Requests session-set
+
+-(NSUInteger)sessionSetTag {
+    return 2;
+}
+
+-(NSString *)sessionSetQueryWithStatus:(ServerStatus *)status {
+    return [self jsonQuery:@{ @"method": @"session-set", @"arguments": @{ @"alt-speed-enabled": status.alternativeSpeed ? @"true" : @"false" } }];
+}
+
 #pragma mark - Requests torrent-get
 
 -(NSUInteger)torrentGetInitializeTag {
-    return 2;
+    return 3;
 }
 -(NSString *)torrentGetInitializeQuery {
     return torrentsInitialize;
 }
 
 -(NSUInteger)torrentGetUpdateTag {
-    return 3;
+    return 4;
 }
 
 -(NSString *)torrentGetUpdateQuery {
@@ -70,7 +92,7 @@
 }
 
 -(NSUInteger)torrentGetFullUpdateTag {
-    return 4;
+    return 5;
 }
 
 -(NSString *)torrentGetFullUpdateQueryWithIds:(NSString *)aIds {
@@ -78,7 +100,7 @@
 }
 
 -(NSUInteger)torrentStopTag {
-    return 5;
+    return 6;
 }
 
 -(NSString *)torrentStopQueryWithIds:(NSString *)aIds {
@@ -86,7 +108,7 @@
 }
 
 -(NSUInteger)torrentStartTag {
-    return 6;
+    return 7;
 }
 
 -(NSString *)torrentStartQueryWithIds:(NSString *)aIds {
@@ -94,7 +116,7 @@
 }
 
 -(NSUInteger)torrentVerifyTag {
-    return 7;
+    return 8;
 }
 
 -(NSString *)torrentVerifyQueryWithIds:(NSString *)aIds {
@@ -102,7 +124,7 @@
 }
 
 -(NSUInteger)torrentRemoveTag {
-    return 8;
+    return 9;
 }
 
 -(NSString *)torrentRemoveQueryWithIds:(NSString *)aIds andDeleteLocalData:(BOOL)useDeleteLocalData {
@@ -110,7 +132,7 @@
 }
 
 -(NSUInteger)torrentAddFileTag {
-    return 9;
+    return 10;
 }
 
 -(NSString *)torrentAddFileQueryWithData:(NSString *)fileData {
@@ -139,12 +161,12 @@
 
 -(void)procceedResult:(NSDictionary *)aResult withTag:(NSUInteger)aTag {
     switch (aTag) {
-        case 3:
+        case 4:
             // torrent-get update
             [self proceedTorrentUpdateGetResult:aResult];
             break;
 
-        case 4:
+        case 5:
             // torrent-get fullUpdate
             [self proceedTorrentFullUpdateGetResult:aResult];
             break;
@@ -153,22 +175,27 @@
             // session-get
             [self proceedSessionGetResult:aResult];
             break;
-            
+
         case 2:
+            // session-set
+            //[self proceedSessionGetResult:aResult];
+            break;
+            
+        case 3:
             // torrent-get initialize
             [self proceedTorrentInitializeGetResult:aResult];
             break;
             
-        case 5:
-            // torrent-stop
         case 6:
-            // torrent-start
+            // torrent-stop
         case 7:
-            // torrent-verify
+            // torrent-start
         case 8:
+            // torrent-verify
+        case 9:
             // torrent-remove
             break;
-        case 9:
+        case 10:
             // torrent-add
             [self proceedAddTorrentGetResult:aResult];
             break;
@@ -184,6 +211,7 @@
         ServerStatus *serverStatus = [[ServerStatus alloc] init];
         serverStatus.connected = YES;
         serverStatus.version = [NSString stringWithFormat:@"Transmission %@", [aResult objectForKey:@"version"]];
+        serverStatus.alternativeSpeed = [[aResult objectForKey:@"alt-speed-enabled"] boolValue];
         if (_delegate) {
             [_delegate didSessionGetRequestReceived:serverStatus];
         }

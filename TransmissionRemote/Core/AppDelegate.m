@@ -67,6 +67,10 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ConnectRequest" object:nil];
 }
 
+- (IBAction)alternativeSpeedAction:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SessionSetRequest" object:self.serverStatus];
+}
+
 #pragma mark - Notifications
 
 -(void)registerNotifications {

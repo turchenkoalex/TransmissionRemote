@@ -12,5 +12,6 @@
 
 @property NSString *version;
 @property BOOL connected;
+@property BOOL alternativeSpeed;
 
 @end

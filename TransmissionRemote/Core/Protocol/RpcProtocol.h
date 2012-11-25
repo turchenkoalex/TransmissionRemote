@@ -11,6 +11,7 @@
 
 @interface RpcProtocol : NSObject {
     NSString *sessionGet;
+    NSString *sessionSet;
     NSString *torrentsInitialize;
     NSString *torrentsUpdate;
     NSString *torrentsFullUpdate;
@@ -28,6 +29,9 @@
 
 -(NSUInteger)sessionGetTag;
 -(NSString *)sessionGetQuery;
+
+-(NSUInteger)sessionSetTag;
+-(NSString *)sessionSetQueryWithStatus:(ServerStatus *)status;
 
 -(NSUInteger)torrentGetInitializeTag;
 -(NSString *)torrentGetInitializeQuery;

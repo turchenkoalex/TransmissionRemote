@@ -204,6 +204,7 @@
             [self fullUpdateTorrentsRequestWithIds:ids];
         }
         if([removedTorrents count] > 0) {
+            [self removeTorrentWindows:removedTorrents];
             [_arrayController removeObjects:removedTorrents];
         }
     }
@@ -213,8 +214,15 @@
     NSMutableArray *torrents = [notification object];
     if (torrents) {
         @synchronized(_arrayController) {
-            [_torrentsArray addObjectsFromArray:[torrents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"NOT (torrentId IN %@)", [_torrentsArray valueForKeyPath:@"torrentId"]]]];
-            [_arrayController rearrangeObjects];
+            NSArray *newTorrents = [torrents filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"NOT (torrentId IN %@)", [_torrentsArray valueForKeyPath:@"torrentId"]]];
+            if ([newTorrents count] > 0) {
+                [_torrentsArray addObjectsFromArray:newTorrents];
+                [_arrayController rearrangeObjects];
+                [_arrayController setSelectedObjects:newTorrents];
+                for(Torrent *torrent in newTorrents) {
+                    [self showTorrent:torrent];
+                }
+            }
         }
     }
 }
@@ -308,6 +316,14 @@
         self.menuSortBySize.state = 0;
         item.state = 1;
         self.sortingType = [item tag];
+    }
+}
+
+-(void)removeTorrentWindows:(NSArray *)torrents {
+    for(Torrent *torrent in torrents) {
+        if (torrent) {
+            [torrentWindows removeObjectForKey:torrent.torrentIdString];
+        }
     }
 }
 
