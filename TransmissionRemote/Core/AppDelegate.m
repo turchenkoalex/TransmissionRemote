@@ -63,6 +63,8 @@
     [self.optionsWindowController showWindow:self.window];
 }
 
+#pragma mark - Interface Actions
+
 - (IBAction)reconnectAction:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ConnectRequest" object:nil];
 }

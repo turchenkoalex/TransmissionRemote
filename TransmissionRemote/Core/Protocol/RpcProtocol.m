@@ -9,13 +9,14 @@
 #import "RpcProtocol.h"
 #import "ServerStatus.h"
 #import "Torrent.h"
+#import "TorrentItem.h"
 
 @implementation RpcProtocol
 
 -(id)init {
     self = [super init];
     if (self) {
-        NSArray *fullTorrentFields = @[@"id", @"name", @"status", @"comment", @"percentDone", @"recheckProgress", @"uploadRatio", @"totalSize"];
+        NSArray *fullTorrentFields = @[@"id", @"name", @"status", @"comment", @"percentDone", @"recheckProgress", @"uploadRatio", @"totalSize", @"files"];
         NSArray *torrentFields = @[@"id", @"status", @"percentDone", @"recheckProgress", @"uploadRatio"];
         
         sessionGet = [self jsonQuery:@{ @"method": @"session-get" }];
@@ -152,6 +153,25 @@
 
 #pragma mark - Proceeding response
 
+-(NSArray *)torrentItemsFromObject:(id)aObject {
+    if (aObject) {
+        NSMutableArray *items = [NSMutableArray arrayWithCapacity:[aObject count]];
+        for (NSDictionary *item in aObject) {
+            if (item) {
+                TorrentItem *torrentItem = [[TorrentItem alloc] init];
+                torrentItem.itemName = [item valueForKey:@"name"];
+                torrentItem.itemSize = [[item valueForKey:@"length"] unsignedIntegerValue];
+                torrentItem.completedSize = [[item valueForKey:@"bytesCompleted"] unsignedIntegerValue];
+                torrentItem.isLeaf = YES;
+                [items addObject:torrentItem];
+            }
+        }
+        return items;
+    } else {
+        return nil;
+    }
+}
+
 -(Torrent *)torrentFromObject:(id)aObject {
     Torrent *torrent = [[Torrent alloc] init];
     torrent.torrentId = [[aObject valueForKey:@"id"] integerValue];
@@ -162,6 +182,7 @@
     torrent.torrentVerifyPercent = [[aObject valueForKey:@"recheckProgress"] doubleValue] * 100;
     torrent.uploadRatio = [[aObject valueForKey:@"uploadRatio"] doubleValue];
     torrent.totalSize = [[aObject valueForKey:@"totalSize"] unsignedIntegerValue];
+    torrent.items = [self torrentItemsFromObject:[aObject valueForKey:@"files"]];
     return torrent;
 }
 
@@ -181,18 +202,23 @@
 -(BOOL)proceedResponse:(NSData *)aResponseData andTag:(NSUInteger)aTag {
     NSError *error;
     id jsonData = [NSJSONSerialization JSONObjectWithData:aResponseData options:NSJSONReadingMutableContainers error:&error];
-    BOOL success = [[jsonData valueForKey:@"result"] isEqualToString:@"success"];
-    if (success) {
-        // success request
-        NSDictionary *arguments = [jsonData valueForKey:@"arguments"];
-        if (arguments) {
-            [self procceedResult:arguments withTag:aTag];
-        }
+    if (error) {
+        NSLog(@"Serialization error: %@\n%@", error, [[NSString alloc] initWithData:aResponseData encoding:NSUTF8StringEncoding]);
+        return NO;
     } else {
-        // error request
-        NSLog(@"Serialization error: %@", [[NSString alloc] initWithData:aResponseData encoding:NSUTF8StringEncoding]);
+        BOOL success = [[jsonData valueForKey:@"result"] isEqualToString:@"success"];
+        if (success) {
+            // success request
+            NSDictionary *arguments = [jsonData valueForKey:@"arguments"];
+            if (arguments) {
+                [self procceedResult:arguments withTag:aTag];
+            }
+        } else {
+            // error request
+            NSLog(@"Response result error: %@", [[NSString alloc] initWithData:aResponseData encoding:NSUTF8StringEncoding]);
+        }
+        return success;
     }
-    return success;
 }
 
 -(void)procceedResult:(NSDictionary *)aResult withTag:(NSUInteger)aTag {

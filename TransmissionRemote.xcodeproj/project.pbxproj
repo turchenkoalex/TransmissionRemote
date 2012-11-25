@@ -32,6 +32,7 @@
 		1138F3E41655713100BCCAAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1138F384165554F300BCCAAA /* Foundation.framework */; };
 		1138F3E51655713900BCCAAA /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1138F382165554F300BCCAAA /* AppKit.framework */; };
 		1138F40916557F1600BCCAAA /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 1138F40716557F1600BCCAAA /* Service.m */; };
+		113CF69916627B77003C0012 /* TorrentItem+Viewable.m in Sources */ = {isa = PBXBuildFile; fileRef = 113CF69816627B77003C0012 /* TorrentItem+Viewable.m */; };
 		1164C8E4165AC106001C04F3 /* Transmission.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1164C8E3165AC106001C04F3 /* Transmission.icns */; };
 		11666E0616591782004ACF8B /* RpcRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 11666E0516591782004ACF8B /* RpcRequest.m */; };
 		11666E09165917C3004ACF8B /* RpcHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 11666E08165917C3004ACF8B /* RpcHandler.m */; };
@@ -48,6 +49,7 @@
 		1178D4DE166234B500087084 /* ToolbarOpenWebTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 1178D4DD166234B500087084 /* ToolbarOpenWebTemplate.png */; };
 		1178D4E0166234ED00087084 /* ToolbarPauseSelectedTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 1178D4DF166234ED00087084 /* ToolbarPauseSelectedTemplate.png */; };
 		1178D4E2166236B600087084 /* ToolbarRemoveTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 1178D4E1166236B600087084 /* ToolbarRemoveTemplate.png */; };
+		11AD1D9116626B6300E99D57 /* TorrentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AD1D9016626B6300E99D57 /* TorrentItem.m */; };
 		11BA8547165AD0090042CB89 /* BlueDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BA8546165AD0090042CB89 /* BlueDot.png */; };
 		11DD36CF1657E3D900FF69CA /* OptionsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DD36CD1657E3D900FF69CA /* OptionsWindowController.m */; };
 		11DD36D31657E42800FF69CA /* OptionsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11DD36D11657E42800FF69CA /* OptionsWindow.xib */; };
@@ -105,6 +107,8 @@
 		1138F40616557F1600BCCAAA /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Service.h; path = Core/SystemService/Service.h; sourceTree = "<group>"; };
 		1138F40716557F1600BCCAAA /* Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Service.m; path = Core/SystemService/Service.m; sourceTree = "<group>"; };
 		1138F40D16557F5D00BCCAAA /* Serviced.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Serviced.h; path = Core/SystemService/Serviced.h; sourceTree = "<group>"; };
+		113CF69716627B77003C0012 /* TorrentItem+Viewable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TorrentItem+Viewable.h"; path = "GUI/Source/TorrentItem+Viewable.h"; sourceTree = "<group>"; };
+		113CF69816627B77003C0012 /* TorrentItem+Viewable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TorrentItem+Viewable.m"; path = "GUI/Source/TorrentItem+Viewable.m"; sourceTree = "<group>"; };
 		1164C8E3165AC106001C04F3 /* Transmission.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Transmission.icns; path = ../Transmission.icns; sourceTree = "<group>"; };
 		11666E0416591782004ACF8B /* RpcRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RpcRequest.h; path = Core/Protocol/RpcRequest.h; sourceTree = "<group>"; };
 		11666E0516591782004ACF8B /* RpcRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RpcRequest.m; path = Core/Protocol/RpcRequest.m; sourceTree = "<group>"; };
@@ -129,6 +133,8 @@
 		1178D4DF166234ED00087084 /* ToolbarPauseSelectedTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ToolbarPauseSelectedTemplate.png; path = GUI/Resources/Images/ToolbarPauseSelectedTemplate.png; sourceTree = "<group>"; };
 		1178D4E1166236B600087084 /* ToolbarRemoveTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ToolbarRemoveTemplate.png; path = GUI/Resources/Images/ToolbarRemoveTemplate.png; sourceTree = "<group>"; };
 		1195F4D9165D66B0003661E6 /* RpcProtocolHandlerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RpcProtocolHandlerDelegate.h; path = Core/Protocol/RpcProtocolHandlerDelegate.h; sourceTree = "<group>"; };
+		11AD1D8F16626B6300E99D57 /* TorrentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TorrentItem.h; path = Core/Models/TorrentItem.h; sourceTree = "<group>"; };
+		11AD1D9016626B6300E99D57 /* TorrentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TorrentItem.m; path = Core/Models/TorrentItem.m; sourceTree = "<group>"; };
 		11BA8546165AD0090042CB89 /* BlueDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlueDot.png; path = GUI/Resources/Images/BlueDot.png; sourceTree = "<group>"; };
 		11DD36CC1657E3D900FF69CA /* OptionsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OptionsWindowController.h; path = GUI/Source/OptionsWindowController.h; sourceTree = "<group>"; };
 		11DD36CD1657E3D900FF69CA /* OptionsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OptionsWindowController.m; path = GUI/Source/OptionsWindowController.m; sourceTree = "<group>"; };
@@ -298,6 +304,8 @@
 			children = (
 				1109EE1A1656C3D300E73187 /* Torrent+Viewable.h */,
 				1109EE1B1656C3D300E73187 /* Torrent+Viewable.m */,
+				113CF69716627B77003C0012 /* TorrentItem+Viewable.h */,
+				113CF69816627B77003C0012 /* TorrentItem+Viewable.m */,
 				11DD36CC1657E3D900FF69CA /* OptionsWindowController.h */,
 				11DD36CD1657E3D900FF69CA /* OptionsWindowController.m */,
 				117185E2165A9108009B3511 /* TorrentTableViewController.h */,
@@ -330,6 +338,8 @@
 				1138F3C81655580400BCCAAA /* ConnectOptions.m */,
 				117185EA165AAC83009B3511 /* ServerStatus.h */,
 				117185EB165AAC83009B3511 /* ServerStatus.m */,
+				11AD1D8F16626B6300E99D57 /* TorrentItem.h */,
+				11AD1D9016626B6300E99D57 /* TorrentItem.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -503,6 +513,8 @@
 				110C43AF165FFFD400D7D247 /* NSNumber+UnitString.m in Sources */,
 				110C43B2166013E500D7D247 /* NSData+Base64.m in Sources */,
 				1178D4C816614AAA00087084 /* TorrentWindowController.m in Sources */,
+				11AD1D9116626B6300E99D57 /* TorrentItem.m in Sources */,
+				113CF69916627B77003C0012 /* TorrentItem+Viewable.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

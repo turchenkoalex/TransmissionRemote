@@ -7,6 +7,7 @@
 //
 
 #import "TorrentWindowController.h"
+#import "TorrentItem.h"
 
 @interface TorrentWindowController ()
 
