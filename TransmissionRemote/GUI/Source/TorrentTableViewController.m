@@ -307,10 +307,14 @@
     if ([selected count] > 0) {
         NSString *names = [[selected valueForKeyPath:@"torrentName"] componentsJoinedByString:@", "];
         NSString * ids = [[selected valueForKeyPath:@"torrentId"] componentsJoinedByString:@","];
-        NSAlert *deleteMessage = [NSAlert alertWithMessageText:@"Are you shure?" defaultButton:@"Remove" alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:@"Removing torrents: %@", names];
-        if ([deleteMessage runModal] == 1) {
-            [self torrentsRemoveRequestWithIds:ids];
-        }
+        NSAlert *alert = [NSAlert alertWithMessageText:@"Are you shure?" defaultButton:@"Remove" alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:@"Removing torrents: %@", names];
+        
+        void (^blockCallback)(NSInteger) = ^(NSInteger returnCode) {
+            if (returnCode == NSAlertDefaultReturn) {
+                [self torrentsRemoveRequestWithIds:ids];
+            }
+        };
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ShowMainWindowAlert" object:@{ @"alert": alert, @"callback": (__bridge id) Block_copy((__bridge void *)blockCallback) }];
     }
 }
 

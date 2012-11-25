@@ -79,6 +79,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentDownloadedNotification:) name:@"TorrentDownloaded" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentVerifiedNotification:) name:@"TorrentVerified" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(processFilesQueue) name:@"ProcessFilesQueue" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAlertWithNotification:) name:@"ShowMainWindowAlert" object:nil];
 }
 
 -(void)unRegisterNotifications {
@@ -86,6 +87,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"TorrentDownloaded" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"TorrentVerified" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ProcessFilesQueue" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"ShowMainWindowAlert" object:nil];
 }
 
 -(void)updateServerStatusResponse:(NSNotification *)notification {
@@ -158,6 +160,26 @@
     while ((filename = [filesQueue dequeue])) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"AddTorrentFileRequest" object:filename];
     }
+}
+
+#pragma mark - Alerts
+
+-(void)showAlertWithNotification:(NSNotification *)notification {
+    NSDictionary *alertInfo = [notification object];
+    if (alertInfo) {
+        NSAlert *alert = [alertInfo valueForKey:@"alert"];
+        void* callback = (__bridge void *) [alertInfo valueForKey:@"callback"];
+        if (callback) {
+            [alert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:callback];
+        } else {
+            [alert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:nil contextInfo:nil];
+        }
+    }
+}
+
+- (void) alertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
+    ((__bridge void(^)(NSInteger result))contextInfo)(returnCode);
+    Block_release(contextInfo);
 }
 
 @end
