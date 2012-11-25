@@ -18,7 +18,7 @@
     NSMutableArray *filesQueue;
 }
 
-@property Service *systemService;
+@property (readonly) Service *service;
 @property (assign) IBOutlet NSWindow *window;
 @property OptionsWindowController *optionsWindowController;
 @property ServerStatus *serverStatus;

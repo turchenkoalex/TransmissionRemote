@@ -8,6 +8,7 @@
 
 #import "TorrentTableViewController.h"
 #import "Torrent+Viewable.h"
+#import "TorrentWindowController.h"
 
 @implementation TorrentTableViewController
 
@@ -15,10 +16,16 @@
     self = [super init];
     if (self) {
         self.torrentsArray = [NSMutableArray array];
+        torrentWindows = [NSMutableDictionary dictionary];
         self.sortingType = 0;
         [self registerNotifications];
     }
     return self;
+}
+
+-(void)awakeFromNib {
+    [_tableView setTarget:self];
+    [_tableView setDoubleAction:@selector(tableViewDoubleClick:)];
 }
 
 -(void)dealloc {
@@ -301,6 +308,24 @@
         self.menuSortBySize.state = 0;
         item.state = 1;
         self.sortingType = [item tag];
+    }
+}
+
+-(void)showTorrent:(Torrent *)torrent {
+    if (torrent) {
+        TorrentWindowController *controller = [torrentWindows valueForKey:torrent.torrentIdString];
+        if (!controller) {
+            controller = [[TorrentWindowController alloc] initWithTorrent:torrent];
+            [torrentWindows setValue:controller forKey:torrent.torrentIdString];
+        }
+        [controller showWindow:self];
+    }
+}
+
+-(void)tableViewDoubleClick:(id)object {
+    NSInteger row = [_tableView clickedRow];
+    if (row != -1) {
+        [self showTorrent:[[_arrayController arrangedObjects] objectAtIndex:row]];
     }
 }
 

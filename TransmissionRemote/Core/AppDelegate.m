@@ -17,6 +17,8 @@
         activeRequestInterval = [NSNumber numberWithDouble:1.0];
         unactiveRequestInterval = [NSNumber numberWithDouble:5.0];
         filesQueue = [NSMutableArray array];
+        _service = [[Service alloc] initWithDefaults];
+        self.serverStatus = [[ServerStatus alloc] init];
     }
     return self;
 }
@@ -25,13 +27,10 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    self.systemService = [[Service alloc] initWithDefaults];
-    self.serverStatus = [[ServerStatus alloc] init];
-        
     [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
     
     [self registerNotifications];
-    [self.systemService connectWithDefaultConnectOptions];
+    [self.service connectWithDefaultConnectOptions];
 }
 
 -(void)dealloc {
@@ -59,7 +58,7 @@
 
 -(IBAction)showOptionsWindow:(id)sender {
     if (!self.optionsWindowController) {
-        self.optionsWindowController = [[OptionsWindowController alloc] initWithService:self.systemService];
+        self.optionsWindowController = [[OptionsWindowController alloc] initWithService:self.service];
     }
     [self.optionsWindowController showWindow:self.window];
 }

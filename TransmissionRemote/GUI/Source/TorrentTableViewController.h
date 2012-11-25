@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Service.h"
 
 @interface TorrentTableViewController : NSObject {
     NSUInteger _sortingType;
+    NSMutableDictionary *torrentWindows;
 }
 
 @property (strong) NSMutableArray *torrentsArray;

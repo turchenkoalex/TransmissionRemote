@@ -11,6 +11,10 @@
 
 @implementation Torrent (Viewable)
 
+-(NSString *)torrentIdString {
+    return [NSString stringWithFormat:@"%ld", self.torrentId];
+}
+
 -(NSImage *)statusImage {
     return [NSImage imageNamed:[TorrentStatusImageNames[self.torrentState] copy]];
 }
@@ -58,6 +62,10 @@
 }
 
 #pragma mark - KeyPathes
+
++(NSSet *)keyPathsForValuesAffectingTorrentIdString {
+    return [NSSet setWithObjects:@"torrentId", nil];
+}
 
 +(NSSet *)keyPathsForValuesAffectingStatusImage {
     return [NSSet setWithObjects:@"torrentState", nil];
