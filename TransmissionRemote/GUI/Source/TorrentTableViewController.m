@@ -108,6 +108,7 @@
     [self unRegisterNotifications];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initializeTorrentsResponse:) name:@"InitializeTorrentsResponse" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTorrentsResponse:) name:@"UpdateTorrentsResponse" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removedTorrentsResponse:) name:@"RemovedTorrentsResponse" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fullUpdateTorrentsResponse:) name:@"FullUpdateTorrentsResponse" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectTorrentById:) name:@"SelectTorrentById" object:nil];
 }
@@ -145,11 +146,24 @@
     }
 }
 
+-(void)removedTorrentsResponse:(NSNotification *)notification {
+    NSArray *torrents = [notification object];
+    if (torrents) {
+        NSArray *removingTorrents = [_torrentsArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(torrentId IN %@)", torrents]];
+        if ([removingTorrents count] > 0) {
+            [self removeTorrentWindows:removingTorrents];
+            @synchronized(_arrayController) {
+                [_torrentsArray removeObjectsInArray:removingTorrents];
+                [_arrayController rearrangeObjects];
+            }
+        }
+    }
+}
+
 -(void)updateTorrentsResponse:(NSNotification *)notification {
     NSMutableArray *torrents = [notification object];
     if (torrents) {
         NSMutableArray *newTorrents = [NSMutableArray array];
-        NSMutableArray *removedTorrents = [_torrentsArray mutableCopy];
         @synchronized(_arrayController) {
             BOOL needRearrange = NO;
             for (Torrent *update in torrents) {
@@ -166,22 +180,28 @@
                     if (torrent) {
                         if (torrent.torrentState != update.torrentState) {
                             torrent.torrentState = update.torrentState;
-                            needRearrange = YES;
-                        }
-                        if (torrent.torrentDownloadPercent != update.torrentDownloadPercent) {
-                            if (update.torrentDownloadPercent == 100) {
-                                [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentDownloaded" object:torrent];
-                            }
-                            torrent.torrentDownloadPercent = update.torrentDownloadPercent;
-                            if (self.sortingType == 2) {
+                            if ([self.torrentStatusSegmentedControl selectedSegment] != 0) {
                                 needRearrange = YES;
                             }
                         }
-                        if (torrent.torrentVerifyPercent != update.torrentVerifyPercent) {
-                            if (torrent.torrentVerifyPercent > 0 && update.torrentVerifyPercent == 0 && torrent.uploadRatio != -1) {
-                                [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentVerified" object:torrent];
+                        if (torrent.torrentState == STATE_DOWNLOAD) {
+                            if (torrent.torrentDownloadPercent != update.torrentDownloadPercent) {
+                                if (update.torrentDownloadPercent == 100) {
+                                    [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentDownloaded" object:torrent];
+                                }
+                                torrent.torrentDownloadPercent = update.torrentDownloadPercent;
+                                if (self.sortingType == 2) {
+                                    needRearrange = YES;
+                                }
                             }
-                            torrent.torrentVerifyPercent = update.torrentVerifyPercent;
+                        }
+                        if (torrent.torrentState == STATE_CHECK) {
+                            if (torrent.torrentVerifyPercent != update.torrentVerifyPercent) {
+                                if (torrent.torrentVerifyPercent > 0 && update.torrentVerifyPercent == 0 && torrent.uploadRatio != -1) {
+                                    [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentVerified" object:torrent];
+                                }
+                                torrent.torrentVerifyPercent = update.torrentVerifyPercent;
+                            }
                         }
                         if (torrent.uploadRatio != update.uploadRatio) {
                             torrent.uploadRatio = update.uploadRatio;
@@ -189,7 +209,6 @@
                                 needRearrange = YES;
                             }
                         }
-                        [removedTorrents removeObject:torrent];
                     }
                 } else {
                     [newTorrents addObject:update];
@@ -202,10 +221,6 @@
         if ([newTorrents count] > 0) {
             NSString *ids = [[newTorrents valueForKeyPath:@"torrentId"] componentsJoinedByString:@","];
             [self fullUpdateTorrentsRequestWithIds:ids];
-        }
-        if([removedTorrents count] > 0) {
-            [self removeTorrentWindows:removedTorrents];
-            [_arrayController removeObjects:removedTorrents];
         }
     }
 }

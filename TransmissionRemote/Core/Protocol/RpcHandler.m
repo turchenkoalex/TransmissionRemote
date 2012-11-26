@@ -306,6 +306,12 @@
     [self performUpdateRequest];
 }
 
+-(void)didRemovedTorrentsRequestReceived:(NSArray *)torrents {
+    if (torrents && torrents.count > 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"RemovedTorrentsResponse" object:torrents];
+    }
+}
+
 -(void)didFullUpdateTorrentsRequestReceived:(NSArray *)torrents {
     if (torrents && torrents.count > 0) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"FullUpdateTorrentsResponse" object:torrents];

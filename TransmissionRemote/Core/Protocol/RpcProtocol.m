@@ -21,7 +21,7 @@
         
         sessionGet = [self jsonQuery:@{ @"method": @"session-get" }];
         torrentsInitialize = [self jsonQuery:@{@"method": @"torrent-get", @"arguments": @{ @"fields": fullTorrentFields } }];
-        torrentsUpdate = [self jsonQuery:@{@"method": @"torrent-get", @"arguments": @{ @"fields": torrentFields } }];
+        torrentsUpdate = [self jsonQuery:@{@"method": @"torrent-get", @"arguments": @{ @"fields": torrentFields, @"ids": @"recently-active" } }];
 
         torrentsFullUpdate = [NSString stringWithFormat:@"{ \"method\": \"torrent-get\", \"arguments\": { \"fields\" : [\"%@\"], \"ids\": [%@] } }", [fullTorrentFields componentsJoinedByString:@"\",\""], @"%@"];
         
@@ -289,8 +289,11 @@
 -(void)proceedTorrentUpdateGetResult:(NSDictionary *)aResult {
     if (_delegate) {
         [_delegate didUpdateTorrentsRequestReceived:[self torrentsFromDictionary:[aResult valueForKey:@"torrents"]]];
+        [_delegate didRemovedTorrentsRequestReceived:[aResult valueForKey:@"removed"]];
     }
 }
+
+
 
 -(void)proceedTorrentFullUpdateGetResult:(NSDictionary *)aResult {
     if (_delegate) {

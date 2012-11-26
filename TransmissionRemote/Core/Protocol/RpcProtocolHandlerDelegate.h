@@ -13,6 +13,7 @@
 
 -(void)didInitializeTorrentsRequestReceived:(NSArray *)torrents;
 -(void)didUpdateTorrentsRequestReceived:(NSArray *)torrents;
+-(void)didRemovedTorrentsRequestReceived:(NSArray *)torrents;
 -(void)didFullUpdateTorrentsRequestReceived:(NSArray *)torrents;
 -(void)didAddTorrentsRequestReceived:(NSUInteger)torrentId;
 -(void)didSessionGetRequestReceived:(ServerStatus *)serverStatus;
