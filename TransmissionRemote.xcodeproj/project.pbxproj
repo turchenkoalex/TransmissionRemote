@@ -12,7 +12,6 @@
 		1109EE211656C45600E73187 /* PurpleDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 1109EE1E1656C45600E73187 /* PurpleDot.png */; };
 		1109EE221656C45600E73187 /* RedDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 1109EE1F1656C45600E73187 /* RedDot.png */; };
 		1109EE271656C81B00E73187 /* YellowDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 1109EE261656C81B00E73187 /* YellowDot.png */; };
-		110C43AF165FFFD400D7D247 /* NSNumber+UnitString.m in Sources */ = {isa = PBXBuildFile; fileRef = 110C43AE165FFFD400D7D247 /* NSNumber+UnitString.m */; };
 		110C43B2166013E500D7D247 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 110C43B1166013E500D7D247 /* NSData+Base64.m */; };
 		11272C1D1659344200506C11 /* NSMutableArray+QueueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11272C1C1659344200506C11 /* NSMutableArray+QueueAdditions.m */; };
 		11272C2016593AB400506C11 /* RpcProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 11272C1F16593AB400506C11 /* RpcProtocol.m */; };
@@ -73,8 +72,6 @@
 		1109EE1E1656C45600E73187 /* PurpleDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PurpleDot.png; path = GUI/Resources/Images/PurpleDot.png; sourceTree = "<group>"; };
 		1109EE1F1656C45600E73187 /* RedDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RedDot.png; path = GUI/Resources/Images/RedDot.png; sourceTree = "<group>"; };
 		1109EE261656C81B00E73187 /* YellowDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = YellowDot.png; path = GUI/Resources/Images/YellowDot.png; sourceTree = "<group>"; };
-		110C43AD165FFFD400D7D247 /* NSNumber+UnitString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNumber+UnitString.h"; path = "Core/Classes/NSNumber+UnitString.h"; sourceTree = "<group>"; };
-		110C43AE165FFFD400D7D247 /* NSNumber+UnitString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNumber+UnitString.m"; path = "Core/Classes/NSNumber+UnitString.m"; sourceTree = "<group>"; };
 		110C43B0166013E500D7D247 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Base64.h"; path = "Core/Classes/NSData+Base64.h"; sourceTree = "<group>"; };
 		110C43B1166013E500D7D247 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Base64.m"; path = "Core/Classes/NSData+Base64.m"; sourceTree = "<group>"; };
 		11272C1B1659344200506C11 /* NSMutableArray+QueueAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+QueueAdditions.h"; path = "Core/Classes/NSMutableArray+QueueAdditions.h"; sourceTree = "<group>"; };
@@ -196,8 +193,6 @@
 				110C43B1166013E500D7D247 /* NSData+Base64.m */,
 				11272C1B1659344200506C11 /* NSMutableArray+QueueAdditions.h */,
 				11272C1C1659344200506C11 /* NSMutableArray+QueueAdditions.m */,
-				110C43AD165FFFD400D7D247 /* NSNumber+UnitString.h */,
-				110C43AE165FFFD400D7D247 /* NSNumber+UnitString.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -294,7 +289,7 @@
 			children = (
 				11272C191659341C00506C11 /* Classes */,
 				11666E031659174E004ACF8B /* Protocol */,
-				1138F3F116557ED400BCCAAA /* SystemService */,
+				1138F3F116557ED400BCCAAA /* Service */,
 				1138F3C3165555B000BCCAAA /* Models */,
 				1138F3C01655559F00BCCAAA /* AppDelegate.h */,
 				1138F3C11655559F00BCCAAA /* AppDelegate.m */,
@@ -349,7 +344,7 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		1138F3F116557ED400BCCAAA /* SystemService */ = {
+		1138F3F116557ED400BCCAAA /* Service */ = {
 			isa = PBXGroup;
 			children = (
 				11666E0D16591AF7004ACF8B /* ServicedObject.h */,
@@ -358,7 +353,7 @@
 				1138F40716557F1600BCCAAA /* Service.m */,
 				1138F40D16557F5D00BCCAAA /* Serviced.h */,
 			);
-			name = SystemService;
+			name = Service;
 			sourceTree = "<group>";
 		};
 		11666E031659174E004ACF8B /* Protocol */ = {
@@ -515,7 +510,6 @@
 				11272C2016593AB400506C11 /* RpcProtocol.m in Sources */,
 				117185E4165A9108009B3511 /* TorrentTableViewController.m in Sources */,
 				117185EC165AAC83009B3511 /* ServerStatus.m in Sources */,
-				110C43AF165FFFD400D7D247 /* NSNumber+UnitString.m in Sources */,
 				110C43B2166013E500D7D247 /* NSData+Base64.m in Sources */,
 				1178D4C816614AAA00087084 /* TorrentWindowController.m in Sources */,
 				11AD1D9116626B6300E99D57 /* TorrentItem.m in Sources */,

@@ -7,16 +7,15 @@
 //
 
 #import "TorrentItem+Viewable.h"
-#import "NSNumber+UnitString.h"
 
 @implementation TorrentItem (Viewable)
 
 -(NSString *)humanizedItemSize {
-    return [[NSNumber numberWithUnsignedInteger:self.itemSize] unitStringFromBytes];
+    return [NSByteCountFormatter stringFromByteCount:self.itemSize countStyle:NSByteCountFormatterCountStyleBinary];
 }
 
 -(NSString *)humanizedCompletedSize {
-    return [[NSNumber numberWithUnsignedInteger:self.completedSize] unitStringFromBytes];
+    return [NSByteCountFormatter stringFromByteCount:self.completedSize countStyle:NSByteCountFormatterCountStyleBinary];
 }
 
 #pragma mark - KeyPathes

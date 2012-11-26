@@ -7,7 +7,6 @@
 //
 
 #import "Torrent+Viewable.h"
-#import "NSNumber+UnitString.h"
 
 @implementation Torrent (Viewable)
 
@@ -31,7 +30,10 @@
     if (self.uploadRatio == -1.0) {
         return @"∞";
     } else {
-        return [NSString stringWithFormat:@"%.2f", self.uploadRatio];
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setMinimumIntegerDigits:1];
+        [formatter setMaximumFractionDigits:2];
+        return [formatter stringFromNumber:[NSNumber numberWithDouble:self.uploadRatio]];
     }
 }
 
@@ -58,7 +60,7 @@
 }
 
 -(NSString *)humanizedTotalSize {
-    return [[NSNumber numberWithUnsignedInteger:self.totalSize] unitStringFromBytes];
+    return [NSByteCountFormatter stringFromByteCount:self.totalSize countStyle:NSByteCountFormatterCountStyleBinary];
 }
 
 #pragma mark - KeyPathes

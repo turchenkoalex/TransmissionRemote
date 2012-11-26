@@ -77,6 +77,19 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SessionSetRequest" object:self.serverStatus];
 }
 
+- (IBAction)addTorrentAction:(id)sender {
+    NSOpenPanel* panel = [NSOpenPanel openPanel];
+    
+    [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result){
+        if (result == NSFileHandlingPanelOKButton) {
+            @synchronized(filesQueue) {
+                [filesQueue addObjectsFromArray:[panel URLs]];
+            }
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"ProcessFilesQueue" object:nil];
+        }
+    }];
+}
+
 #pragma mark - Notifications
 
 -(void)registerNotifications {
@@ -102,7 +115,7 @@
         @synchronized(self) {
             self.serverStatus = object;
             if (self.serverStatus.connected) {
-                [self processFilesQueue];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"ProcessFilesQueue" object:nil];
             }
         }
     }
@@ -151,28 +164,44 @@
 #pragma mark - Files processing
 
 -(BOOL)application:(NSApplication *)sender openFile:(NSString *)filename {
-    [filesQueue enqueue:filename];
+    @synchronized(filesQueue) {
+        [filesQueue enqueue:filename];
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ProcessFilesQueue" object:nil];
     return YES;
 }
 
 -(void)application:(NSApplication *)sender openFiles:(NSArray *)filenames {
-    [filesQueue addObjectsFromArray:filenames];
+    @synchronized(filesQueue) {
+        [filesQueue addObjectsFromArray:filenames];
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ProcessFilesQueue" object:nil];
 }
 
 -(void)processFilesQueue {
-    NSString *filename;
-    while ((filename = [filesQueue dequeue])) {
-        if (filename) {
-            NSData *fileData = [NSData dataWithContentsOfFile:filename];
-            if (fileData) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"AddTorrentFileRequest" object:fileData];
-                if (self.service.appOptions.removeFilesAfterAdd) {
-                    NSError *error;
-                    [[NSFileManager defaultManager] removeItemAtPath:filename error:&error];
-                    if (error) {
-                        NSLog(@"File delete error: %@", error);
+    id filename;
+    @synchronized(filesQueue) {
+        while ((filename = [filesQueue dequeue])) {
+            if (filename) {
+                NSData *fileData;
+                BOOL isURL = [filename isMemberOfClass:[NSURL class]];
+                if (isURL) {
+                    fileData = [NSData dataWithContentsOfURL:filename];
+                } else {
+                    fileData = [NSData dataWithContentsOfFile:filename];
+                }
+                if (fileData) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"AddTorrentFileRequest" object:fileData];
+                    if (self.service.appOptions.removeFilesAfterAdd) {
+                        NSError *error;
+                        if (isURL) {
+                            [[NSFileManager defaultManager] removeItemAtURL:filename error:&error];
+                        } else {
+                            [[NSFileManager defaultManager] removeItemAtPath:filename error:&error];
+                        }
+                        if (error) {
+                            NSLog(@"File delete error: %@", error);
+                        }
                     }
                 }
             }

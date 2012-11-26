@@ -28,5 +28,7 @@
 - (IBAction)showOptionsWindow:(id)sender;
 - (IBAction)reconnectAction:(id)sender;
 - (IBAction)alternativeSpeedAction:(id)sender;
+- (IBAction)addTorrentAction:(id)sender;
+
 
 @end
