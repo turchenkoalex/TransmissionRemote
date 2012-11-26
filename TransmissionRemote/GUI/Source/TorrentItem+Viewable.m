@@ -15,7 +15,16 @@
 }
 
 -(NSString *)humanizedCompletedSize {
-    return [NSByteCountFormatter stringFromByteCount:self.completedSize countStyle:NSByteCountFormatterCountStyleBinary];
+    if (self.itemSize) {
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setMinimum:[NSNumber numberWithInt:0]];
+        [formatter setMaximum:[NSNumber numberWithInt:100]];
+        [formatter setMinimumIntegerDigits:1];
+        [formatter setMaximumFractionDigits:2];
+        return [NSString stringWithFormat:@"%@ %%", [formatter stringFromNumber:[NSNumber numberWithDouble:(100.00 * self.completedSize / self.itemSize)]]];
+    } else {
+        return @"∞";
+    }
 }
 
 -(BOOL)isLeaf {

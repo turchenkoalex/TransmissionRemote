@@ -48,10 +48,12 @@
             TorrentItem *torrentItem = [[TorrentItem alloc] init];
             torrentItem.itemName = key;
             torrentItem.childs = [self arrayFrom:item];
+            torrentItem.enabled = NO;
             if (torrentItem.childs) {
                 for(TorrentItem *subItem in torrentItem.childs) {
                     torrentItem.itemSize += subItem.itemSize;
                     torrentItem.completedSize += subItem.completedSize;
+                    torrentItem.enabled |= subItem.enabled;
                 }
             }
             [items addObject:torrentItem];
