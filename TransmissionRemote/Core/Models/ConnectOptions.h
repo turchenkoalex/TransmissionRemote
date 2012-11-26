@@ -22,4 +22,6 @@
 -(NSString *)protocol;
 -(NSURL *)rpcURL;
 
+-(void)apply:(ConnectOptions *)fromOptions;
+
 @end

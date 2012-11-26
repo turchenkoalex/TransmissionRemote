@@ -9,11 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import "Serviced.h"
 #import "ConnectOptions.h"
+#import "AppOptions.h"
 
 @interface OptionsWindowController : NSWindowController <Serviced>
 
 @property (readonly) Service *service;
 @property ConnectOptions *connectOptions;
+@property AppOptions *appOptions;
 
 - (IBAction)saveOptions:(id)sender;
 - (IBAction)closeWindow:(id)sender;

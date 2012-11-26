@@ -28,6 +28,7 @@
 
 -(void)showWindow:(id)sender {
     self.connectOptions = [self.service.connectOptions mutableCopy];
+    self.appOptions = [self.service.appOptions mutableCopy];
     [NSApp beginSheet:self.window modalForWindow:sender modalDelegate:self didEndSelector:nil contextInfo:nil];
 }
 
@@ -38,6 +39,7 @@
 
 - (IBAction)saveOptions:(id)sender {
     [self.service applyConnectOptions:self.connectOptions];
+    [self.service applyAppOptions:self.appOptions];
     [self closeWindow:sender];
 }
 

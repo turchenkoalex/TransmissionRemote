@@ -25,6 +25,10 @@
 
 #pragma mark - Loading
 
+-(void)awakeFromNib {
+    self.torrentTableViewController.appOptions = self.service.appOptions;
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
@@ -160,7 +164,19 @@
 -(void)processFilesQueue {
     NSString *filename;
     while ((filename = [filesQueue dequeue])) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"AddTorrentFileRequest" object:filename];
+        if (filename) {
+            NSData *fileData = [NSData dataWithContentsOfFile:filename];
+            if (fileData) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"AddTorrentFileRequest" object:fileData];
+                if (self.service.appOptions.removeFilesAfterAdd) {
+                    NSError *error;
+                    [[NSFileManager defaultManager] removeItemAtPath:filename error:&error];
+                    if (error) {
+                        NSLog(@"File delete error: %@", error);
+                    }
+                }
+            }
+        }
     }
 }
 

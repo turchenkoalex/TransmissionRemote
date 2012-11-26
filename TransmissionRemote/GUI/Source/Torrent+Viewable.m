@@ -54,7 +54,7 @@
 }
 
 -(BOOL)isWaiting {
-    return (self.torrentState == STATE_CHECK_WAIT || self.torrentState == STATE_SEED_WAIT || self.torrentState == STATE_DOWNLOAD_WAIT);
+    return (self.torrentState == STATE_CHECK_WAIT || self.torrentState == STATE_SEED_WAIT || self.torrentState == STATE_DOWNLOAD_WAIT || self.torrentState == STATE_CHECK);
 }
 
 -(NSString *)humanizedTotalSize {

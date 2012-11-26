@@ -33,17 +33,21 @@
     return [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@:%ld/%@/rpc", [self protocol], _server, _port, _rpcPath]];
 }
 
+-(void)apply:(ConnectOptions *)fromOptions {
+    self.server = [fromOptions.server copy];
+    self.port = fromOptions.port;
+    self.usingSSL = fromOptions.usingSSL;
+    self.usingAuthorization = fromOptions.usingAuthorization;
+    self.username = [fromOptions.username copy];
+    self.password = [fromOptions.password copy];
+}
+
 #pragma mark - <NSCopying>
 
 -(id)copyWithZone:(NSZone *)zone {
     ConnectOptions *copy = [[[self class] allocWithZone:zone] init];
     if (copy) {
-        copy.server = [self.server copyWithZone:zone];
-        copy.port = self.port;
-        copy.usingSSL = self.usingSSL;
-        copy.usingAuthorization = self.usingAuthorization;
-        copy.username = [self.username copyWithZone:zone];
-        copy.password = [self.password copyWithZone:zone];
+        [copy apply:self];
     }
     return copy;
 }
@@ -53,12 +57,7 @@
 -(id)mutableCopyWithZone:(NSZone *)zone {
     ConnectOptions *copy = [[[self class] allocWithZone:zone] init];
     if (copy) {
-        copy.server = [self.server mutableCopyWithZone:zone];
-        copy.port = self.port;
-        copy.usingSSL = self.usingSSL;
-        copy.usingAuthorization = self.usingAuthorization;
-        copy.username = [self.username mutableCopyWithZone:zone];
-        copy.password = [self.password mutableCopyWithZone:zone];
+        [copy apply:self];
     }
     return copy;
 }

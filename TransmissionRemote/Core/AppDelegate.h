@@ -11,6 +11,7 @@
 #import "Service.h"
 #import "ServerStatus.h"
 #import "NSMutableArray+QueueAdditions.h"
+#import "TorrentTableViewController.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate, NSUserNotificationCenterDelegate> {
     NSNumber *activeRequestInterval;
@@ -22,6 +23,7 @@
 @property (assign) IBOutlet NSWindow *window;
 @property OptionsWindowController *optionsWindowController;
 @property ServerStatus *serverStatus;
+@property (weak) IBOutlet TorrentTableViewController *torrentTableViewController;
 
 - (IBAction)showOptionsWindow:(id)sender;
 - (IBAction)reconnectAction:(id)sender;

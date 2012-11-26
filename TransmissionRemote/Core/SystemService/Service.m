@@ -30,6 +30,7 @@
     self = [self init];
     if (self) {
         _connectOptions = [self loadConnectOptions];
+        _appOptions = [self loadAppOptions];
     }
     return self;
 }
@@ -53,7 +54,7 @@
 }
 
 -(void)applyConnectOptions:(ConnectOptions *)aConnectOptions {
-    self.connectOptions = [aConnectOptions copy];
+    [self.connectOptions apply:aConnectOptions];
     [self saveConnectOptions:self.connectOptions];
     [rpcHandler abortConnect];
     [rpcHandler connectWithConnectOptions:aConnectOptions];
@@ -67,8 +68,26 @@
     return connectOptions;
 }
 
+
 -(void)saveConnectOptions:(ConnectOptions *)aConnectOptions {
     [self saveObject:aConnectOptions withKey:@"ConnectOptions"];
+}
+
+-(void)applyAppOptions:(AppOptions *)aAppOptions {
+    [self.appOptions apply:aAppOptions];
+    [self saveAppOptions:self.appOptions];
+}
+
+-(AppOptions *)loadAppOptions {
+    AppOptions *appOptions = [self loadObjectForKey:@"AppOptions"];
+    if (!appOptions) {
+        appOptions = [[AppOptions alloc] init];
+    }
+    return appOptions;
+}
+
+-(void)saveAppOptions:(AppOptions *)aOptions {
+    [self saveObject:aOptions withKey:@"AppOptions"];
 }
 
 #pragma mark - Connections

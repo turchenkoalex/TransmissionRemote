@@ -49,6 +49,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentsStartNowRequestWithNotification:) name:@"TorrentsStartNowRequest" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentsVerifyRequestWithNotification:) name:@"TorrentsVerifyRequest" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentsRemoveRequestWithNotification:) name:@"TorrentsRemoveRequest" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(torrentsRemoveWithDataRequestWithNotification:) name:@"TorrentsRemoveWithDataRequest" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addTorrentFileRequestWithNotification:) name:@"AddTorrentFileRequest" object:nil];
     
 }
@@ -124,14 +125,21 @@
 -(void)torrentsRemoveRequestWithNotification:(NSNotification *)notification {
     NSString *ids = [notification object];
     if (ids) {
+        [self torrentsRemoveWithIds:ids andDeleteLocalData:NO];
+    }
+}
+
+-(void)torrentsRemoveWithDataRequestWithNotification:(NSNotification *)notification {
+    NSString *ids = [notification object];
+    if (ids) {
         [self torrentsRemoveWithIds:ids andDeleteLocalData:YES];
     }
 }
 
 -(void)addTorrentFileRequestWithNotification:(NSNotification *)notification {
-    NSString *fileName = [notification object];
-    if (fileName) {
-        [self addTorrentFileWithFileName:fileName];
+    NSData *fileData = [notification object];
+    if (fileData) {
+        [self addTorrentFileWithFileData:fileData];
     }
 }
 
@@ -236,10 +244,11 @@
 -(void)torrentsRemoveWithIds:(NSString *)aIds andDeleteLocalData:(BOOL)useDeleteLocalData {
     [self requestWithData:[rpcProtocol torrentRemoveQueryWithIds:aIds andDeleteLocalData:useDeleteLocalData] andTag:[rpcProtocol torrentRemoveTag]];
 }
--(void)addTorrentFileWithFileName:(NSString *)fileName {
-    NSString *fileData = [[NSData dataWithContentsOfFile:fileName] encodeBase64];
-    if (fileData) {
-        [self requestWithData:[rpcProtocol torrentAddFileQueryWithData:fileData] andTag:[rpcProtocol torrentAddFileTag]];
+
+-(void)addTorrentFileWithFileData:(NSData *)fileData {
+    NSString *fileDataBase64 = [fileData encodeBase64];
+    if (fileDataBase64) {
+        [self requestWithData:[rpcProtocol torrentAddFileQueryWithData:fileDataBase64] andTag:[rpcProtocol torrentAddFileTag]];
     }
 }
 

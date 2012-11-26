@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Service.h"
+#import "AppOptions.h"
 
 @interface TorrentTableViewController : NSObject {
     NSUInteger _sortingType;
@@ -16,6 +17,7 @@
 
 @property (strong) NSMutableArray *torrentsArray;
 @property (strong) NSArray *torrentsSortDescriptor;
+@property (strong) AppOptions *appOptions;
 @property NSUInteger sortingType;
 @property (weak) IBOutlet NSArrayController *arrayController;
 @property (weak) IBOutlet NSSegmentedControl *torrentStatusSegmentedControl;

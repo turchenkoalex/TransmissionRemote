@@ -250,7 +250,11 @@
 }
 
 -(void)torrentsRemoveRequestWithIds:(NSString *)aIds {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentsRemoveRequest" object:aIds];
+    if (self.appOptions.removeDataWithTorrent) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentsRemoveWithDataRequest" object:aIds];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentsRemoveRequest" object:aIds];
+    }
 }
 
 #pragma mark - IBActions
