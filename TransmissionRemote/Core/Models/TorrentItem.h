@@ -13,7 +13,6 @@
 @property NSString *itemName;
 @property NSUInteger itemSize;
 @property NSUInteger completedSize;
-@property BOOL isLeaf;
 @property NSArray *childs;
 
 @end

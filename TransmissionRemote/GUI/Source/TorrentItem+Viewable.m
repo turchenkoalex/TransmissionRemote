@@ -18,6 +18,10 @@
     return [NSByteCountFormatter stringFromByteCount:self.completedSize countStyle:NSByteCountFormatterCountStyleBinary];
 }
 
+-(BOOL)isLeaf {
+    return (!self.childs);
+}
+
 #pragma mark - KeyPathes
 
 +(NSSet *)keyPathsForValuesAffectingHumanizedItemSize {

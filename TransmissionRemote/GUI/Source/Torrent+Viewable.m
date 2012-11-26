@@ -7,6 +7,7 @@
 //
 
 #import "Torrent+Viewable.h"
+#import "TorrentItem+Viewable.h"
 
 @implementation Torrent (Viewable)
 
@@ -36,6 +37,61 @@
         return [formatter stringFromNumber:[NSNumber numberWithDouble:self.uploadRatio]];
     }
 }
+
+-(NSArray *)arrayFrom:(NSDictionary *)dictionary {
+    NSMutableArray *items = [NSMutableArray array];
+    for (NSString *key in dictionary) {
+        id item = [dictionary valueForKey:key];
+        if ([item isKindOfClass:[TorrentItem class]]) {
+            [items addObject:item];
+        } else {
+            TorrentItem *torrentItem = [[TorrentItem alloc] init];
+            torrentItem.itemName = key;
+            torrentItem.childs = [self arrayFrom:item];
+            if (torrentItem.childs) {
+                for(TorrentItem *subItem in torrentItem.childs) {
+                    torrentItem.itemSize += subItem.itemSize;
+                    torrentItem.completedSize += subItem.completedSize;
+                }
+            }
+            [items addObject:torrentItem];
+        }
+    }
+    return [items copy];
+}
+
+-(NSArray *)treeOfTorrentItemsFromArray:(NSArray *)array {
+    if (array) {
+        NSString *separator = @"/";
+        NSMutableDictionary *folders = [NSMutableDictionary dictionary];
+        for (TorrentItem *item in array) {
+            NSArray *filepath = [item.itemName componentsSeparatedByString:separator];
+            NSMutableDictionary *current = folders;
+            NSUInteger count = [filepath count] - 1;
+            for(NSUInteger i = 0; i <= count; ++i) {
+                NSString *path = filepath[i];
+                if (i == count) {
+                    [current setValue:item forKey:path];
+                } else {
+                    NSMutableDictionary *folder = [current valueForKey:path];
+                    if (!folder) {
+                        folder = [NSMutableDictionary dictionary];
+                        [current setValue:folder forKey:path];
+                    }
+                    current = folder;
+                }
+            }
+        }
+        return [self arrayFrom:folders];
+    } else {
+        return nil;
+    }
+}
+
+-(NSArray *)files {
+    return [self treeOfTorrentItemsFromArray:self.items];
+}
+
 
 #pragma mark - State properties
 

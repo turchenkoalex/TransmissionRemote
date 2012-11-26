@@ -157,16 +157,13 @@
     if (aObject) {
         NSMutableArray *items = [NSMutableArray arrayWithCapacity:[aObject count]];
         for (NSDictionary *item in aObject) {
-            if (item) {
-                TorrentItem *torrentItem = [[TorrentItem alloc] init];
-                torrentItem.itemName = [item valueForKey:@"name"];
-                torrentItem.itemSize = [[item valueForKey:@"length"] unsignedIntegerValue];
-                torrentItem.completedSize = [[item valueForKey:@"bytesCompleted"] unsignedIntegerValue];
-                torrentItem.isLeaf = YES;
-                [items addObject:torrentItem];
-            }
+            TorrentItem *torrentItem = [[TorrentItem alloc] init];
+            torrentItem.itemName = [item valueForKey:@"name"];
+            torrentItem.itemSize = [[item valueForKey:@"length"] unsignedIntegerValue];
+            torrentItem.completedSize = [[item valueForKey:@"bytesCompleted"] unsignedIntegerValue];
+            [items addObject:torrentItem];
         }
-        return items;
+        return [items copy];
     } else {
         return nil;
     }

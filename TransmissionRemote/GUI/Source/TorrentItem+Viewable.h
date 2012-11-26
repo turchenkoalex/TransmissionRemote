@@ -10,6 +10,8 @@
 
 @interface TorrentItem (Viewable)
 
+@property (readonly)  BOOL isLeaf;
+
 @property (readonly) NSString *humanizedItemSize;
 @property (readonly) NSString *humanizedCompletedSize;
 

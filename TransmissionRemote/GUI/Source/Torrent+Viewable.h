@@ -30,5 +30,6 @@ static const NSString* TorrentStatusImageNames[] = {
 @property (readonly) BOOL isVerifing;
 @property (readonly) NSString *uploadRatioFormatted;
 @property (readonly) NSString *humanizedTotalSize;
+@property (readonly) NSArray *files;
 
 @end
