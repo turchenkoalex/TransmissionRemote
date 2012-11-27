@@ -23,13 +23,12 @@ static const NSString* TorrentStatusImageNames[] = {
 @property (readonly) NSString *torrentIdString;
 @property (readonly) NSImage *statusImage;
 @property (readonly) double torrentComplete;
+@property (readonly) BOOL isActive;
 @property (readonly) BOOL isDownloading;
 @property (readonly) BOOL isWaiting;
-@property (readonly) BOOL isStopping;
+@property (readonly) BOOL isStopped;
 @property (readonly) BOOL isSeeding;
 @property (readonly) BOOL isVerifing;
-@property (readonly) NSString *uploadRatioFormatted;
-@property (readonly) NSString *humanizedTotalSize;
 @property (readonly) NSArray *files;
 
 @end

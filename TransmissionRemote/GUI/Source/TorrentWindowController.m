@@ -40,4 +40,14 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
+#pragma mark - IBActions
+
+- (IBAction)resumeTorrent:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentsStartRequest" object:self.torrent.torrentIdString];
+}
+
+- (IBAction)stopTorrent:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentsStopRequest" object:self.torrent.torrentIdString];
+}
+
 @end

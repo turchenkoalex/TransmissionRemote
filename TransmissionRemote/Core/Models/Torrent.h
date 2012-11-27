@@ -29,5 +29,8 @@ typedef NS_ENUM(NSUInteger, TorrentState) {
 @property double uploadRatio;
 @property NSUInteger totalSize;
 @property NSArray *items;
+@property NSUInteger rateDownload;
+@property NSUInteger rateUpload;
+@property NSUInteger leftUntilDone;
 
 @end

@@ -15,4 +15,7 @@
 
 -(id)initWithTorrent:(Torrent *)torrent;
 
+- (IBAction)resumeTorrent:(id)sender;
+- (IBAction)stopTorrent:(id)sender;
+
 @end

@@ -49,7 +49,7 @@
             stateFilter = @"isWaiting == YES";
             break;
         case 4:
-            stateFilter = @"isStopping == YES";
+            stateFilter = @"isStopped == YES";
             break;
         default:
             break;
@@ -164,6 +164,7 @@
     NSMutableArray *torrents = [notification object];
     if (torrents) {
         NSMutableArray *newTorrents = [NSMutableArray array];
+        NSUInteger uploadRate = 0, downloadRate = 0;
         @synchronized(_arrayController) {
             BOOL needRearrange = NO;
             for (Torrent *update in torrents) {
@@ -179,17 +180,16 @@
                     Torrent *torrent = [_torrentsArray objectAtIndex:findedIndex];
                     if (torrent) {
                         if (torrent.torrentState != update.torrentState) {
-                            torrent.torrentState = update.torrentState;
                             if ([self.torrentStatusSegmentedControl selectedSegment] != 0) {
                                 needRearrange = YES;
                             }
                         }
+
                         if (torrent.torrentState == STATE_DOWNLOAD) {
                             if (torrent.torrentDownloadPercent != update.torrentDownloadPercent) {
-                                if (update.torrentDownloadPercent == 100) {
+                                if (update.torrentDownloadPercent >= 1.0) {
                                     [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentDownloaded" object:torrent];
                                 }
-                                torrent.torrentDownloadPercent = update.torrentDownloadPercent;
                                 if (self.sortingType == 2) {
                                     needRearrange = YES;
                                 }
@@ -200,19 +200,27 @@
                                 if (torrent.torrentVerifyPercent > 0 && update.torrentVerifyPercent == 0 && torrent.uploadRatio != -1) {
                                     [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentVerified" object:torrent];
                                 }
-                                torrent.torrentVerifyPercent = update.torrentVerifyPercent;
                             }
                         }
                         if (torrent.uploadRatio != update.uploadRatio) {
-                            torrent.uploadRatio = update.uploadRatio;
                             if (self.sortingType == 1) {
                                 needRearrange = YES;
                             }
                         }
+                        
+                        torrent.torrentState = update.torrentState;
+                        torrent.torrentDownloadPercent = update.torrentDownloadPercent;
+                        torrent.torrentVerifyPercent = update.torrentVerifyPercent;
+                        torrent.uploadRatio = update.uploadRatio;
+                        torrent.rateDownload = update.rateDownload;
+                        torrent.rateUpload = update.rateUpload;
+                        torrent.leftUntilDone = update.leftUntilDone;
                     }
                 } else {
                     [newTorrents addObject:update];
                 }
+                downloadRate += update.rateDownload;
+                uploadRate += update.rateUpload;
             }
             if (needRearrange) {
                 [_arrayController rearrangeObjects];

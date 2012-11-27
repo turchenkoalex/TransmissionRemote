@@ -27,17 +27,6 @@
     }
 }
 
--(NSString *)uploadRatioFormatted {
-    if (self.uploadRatio == -1.0) {
-        return @"∞";
-    } else {
-        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        [formatter setMinimumIntegerDigits:1];
-        [formatter setMaximumFractionDigits:2];
-        return [formatter stringFromNumber:[NSNumber numberWithDouble:self.uploadRatio]];
-    }
-}
-
 -(NSArray *)arrayFrom:(NSDictionary *)dictionary {
     NSMutableArray *items = [NSMutableArray array];
     for (NSString *key in dictionary) {
@@ -97,6 +86,10 @@
 
 #pragma mark - State properties
 
+-(BOOL)isActive {
+    return self.torrentState != STATE_STOPPED;
+}
+
 -(BOOL)isDownloading {
     return (self.torrentState == STATE_DOWNLOAD);
 }
@@ -105,7 +98,7 @@
     return (self.torrentState == STATE_SEED);
 }
 
--(BOOL)isStopping {
+-(BOOL)isStopped {
     return (self.torrentState == STATE_STOPPED);
 }
 
@@ -115,10 +108,6 @@
 
 -(BOOL)isWaiting {
     return (self.torrentState == STATE_CHECK_WAIT || self.torrentState == STATE_SEED_WAIT || self.torrentState == STATE_DOWNLOAD_WAIT || self.torrentState == STATE_CHECK);
-}
-
--(NSString *)humanizedTotalSize {
-    return [NSByteCountFormatter stringFromByteCount:self.totalSize countStyle:NSByteCountFormatterCountStyleBinary];
 }
 
 #pragma mark - KeyPathes
@@ -139,7 +128,7 @@
     return [NSSet setWithObjects:@"torrentState", nil];
 }
 
-+(NSSet *)keyPathsForValuesAffectingIsStopping {
++(NSSet *)keyPathsForValuesAffectingIsStopped {
     return [NSSet setWithObjects:@"torrentState", nil];
 }
 
@@ -147,16 +136,12 @@
     return [NSSet setWithObjects:@"torrentState", nil];
 }
 
-+(NSSet *)keyPathsForValuesAffectingIsWaiting {
++(NSSet *)keyPathsForValuesAffectingIsDownloading {
     return [NSSet setWithObjects:@"torrentState", nil];
 }
 
-+(NSSet *)keyPathsForValuesAffectingUploadRatioFormatted {
-    return [NSSet setWithObjects:@"uploadRatio", nil];
-}
-
-+(NSSet *)keyPathsForValuesAffectingHumanizedTotalSize {
-    return [NSSet setWithObjects:@"totalSize", nil];
++(NSSet *)keyPathsForValuesAffectingIsActive {
+    return [NSSet setWithObjects:@"torrentState", nil];
 }
 
 @end
