@@ -8,14 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Torrent+Viewable.h"
+#import "AppOptions.h"
 
 @interface TorrentWindowController : NSWindowController
 
 @property (readonly) Torrent *torrent;
+@property (readonly) AppOptions *appOptions;
 
--(id)initWithTorrent:(Torrent *)torrent;
+-(id)initWithTorrent:(Torrent *)torrent andOptions:(AppOptions *)options;
 
 - (IBAction)resumeTorrent:(id)sender;
 - (IBAction)stopTorrent:(id)sender;
+- (IBAction)removeTorrent:(id)sender;
 
 @end

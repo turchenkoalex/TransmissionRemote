@@ -139,6 +139,7 @@
     NSMutableArray *torrents = [notification object];
     if (torrents) {
         @synchronized(_arrayController) {
+            [torrentWindows removeAllObjects];
             [_torrentsArray removeAllObjects];
             [_torrentsArray addObjectsFromArray:torrents];
             [_arrayController rearrangeObjects];
@@ -214,6 +215,7 @@
                         torrent.uploadRatio = update.uploadRatio;
                         torrent.rateDownload = update.rateDownload;
                         torrent.rateUpload = update.rateUpload;
+                        torrent.leftUntilDone = update.leftUntilDone;
                     }
                 } else {
                     [newTorrents addObject:update];
@@ -375,7 +377,7 @@
     if (torrent) {
         TorrentWindowController *controller = [torrentWindows valueForKey:torrent.torrentIdString];
         if (!controller) {
-            controller = [[TorrentWindowController alloc] initWithTorrent:torrent];
+            controller = [[TorrentWindowController alloc] initWithTorrent:torrent andOptions:self.appOptions];
             [torrentWindows setValue:controller forKey:torrent.torrentIdString];
         }
         [controller showWindow:self];

@@ -27,6 +27,10 @@
     }
 }
 
+-(double)estimatedTime {
+    return self.rateDownload ? self.leftUntilDone / self.rateDownload : -1.0;
+}
+
 -(NSArray *)arrayFrom:(NSDictionary *)dictionary {
     NSMutableArray *items = [NSMutableArray array];
     for (NSString *key in dictionary) {
@@ -142,6 +146,10 @@
 
 +(NSSet *)keyPathsForValuesAffectingIsActive {
     return [NSSet setWithObjects:@"torrentState", nil];
+}
+
++(NSSet *)keyPathsForValuesAffectingEstimatedTime {
+    return [NSSet setWithObjects:@"rateDownload", @"leftUntilDone", nil];
 }
 
 @end

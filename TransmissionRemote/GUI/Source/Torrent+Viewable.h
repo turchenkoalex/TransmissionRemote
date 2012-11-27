@@ -30,5 +30,6 @@ static const NSString* TorrentStatusImageNames[] = {
 @property (readonly) BOOL isSeeding;
 @property (readonly) BOOL isVerifing;
 @property (readonly) NSArray *files;
+@property (readonly) double estimatedTime;
 
 @end

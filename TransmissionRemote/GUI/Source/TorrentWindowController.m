@@ -15,10 +15,11 @@
 
 @implementation TorrentWindowController
 
--(id)initWithTorrent:(Torrent *)torrent {
+-(id)initWithTorrent:(Torrent *)torrent andOptions:(AppOptions *)options {
     self = [super initWithWindowNibName:@"TorrentWindow"];
     if (self) {
         _torrent = torrent;
+        _appOptions = options;
     }
     return self;
 }
@@ -48,6 +49,22 @@
 
 - (IBAction)stopTorrent:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentsStopRequest" object:self.torrent.torrentIdString];
+}
+
+- (IBAction)removeTorrent:(id)sender {
+    NSAlert *alert = [NSAlert alertWithMessageText:@"Are you shure?" defaultButton:@"Remove" alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:@"Remove torrent: %@", self.torrent.torrentName];
+    [alert beginSheetModalForWindow:self.window modalDelegate:self didEndSelector:@selector(alertDidEnd:returnCode:contextInfo:) contextInfo:nil];
+}
+
+- (void) alertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
+    if (returnCode == NSAlertDefaultReturn) {
+        [self.window close];
+        if (self.appOptions.removeDataWithTorrent) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentsRemoveWithDataRequest" object:self.torrent.torrentIdString];
+        } else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"TorrentsRemoveRequest" object:self.torrent.torrentIdString];
+        }
+    }
 }
 
 @end
