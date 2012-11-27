@@ -164,7 +164,7 @@
     NSMutableArray *torrents = [notification object];
     if (torrents) {
         NSMutableArray *newTorrents = [NSMutableArray array];
-        NSUInteger uploadRate = 0, downloadRate = 0;
+        NSUInteger rateDownload = 0, rateUpload = 0;
         @synchronized(_arrayController) {
             BOOL needRearrange = NO;
             for (Torrent *update in torrents) {
@@ -214,18 +214,19 @@
                         torrent.uploadRatio = update.uploadRatio;
                         torrent.rateDownload = update.rateDownload;
                         torrent.rateUpload = update.rateUpload;
-                        torrent.leftUntilDone = update.leftUntilDone;
                     }
                 } else {
                     [newTorrents addObject:update];
                 }
-                downloadRate += update.rateDownload;
-                uploadRate += update.rateUpload;
+                rateDownload += update.rateDownload;
+                rateUpload += update.rateUpload;
             }
             if (needRearrange) {
                 [_arrayController rearrangeObjects];
             }
         }
+        self.rateDownload = rateDownload;
+        self.rateUpload = rateUpload;
         if ([newTorrents count] > 0) {
             NSString *ids = [[newTorrents valueForKeyPath:@"torrentId"] componentsJoinedByString:@","];
             [self fullUpdateTorrentsRequestWithIds:ids];

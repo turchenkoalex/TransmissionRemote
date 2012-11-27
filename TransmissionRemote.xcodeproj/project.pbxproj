@@ -50,6 +50,10 @@
 		1178D4E2166236B600087084 /* ToolbarRemoveTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 1178D4E1166236B600087084 /* ToolbarRemoveTemplate.png */; };
 		11AD1D9116626B6300E99D57 /* TorrentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 11AD1D9016626B6300E99D57 /* TorrentItem.m */; };
 		11BA835B1665408100B5450F /* NSInfinityNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BA835A1665408100B5450F /* NSInfinityNumberFormatter.m */; };
+		11BA8360166550BF00B5450F /* DownArrowGroupTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BA835C166550BF00B5450F /* DownArrowGroupTemplate.png */; };
+		11BA8361166550BF00B5450F /* DownArrowTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BA835D166550BF00B5450F /* DownArrowTemplate.png */; };
+		11BA8362166550BF00B5450F /* UpArrowGroupTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BA835E166550BF00B5450F /* UpArrowGroupTemplate.png */; };
+		11BA8363166550BF00B5450F /* UpArrowTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BA835F166550BF00B5450F /* UpArrowTemplate.png */; };
 		11BA8547165AD0090042CB89 /* BlueDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 11BA8546165AD0090042CB89 /* BlueDot.png */; };
 		11BD727A1663C4B900B6C165 /* AppOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BD72791663C4B900B6C165 /* AppOptions.m */; };
 		11DD36CF1657E3D900FF69CA /* OptionsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DD36CD1657E3D900FF69CA /* OptionsWindowController.m */; };
@@ -136,6 +140,10 @@
 		11AD1D9016626B6300E99D57 /* TorrentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TorrentItem.m; path = Core/Models/TorrentItem.m; sourceTree = "<group>"; };
 		11BA83591665408100B5450F /* NSInfinityNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSInfinityNumberFormatter.h; path = Core/Classes/NSInfinityNumberFormatter.h; sourceTree = "<group>"; };
 		11BA835A1665408100B5450F /* NSInfinityNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSInfinityNumberFormatter.m; path = Core/Classes/NSInfinityNumberFormatter.m; sourceTree = "<group>"; };
+		11BA835C166550BF00B5450F /* DownArrowGroupTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DownArrowGroupTemplate.png; path = GUI/Resources/Images/DownArrowGroupTemplate.png; sourceTree = "<group>"; };
+		11BA835D166550BF00B5450F /* DownArrowTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DownArrowTemplate.png; path = GUI/Resources/Images/DownArrowTemplate.png; sourceTree = "<group>"; };
+		11BA835E166550BF00B5450F /* UpArrowGroupTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UpArrowGroupTemplate.png; path = GUI/Resources/Images/UpArrowGroupTemplate.png; sourceTree = "<group>"; };
+		11BA835F166550BF00B5450F /* UpArrowTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = UpArrowTemplate.png; path = GUI/Resources/Images/UpArrowTemplate.png; sourceTree = "<group>"; };
 		11BA8546165AD0090042CB89 /* BlueDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlueDot.png; path = GUI/Resources/Images/BlueDot.png; sourceTree = "<group>"; };
 		11BD72781663C4B900B6C165 /* AppOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppOptions.h; path = Core/Models/AppOptions.h; sourceTree = "<group>"; };
 		11BD72791663C4B900B6C165 /* AppOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppOptions.m; path = Core/Models/AppOptions.m; sourceTree = "<group>"; };
@@ -185,6 +193,10 @@
 				1178D4DD166234B500087084 /* ToolbarOpenWebTemplate.png */,
 				1178D4DF166234ED00087084 /* ToolbarPauseSelectedTemplate.png */,
 				1178D4E1166236B600087084 /* ToolbarRemoveTemplate.png */,
+				11BA835C166550BF00B5450F /* DownArrowGroupTemplate.png */,
+				11BA835D166550BF00B5450F /* DownArrowTemplate.png */,
+				11BA835E166550BF00B5450F /* UpArrowGroupTemplate.png */,
+				11BA835F166550BF00B5450F /* UpArrowTemplate.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -467,6 +479,10 @@
 				1178D4E0166234ED00087084 /* ToolbarPauseSelectedTemplate.png in Resources */,
 				1178D4E2166236B600087084 /* ToolbarRemoveTemplate.png in Resources */,
 				1131213C166241EA001A7F7B /* TransmissionDocument.icns in Resources */,
+				11BA8360166550BF00B5450F /* DownArrowGroupTemplate.png in Resources */,
+				11BA8361166550BF00B5450F /* DownArrowTemplate.png in Resources */,
+				11BA8362166550BF00B5450F /* UpArrowGroupTemplate.png in Resources */,
+				11BA8363166550BF00B5450F /* UpArrowTemplate.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

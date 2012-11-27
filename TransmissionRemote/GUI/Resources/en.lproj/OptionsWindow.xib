@@ -189,11 +189,11 @@
 															</object>
 															<string key="negativeInfinitySymbol">-∞</string>
 															<string key="nilSymbol"/>
-															<integer value="1" key="numberStyle"/>
+															<integer value="0" key="numberStyle"/>
 															<string key="positiveInfinitySymbol">+∞</string>
 														</dictionary>
-														<string key="NS.positiveformat">#,##0.###</string>
-														<string key="NS.negativeformat">#,##0.###</string>
+														<string key="NS.positiveformat">#</string>
+														<string key="NS.negativeformat">#</string>
 														<nil key="NS.positiveattrs"/>
 														<nil key="NS.negativeattrs"/>
 														<nil key="NS.zero"/>
@@ -221,7 +221,7 @@
 														</object>
 														<string key="NS.decimal">.</string>
 														<string key="NS.thousand">,</string>
-														<bool key="NS.hasthousands">YES</bool>
+														<bool key="NS.hasthousands">NO</bool>
 														<bool key="NS.localized">NO</bool>
 														<bool key="NS.allowsfloats">YES</bool>
 													</object>
@@ -429,7 +429,6 @@
 												<int key="NSvFlags">268</int>
 												<string key="NSFrame">{{15, 127}, {248, 18}}</string>
 												<reference key="NSSuperview" ref="444631577"/>
-												<reference key="NSNextKeyView" ref="111591245"/>
 												<string key="NSReuseIdentifierKey">_NS:9</string>
 												<bool key="NSEnabled">YES</bool>
 												<object class="NSButtonCell" key="NSCell" id="957671298">
@@ -525,7 +524,7 @@
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="729262635"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1920, 1058}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>

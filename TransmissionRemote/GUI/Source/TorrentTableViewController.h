@@ -26,6 +26,8 @@
 @property (weak) IBOutlet NSMenuItem *menuSortByName;
 @property (weak) IBOutlet NSMenuItem *menuSortByRatio;
 @property (weak) IBOutlet NSMenuItem *menuSortBySize;
+@property NSUInteger rateUpload;
+@property NSUInteger rateDownload;
 
 - (IBAction)startTorrentsAction:(id)sender;
 - (IBAction)startNowTorrentsAction:(id)sender;

@@ -16,8 +16,8 @@
 -(id)init {
     self = [super init];
     if (self) {
-        NSArray *fullTorrentFields = @[@"id", @"name", @"status", @"comment", @"percentDone", @"recheckProgress", @"uploadRatio", @"totalSize", @"files", @"fileStats", @"rateDownload", @"rateUpload", @"leftUntilDone"];
-        NSArray *torrentFields = @[@"id", @"status", @"percentDone", @"recheckProgress", @"uploadRatio", @"rateDownload", @"rateUpload", @"leftUntilDone"];
+        NSArray *fullTorrentFields = @[@"id", @"name", @"status", @"comment", @"percentDone", @"recheckProgress", @"uploadRatio", @"totalSize", @"files", @"fileStats", @"rateDownload", @"rateUpload"];
+        NSArray *torrentFields = @[@"id", @"status", @"percentDone", @"recheckProgress", @"uploadRatio", @"rateDownload", @"rateUpload"];
         
         sessionGet = [self jsonQuery:@{ @"method": @"session-get" }];
         torrentsInitialize = [self jsonQuery:@{@"method": @"torrent-get", @"arguments": @{ @"fields": fullTorrentFields } }];
@@ -185,7 +185,6 @@
     torrent.totalSize = [[aObject valueForKey:@"totalSize"] unsignedIntegerValue];
     torrent.rateUpload = [[aObject valueForKey:@"rateUpload"] unsignedIntegerValue];
     torrent.rateDownload = [[aObject valueForKey:@"rateDownload"] unsignedIntegerValue];
-    torrent.leftUntilDone = [[aObject valueForKey:@"leftUntilDone"] unsignedIntegerValue];
 
     torrent.items = [self torrentItemsFor:[aObject valueForKey:@"files"] andStats:[aObject valueForKey:@"fileStats"]];
     return torrent;
