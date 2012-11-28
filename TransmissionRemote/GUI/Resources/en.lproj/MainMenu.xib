@@ -1338,11 +1338,9 @@
 							<string key="NSToolbarItemPaletteLabel">Pause</string>
 							<nil key="NSToolbarItemToolTip"/>
 							<object class="NSButton" key="NSToolbarItemView" id="868566084">
-								<reference key="NSNextResponder"/>
+								<nil key="NSNextResponder"/>
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{5, 14}, {29, 28}}</string>
-								<reference key="NSSuperview"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:22</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSButtonCell" key="NSCell" id="329538613">
@@ -1388,11 +1386,9 @@
 							<string key="NSToolbarItemPaletteLabel">Connect</string>
 							<nil key="NSToolbarItemToolTip"/>
 							<object class="NSButton" key="NSToolbarItemView" id="844333110">
-								<reference key="NSNextResponder"/>
+								<nil key="NSNextResponder"/>
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{11, 14}, {29, 28}}</string>
-								<reference key="NSSuperview"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:22</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSButtonCell" key="NSCell" id="473045902">
@@ -1434,11 +1430,9 @@
 							<string key="NSToolbarItemPaletteLabel">Search</string>
 							<nil key="NSToolbarItemToolTip"/>
 							<object class="NSSearchField" key="NSToolbarItemView" id="114328257">
-								<reference key="NSNextResponder"/>
+								<nil key="NSNextResponder"/>
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{0, 14}, {105, 22}}</string>
-								<reference key="NSSuperview"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSSearchFieldCell" key="NSCell" id="221120832">
@@ -1524,11 +1518,9 @@
 							<string key="NSToolbarItemPaletteLabel">State</string>
 							<nil key="NSToolbarItemToolTip"/>
 							<object class="NSSegmentedControl" key="NSToolbarItemView" id="809544179">
-								<reference key="NSNextResponder"/>
+								<nil key="NSNextResponder"/>
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{0, 14}, {166, 28}}</string>
-								<reference key="NSSuperview"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSSegmentedCell" key="NSCell" id="758284552">
@@ -1606,11 +1598,9 @@
 							<string key="NSToolbarItemPaletteLabel">Resume</string>
 							<nil key="NSToolbarItemToolTip"/>
 							<object class="NSButton" key="NSToolbarItemView" id="703446721">
-								<reference key="NSNextResponder"/>
+								<nil key="NSNextResponder"/>
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{10, 14}, {29, 28}}</string>
-								<reference key="NSSuperview"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:22</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSButtonCell" key="NSCell" id="913566140">
@@ -6182,9 +6172,11 @@
 				<string key="1801.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1802.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1803.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="1804.CustomClassName">NSByteSpeedFormatter</string>
 				<string key="1804.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1805.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1806.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="1807.CustomClassName">NSByteSpeedFormatter</string>
 				<string key="1807.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1808.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1809.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -6452,6 +6444,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/NSByteCountFormatter.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSByteSpeedFormatter</string>
+					<string key="superclassName">NSByteCountFormatter</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/NSByteSpeedFormatter.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

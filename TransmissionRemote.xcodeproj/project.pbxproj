@@ -38,6 +38,8 @@
 		11666E0F16591AF7004ACF8B /* ServicedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 11666E0E16591AF7004ACF8B /* ServicedObject.m */; };
 		117185E4165A9108009B3511 /* TorrentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 117185E3165A9108009B3511 /* TorrentTableViewController.m */; };
 		117185EC165AAC83009B3511 /* ServerStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 117185EB165AAC83009B3511 /* ServerStatus.m */; };
+		117896281666694000650086 /* NSByteSpeedFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 117896271666694000650086 /* NSByteSpeedFormatter.m */; };
+		1178962C166675CD00650086 /* NSTimeRemaingFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1178962B166675CD00650086 /* NSTimeRemaingFormatter.m */; };
 		1178D4C816614AAA00087084 /* TorrentWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1178D4C616614AAA00087084 /* TorrentWindowController.m */; };
 		1178D4CD16614B3B00087084 /* TorrentWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1178D4CB16614B3B00087084 /* TorrentWindow.xib */; };
 		1178D4D31662253F00087084 /* TurtleTemplate.png in Resources */ = {isa = PBXBuildFile; fileRef = 1178D4D21662253F00087084 /* TurtleTemplate.png */; };
@@ -124,6 +126,10 @@
 		117185E3165A9108009B3511 /* TorrentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TorrentTableViewController.m; path = GUI/Source/TorrentTableViewController.m; sourceTree = "<group>"; };
 		117185EA165AAC83009B3511 /* ServerStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerStatus.h; path = Core/Models/ServerStatus.h; sourceTree = "<group>"; };
 		117185EB165AAC83009B3511 /* ServerStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerStatus.m; path = Core/Models/ServerStatus.m; sourceTree = "<group>"; };
+		117896261666694000650086 /* NSByteSpeedFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSByteSpeedFormatter.h; path = Core/Classes/NSByteSpeedFormatter.h; sourceTree = "<group>"; };
+		117896271666694000650086 /* NSByteSpeedFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSByteSpeedFormatter.m; path = Core/Classes/NSByteSpeedFormatter.m; sourceTree = "<group>"; };
+		1178962A166675CD00650086 /* NSTimeRemaingFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSTimeRemaingFormatter.h; path = Core/Classes/NSTimeRemaingFormatter.h; sourceTree = "<group>"; };
+		1178962B166675CD00650086 /* NSTimeRemaingFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSTimeRemaingFormatter.m; path = Core/Classes/NSTimeRemaingFormatter.m; sourceTree = "<group>"; };
 		1178D4C516614AAA00087084 /* TorrentWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TorrentWindowController.h; path = GUI/Source/TorrentWindowController.h; sourceTree = "<group>"; };
 		1178D4C616614AAA00087084 /* TorrentWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TorrentWindowController.m; path = GUI/Source/TorrentWindowController.m; sourceTree = "<group>"; };
 		1178D4CC16614B3B00087084 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = GUI/Resources/en.lproj/TorrentWindow.xib; sourceTree = "<group>"; };
@@ -210,6 +216,10 @@
 				11272C1C1659344200506C11 /* NSMutableArray+QueueAdditions.m */,
 				11BA83591665408100B5450F /* NSInfinityNumberFormatter.h */,
 				11BA835A1665408100B5450F /* NSInfinityNumberFormatter.m */,
+				117896261666694000650086 /* NSByteSpeedFormatter.h */,
+				117896271666694000650086 /* NSByteSpeedFormatter.m */,
+				1178962A166675CD00650086 /* NSTimeRemaingFormatter.h */,
+				1178962B166675CD00650086 /* NSTimeRemaingFormatter.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -537,6 +547,8 @@
 				113CF69916627B77003C0012 /* TorrentItem+Viewable.m in Sources */,
 				11BD727A1663C4B900B6C165 /* AppOptions.m in Sources */,
 				11BA835B1665408100B5450F /* NSInfinityNumberFormatter.m in Sources */,
+				117896281666694000650086 /* NSByteSpeedFormatter.m in Sources */,
+				1178962C166675CD00650086 /* NSTimeRemaingFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

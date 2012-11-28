@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSInfinityNumberFormatter : NSNumberFormatter
+@interface NSInfinityNumberFormatter : NSNumberFormatter {
+    NSString *infinitySymbol;
+}
 
 @end

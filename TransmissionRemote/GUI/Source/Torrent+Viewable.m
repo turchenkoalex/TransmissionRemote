@@ -27,7 +27,22 @@
     }
 }
 
--(double)estimatedTime {
+-(NSString *)torrentStateName {
+    switch (self.torrentState) {
+        case STATE_CHECK:
+            return @"Verifing";
+        case STATE_DOWNLOAD:
+            return @"Downloading";
+        case STATE_SEED:
+            return @"Seeding";
+        case STATE_STOPPED:
+            return @"Paused";
+        default:
+            return @"Waiting for";
+    }
+}
+
+-(double)estimatedRemainTime {
     return self.rateDownload ? self.leftUntilDone / self.rateDownload : -1.0;
 }
 
@@ -148,8 +163,12 @@
     return [NSSet setWithObjects:@"torrentState", nil];
 }
 
-+(NSSet *)keyPathsForValuesAffectingEstimatedTime {
++(NSSet *)keyPathsForValuesAffectingEstimatedRemainTime {
     return [NSSet setWithObjects:@"rateDownload", @"leftUntilDone", nil];
+}
+
++(NSSet *)keyPathsForValuesAffectingTorrentStateName {
+    return [NSSet setWithObjects:@"torrentState", nil];
 }
 
 @end

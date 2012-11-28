@@ -10,9 +10,25 @@
 
 @implementation NSInfinityNumberFormatter
 
+-(id)init{
+    self = [super init];
+    if (self) {
+        infinitySymbol = @"∞";
+    }
+    return self;
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        infinitySymbol = @"∞";
+    }
+    return self;
+}
+
 -(NSString *)stringForObjectValue:(id)obj {
     if (obj && [obj isEqual:@-1.0]) {
-        return @"∞";
+        return infinitySymbol;
     } else {
         return [super stringForObjectValue:obj];
     }
