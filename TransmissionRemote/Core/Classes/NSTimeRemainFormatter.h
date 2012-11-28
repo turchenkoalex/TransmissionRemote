@@ -1,5 +1,5 @@
 //
-//  NSTimeRemaingFormatter.h
+//  NSTimeRemainFormatter.h
 //  TransmissionRemote
 //
 //  Created by Александр Турченко on 28.11.12.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSTimeRemaingFormatter : NSFormatter {
+@interface NSTimeRemainFormatter : NSFormatter {
     NSString *infinitySymbol;
     NSCalendar *systemCalendar;
     NSDate *originDate;

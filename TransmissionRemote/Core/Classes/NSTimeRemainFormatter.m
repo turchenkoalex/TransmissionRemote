@@ -1,14 +1,14 @@
 //
-//  NSTimeRemaingFormatter.m
+//  NSTimeRemainFormatter.m
 //  TransmissionRemote
 //
 //  Created by Александр Турченко on 28.11.12.
 //  Copyright (c) 2012 TurchenkoAlex. All rights reserved.
 //
 
-#import "NSTimeRemaingFormatter.h"
+#import "NSTimeRemainFormatter.h"
 
-@implementation NSTimeRemaingFormatter
+@implementation NSTimeRemainFormatter
 
 -(id)init {
     self = [super init];
@@ -43,7 +43,7 @@
         NSDate *diffedDate = [[NSDate alloc] initWithTimeInterval:timeRemain sinceDate:originDate];
         NSDateComponents *remainInfo = [systemCalendar components:unitFlags fromDate:originDate toDate:diffedDate options:0];
         if ([remainInfo hour]) {
-            return [NSString stringWithFormat:@"%@:%@:%@", [numberFormatter stringFromNumber:[NSNumber numberWithInteger:[remainInfo hour]]], [numberFormatter stringFromNumber:[NSNumber numberWithInteger:[remainInfo minute]]], [numberFormatter stringFromNumber:[NSNumber numberWithInteger:[remainInfo second]]]];
+            return [NSString stringWithFormat:@"%ld:%@:%@", [remainInfo hour], [numberFormatter stringFromNumber:[NSNumber numberWithInteger:[remainInfo minute]]], [numberFormatter stringFromNumber:[NSNumber numberWithInteger:[remainInfo second]]]];
         } else {
             return [NSString stringWithFormat:@"%@:%@", [numberFormatter stringFromNumber:[NSNumber numberWithInteger:[remainInfo minute]]], [numberFormatter stringFromNumber:[NSNumber numberWithInteger:[remainInfo second]]]];
         }
