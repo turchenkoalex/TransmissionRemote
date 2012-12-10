@@ -9,7 +9,7 @@ static const char *alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvw
 
 @implementation NSData (Base64)
 
-- (NSString *)encodeBase64 {
+- (NSString *)encodeToBase64String {
 	NSUInteger length = [self length];
 
 	int encodedLength = (4 * ((length / 3) + (1 - (3 - (length % 3)) / 3))) + 1;
@@ -38,12 +38,11 @@ static const char *alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvw
 	}
 	
 	outputBuffer[j] = 0;
-	
+    
     NSString *result =[[NSString alloc] initWithBytes:outputBuffer length:j encoding:NSASCIIStringEncoding];
 	free(outputBuffer);
 	
 	return result;
 }
-
 
 @end

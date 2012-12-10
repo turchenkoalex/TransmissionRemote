@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ConnectOptions : NSObject <NSCopying, NSMutableCopying, NSCoding>
+@interface ConnectOptions : NSObject <NSCoding>
 
 @property NSString *server;
 @property NSUInteger port;
@@ -20,8 +20,6 @@
 @property NSString *rpcPath;
 
 -(NSString *)protocol;
--(NSURL *)rpcURL;
-
--(void)apply:(ConnectOptions *)fromOptions;
+-(NSURL *)rpcServerURL;
 
 @end

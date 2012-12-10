@@ -13,10 +13,10 @@
 -(id)init {
     self = [super init];
     if (self) {
-        self.server = @"localhost";
         self.realm = @"Transmission";
         self.rpcPath = @"transmission";
         self.port = 9091;
+        self.usingAuthorization = NO;
     }
     return self;
 }
@@ -29,37 +29,8 @@
     }
 }
 
--(NSURL *)rpcURL {
+-(NSURL *)rpcServerURL {
     return [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@:%ld/%@/rpc", [self protocol], _server, _port, _rpcPath]];
-}
-
--(void)apply:(ConnectOptions *)fromOptions {
-    self.server = [fromOptions.server copy];
-    self.port = fromOptions.port;
-    self.usingSSL = fromOptions.usingSSL;
-    self.usingAuthorization = fromOptions.usingAuthorization;
-    self.username = [fromOptions.username copy];
-    self.password = [fromOptions.password copy];
-}
-
-#pragma mark - <NSCopying>
-
--(id)copyWithZone:(NSZone *)zone {
-    ConnectOptions *copy = [[[self class] allocWithZone:zone] init];
-    if (copy) {
-        [copy apply:self];
-    }
-    return copy;
-}
-
-#pragma mark - <NSMutableCopying>
-
--(id)mutableCopyWithZone:(NSZone *)zone {
-    ConnectOptions *copy = [[[self class] allocWithZone:zone] init];
-    if (copy) {
-        [copy apply:self];
-    }
-    return copy;
 }
 
 #pragma mark - <NSCoding>

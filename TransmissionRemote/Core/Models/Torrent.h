@@ -20,17 +20,28 @@ typedef NS_ENUM(NSUInteger, TorrentState) {
 
 @interface Torrent : NSObject
 
-@property NSInteger torrentId;
-@property NSString *torrentName;
-@property NSString *torrentComment;
-@property TorrentState torrentState;
-@property double torrentDownloadPercent;
-@property double torrentVerifyPercent;
-@property double uploadRatio;
-@property NSUInteger totalSize;
-@property NSArray *items;
-@property NSUInteger rateDownload;
-@property NSUInteger rateUpload;
-@property NSUInteger leftUntilDone;
+@property id          id;                // ID
+@property NSString    *name;              // Name
+@property NSString    *downloadDir;       // Download Directory
+@property NSInteger    eta;               // Downlaod Time Remaing
+@property NSString    *comment;           // URL on torrent page
+@property TorrentState status;            // Status
+@property double       percentDone;       // Verify complete percentage
+@property double       recheckProgress;   // Download complete percentage
+@property NSUInteger   totalSize;         // Size of all files
+@property NSUInteger   queuePosition;     // Position
+@property NSString    *torrentFile;       // Torrent File Name
+@property double       uploadRatio;       // Ratio
+@property NSUInteger   rateDownload;      // Speed of downlaod
+@property NSUInteger   rateUpload;        // Speed of upload
+@property NSUInteger   leftUntilDone;     // Size of content for download
+@property NSUInteger   bandwidthPriority; // Priority
+@property NSInteger    error;             // Error code
+@property NSString    *errorString;       // Error message
+@property NSArray     *files;             // Files (name, length, bytesCompleted)
+@property NSArray     *fileStats;         // Stat of files (bytesCompleted, wanted, priority)
+@property NSUInteger   peersConnected;    //
+
+-(void)applyChangesFromTorrent:(Torrent *)torrent;
 
 @end

@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface NSTimeRemainFormatter : NSFormatter {
-    NSString *infinitySymbol;
     NSCalendar *systemCalendar;
     NSDate *originDate;
     unsigned int unitFlags;

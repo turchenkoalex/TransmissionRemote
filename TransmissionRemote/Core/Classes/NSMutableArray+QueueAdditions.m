@@ -10,7 +10,7 @@
 
 @implementation NSMutableArray (QueueAdditions)
 
--(id)dequeue {
+-(id)dequeueObject {
     if (self.count > 0) {
         id headObject = [self objectAtIndex:0];
         [self removeObjectAtIndex:0];
@@ -23,6 +23,5 @@
 -(void)enqueue:(id)anObject {
     [self addObject:anObject];
 }
-
 
 @end

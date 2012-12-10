@@ -7,6 +7,6 @@
 
 @interface NSData (Base64)
 
-- (NSString *)encodeBase64;
+- (NSString *)encodeToBase64String;
 
 @end

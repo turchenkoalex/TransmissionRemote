@@ -11,7 +11,15 @@
 @implementation NSByteSpeedFormatter
 
 -(NSString *)stringForObjectValue:(id)obj {
-    return [NSString stringWithFormat:@"%@/s", [super stringForObjectValue:obj]];
+    return [self stringFromByteCount:[obj unsignedIntegerValue]];
+}
+
+-(NSString *)stringFromByteCount:(long long)byteCount {
+    if (byteCount <= 1000) {
+        return [NSString stringWithFormat:@"%lld B/s", byteCount];
+    } else {
+        return [NSString stringWithFormat:@"%@/s", [super stringFromByteCount:byteCount]];
+    }
 }
 
 @end

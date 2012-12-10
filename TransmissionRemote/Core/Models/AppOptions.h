@@ -8,11 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface AppOptions : NSObject <NSCopying, NSMutableCopying, NSCoding>
+@interface AppOptions : NSObject <NSCoding>
 
-@property BOOL removeFilesAfterAdd;
-@property BOOL removeDataWithTorrent;
-
--(void)apply:(AppOptions *)fromOptions;
+@property BOOL removeFilesAfterAddingTorrent;
+@property BOOL removeTorrentWithLocalData;
 
 @end

@@ -4,6 +4,21 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>torrent</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>TransmissionDocument</string>
+			<key>CFBundleTypeName</key>
+			<string>Torrent File</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+		</dict>
+	</array>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
@@ -23,7 +38,7 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSApplicationCategoryType</key>
-	<string>public.app-category.productivity</string>
+	<string>public.app-category.entertainment</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>${MACOSX_DEPLOYMENT_TARGET}</string>
 	<key>NSHumanReadableCopyright</key>
@@ -32,20 +47,5 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>CFBundleDocumentTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>torrent</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>TransmissionDocument.icns</string>
-			<key>CFBundleTypeName</key>
-			<string>Torrent File</string>
-			<key>CFBundleTypeRole</key>
-			<string>Viewer</string>
-		</dict>
-	</array>
 </dict>
 </plist>

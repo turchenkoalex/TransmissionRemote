@@ -13,7 +13,6 @@
 -(id)init {
     self = [super init];
     if (self) {
-        infinitySymbol = @"∞";
         systemCalendar = [NSCalendar currentCalendar];
         originDate = [[NSDate alloc] init];
         unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
@@ -25,7 +24,6 @@
 -(id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        infinitySymbol = @"∞";
         systemCalendar = [NSCalendar currentCalendar];
         originDate = [[NSDate alloc] init];
         unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
@@ -37,8 +35,8 @@
 
 -(NSString *)stringForObjectValue:(id)obj {
     NSTimeInterval timeRemain = [obj doubleValue];
-    if (timeRemain == -1.0) {
-        return infinitySymbol;
+    if (timeRemain <= 0.0) {
+        return nil;
     } else {
         NSDate *diffedDate = [[NSDate alloc] initWithTimeInterval:timeRemain sinceDate:originDate];
         NSDateComponents *remainInfo = [systemCalendar components:unitFlags fromDate:originDate toDate:diffedDate options:0];
