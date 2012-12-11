@@ -136,7 +136,6 @@
 		119EE7F1166B6C4200659FAF /* RpcServiceAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RpcServiceAssistant.m; sourceTree = "<group>"; };
 		119EE7F3166B6C8500659FAF /* CoreService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreService.h; sourceTree = "<group>"; };
 		119EE7F4166B6C8500659FAF /* CoreService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreService.m; sourceTree = "<group>"; };
-		11E830C21676776D00EC2D9F /* TorrentControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TorrentControllerDelegate.h; sourceTree = "<group>"; };
 		11EAE94F166E71AC0053A777 /* BlueGreenDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueGreenDot.png; sourceTree = "<group>"; };
 		11FADD2116710EFC00C92CBD /* OptionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsController.h; sourceTree = "<group>"; };
 		11FADD2216710EFC00C92CBD /* OptionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsController.m; sourceTree = "<group>"; };
@@ -399,7 +398,6 @@
 		119EE7CE166B4E6E00659FAF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				11E830C21676776D00EC2D9F /* TorrentControllerDelegate.h */,
 				11FADD2116710EFC00C92CBD /* OptionsController.h */,
 				11FADD2216710EFC00C92CBD /* OptionsController.m */,
 				11FADD291671295C00C92CBD /* TorrentController.h */,

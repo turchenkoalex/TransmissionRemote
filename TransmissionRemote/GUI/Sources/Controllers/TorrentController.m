@@ -15,12 +15,11 @@
 
 @implementation TorrentController
 
--(id)initWithSevice:(CoreService *)service andTorrent:(Torrent *)torrent andDelegate:(id <TorrentControllerDelegate>)delegate {
+-(id)initWithSevice:(CoreService *)service andTorrent:(Torrent *)torrent {
     self = [self initWithWindowNibName:@"TorrentWindow"];
     if (self) {
         _coreService = service;
         _torrent = torrent;
-        _delegate = delegate;
         _files = [self filesArrayFromTorrent:torrent];
         _filesTree = [self filesTreeFromFilesArray:_files];
         [_torrent addObserver:self forKeyPath:@"fileStats" options:0 context:nil];
@@ -161,13 +160,14 @@
     }
 }
 
-- (IBAction)applyChanges:(id)sender {
+-(void)closeTorrentWindow {
     [_torrent removeObserver:self forKeyPath:@"fileStats"];
     [self.window orderOut:nil];
     [NSApp endSheet:self.window];
-    if (_delegate) {
-        [_delegate torrentControllerClose:self];
-    }
+}
+
+- (IBAction)applyChanges:(id)sender {
+    [self closeTorrentWindow];
 }
 
 - (IBAction)enableFileAction:(id)sender {

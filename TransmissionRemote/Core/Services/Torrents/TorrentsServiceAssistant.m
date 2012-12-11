@@ -40,16 +40,21 @@
 
 -(void)rpcProtocolDidReceiveInitializedTorrents:(NSArray *)torrents {
     if (torrents) {
+        NSUInteger rateDownload = 0;
+        NSUInteger rateUpload = 0;
         @synchronized(_torrentsArray) {
             [_torrentsArray removeAllObjects];
             [_torrentsArray addObjectsFromArray:torrents];
             [_torrentsDictionary removeAllObjects];
             for(Torrent *torrent in torrents) {
                 [_torrentsDictionary setValue:torrent forKey:torrent.id];
+                rateDownload += torrent.rateDownload;
+                rateUpload += torrent.rateUpload;
             }
         }
         if (_delegate) {
             [_delegate torrentServiceAssistantDidInitializeTorrentsArray];
+            [_delegate torrentServiceAssistantDidChangeTotalDownloadRate:rateDownload andUploadRate:rateUpload];
         }
     }
 }

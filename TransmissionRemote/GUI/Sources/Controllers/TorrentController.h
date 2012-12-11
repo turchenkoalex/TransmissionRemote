@@ -9,14 +9,12 @@
 #import <Cocoa/Cocoa.h>
 #import "CoreService.h"
 #import "Torrent.h"
-#import "TorrentControllerDelegate.h"
 
 @interface TorrentController : NSWindowController {
     NSArray *_files;
-    id <TorrentControllerDelegate> _delegate;
 }
 
--(id)initWithSevice:(CoreService *)service andTorrent:(Torrent *)torrent andDelegate:(id <TorrentControllerDelegate>)delegate;
+-(id)initWithSevice:(CoreService *)service andTorrent:(Torrent *)torrent;
 
 @property (readonly) CoreService *coreService;
 @property (readonly) Torrent *torrent;

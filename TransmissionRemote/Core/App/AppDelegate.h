@@ -9,7 +9,6 @@
 #import <Cocoa/Cocoa.h>
 #import "CoreService.h"
 #import "OptionsController.h"
-#import "TorrentControllerDelegate.h"
 
 typedef NS_ENUM(NSUInteger, TorrentStatusFilter) {
     FILTER_STATUS_ALL = 0,
@@ -19,7 +18,7 @@ typedef NS_ENUM(NSUInteger, TorrentStatusFilter) {
     FILTER_STATUS_UNACTIVE = 4
 };
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, NSUserNotificationCenterDelegate, TorrentControllerDelegate> {
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSUserNotificationCenterDelegate> {
     OptionsController *_optionsController;
     IBOutlet NSTableView *_torrentsTableView;
     NSMutableArray *_torrentWindows;
@@ -37,5 +36,6 @@ typedef NS_ENUM(NSUInteger, TorrentStatusFilter) {
 - (IBAction)startNowTorrentAction:(id)sender;
 - (IBAction)checkTorrentAction:(id)sender;
 - (IBAction)removeTorrentAction:(id)sender;
+- (IBAction)openTorrentFilesAction:(id)sender;
 
 @end

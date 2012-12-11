@@ -8,8 +8,8 @@
 
 #import "CoreService.h"
 
-const double RefreshIntervalActive = 1.0;
-const double RefreshIntervalUnactive = 5.0;
+const double RefreshIntervalActive = 3.0;
+const double RefreshIntervalUnactive = 6.0;
 const double ReconnectIntervalActive = 30.0;
 const double ReconnectIntervalUnactive = 60.0;
 

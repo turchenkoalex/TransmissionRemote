@@ -49,7 +49,7 @@
         NSByteSpeedFormatter *formatter = [[NSByteSpeedFormatter alloc] init];
         [formatter setAllowsNonnumericFormatting:NO];
         
-        return [NSString stringWithFormat:@"%ld. %@: ↓ %@ ↑ %@ Peers %ld", self.queuePosition + 1, self.statusName, [formatter stringFromByteCount:self.rateDownload], [formatter stringFromByteCount:self.rateUpload], self.peersConnected];
+        return [NSString stringWithFormat:@"%ld. %@: ↓ %@, ↑ %@, Peers %ld", self.queuePosition + 1, self.statusName, [formatter stringFromByteCount:self.rateDownload], [formatter stringFromByteCount:self.rateUpload], self.peersConnected];
     }
 }
 

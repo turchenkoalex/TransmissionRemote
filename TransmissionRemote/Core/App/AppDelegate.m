@@ -168,10 +168,15 @@
 
 -(void)showWindowForTorrent:(Torrent *)torrent {
     if (torrent) {
-        TorrentController *controller = [[TorrentController alloc] initWithSevice:_coreService andTorrent:torrent andDelegate:self];
+        TorrentController *controller = [[TorrentController alloc] initWithSevice:_coreService andTorrent:torrent];
         [_torrentWindows addObject:controller];
-        [NSApp beginSheet:controller.window modalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
+        [NSApp beginSheet:controller.window modalForWindow:self.window modalDelegate:self didEndSelector:@selector(torrentWindowDidEnd:returnCode:contextInfo:) contextInfo:(__bridge void*)controller];
     }
+}
+
+-(void)torrentWindowDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
+    id controller = (__bridge id)contextInfo;
+    [_torrentWindows removeObject:controller];
 }
 
 -(IBAction)showOptionsWindow:(id)sender {
@@ -223,6 +228,15 @@
     }
 }
 
+- (IBAction)openTorrentFilesAction:(id)sender {
+    NSOpenPanel* panel = [NSOpenPanel openPanel];
+    [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result){
+        if (result == NSFileHandlingPanelOKButton) {
+            [_coreService addTorrentFiles:[panel URLs]];
+        }
+    }];
+}
+
 #pragma mark - <NSUserNotificationCenterDelegate>
 
 -(void)postUserNotificationWithTitle:(NSString *)aTitle andMessage:(NSString *)aMessage andValue:(id)value {
@@ -264,12 +278,6 @@
 
 -(void)application:(NSApplication *)sender openFiles:(NSArray *)filenames {
     [_coreService addTorrentFiles:filenames];
-}
-
-#pragma mark - <TorrentControllerDelegate>
-
--(void)torrentControllerClose:(id)controller {
-    [_torrentWindows removeObject:controller];
 }
 
 @end
