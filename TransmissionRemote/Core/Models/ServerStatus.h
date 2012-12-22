@@ -13,5 +13,6 @@
 @property NSString *version;
 @property BOOL connected;
 @property BOOL speedLimit;
+@property NSString *downloadDirectory;
 
 @end

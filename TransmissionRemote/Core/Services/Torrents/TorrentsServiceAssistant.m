@@ -134,7 +134,10 @@
         NSMutableArray *addedTorrents = [NSMutableArray arrayWithCapacity:[torrents count]];
         @synchronized(_torrentsArray) {
             for(Torrent *torrent in torrents) {
-                if (![_torrentsDictionary objectForKey:torrent.id]) {
+                Torrent *finded = [_torrentsDictionary objectForKey:torrent.id];
+                if (finded) {
+                    finded.downloadDir = torrent.downloadDir;
+                } else {
                     [_torrentsDictionary setValue:torrent forKey:torrent.id];
                     [addedTorrents addObject:torrent];
                     [_torrentsArray addObject:torrent];
@@ -162,6 +165,12 @@
 -(void)rpcProtocolDidReceiveChangeOfTorrent:(NSString *)torrentId {
     if (_delegate) {
         [_delegate torrentServiceAssistantDidChangeTorrent:torrentId];
+    }
+}
+
+-(void)rpcProtocolDidReceiveChangeOfTorrents:(NSArray *)torrentIdArray {
+    if (_delegate) {
+        [_delegate torrentServiceAssistantDidChangeTorrents:torrentIdArray];
     }
 }
 

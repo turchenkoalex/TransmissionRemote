@@ -85,8 +85,16 @@
     [self sendRequestWithHeader:[_rpcProtocol torrentsUpdateRequestWithTorrentIdArray:torrentIdArray]];
 }
 
--(void)addTorrentWithMetadata:(NSData *)metadata {
-    [self sendRequestWithHeader:[_rpcProtocol torrentsAddTorrentRequestWithData:[metadata encodeToBase64String]]];
+-(void)addTorrentWithMetadata:(NSData *)metadata andStart:(BOOL)start {
+    [self sendRequestWithHeader:[_rpcProtocol torrentsAddTorrentRequestWithData:[metadata encodeToBase64String] andStart:start]];
+}
+
+-(void)addTorrentWithURL:(NSString *)url andStart:(BOOL)start {
+    [self sendRequestWithHeader:[_rpcProtocol torrentsAddTorrentRequestWithURL:url andStart:start]];
+}
+
+-(void)torrents:(NSArray *)torrents setLocation:(NSString *)location andMove:(BOOL)move {
+    [self sendRequestWithHeader:[_rpcProtocol torrents:torrents setLocation:location andMove:move]];
 }
 
 #pragma mark - <RpcRequestDelegate>

@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface AppOptions : NSObject <NSCoding>
+@interface AppOptions : NSObject
 
 @property BOOL removeFilesAfterAddingTorrent;
 @property BOOL removeTorrentWithLocalData;
+@property BOOL startTorrentAfterAdding;
 
 @end

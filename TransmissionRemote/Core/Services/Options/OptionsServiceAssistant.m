@@ -38,6 +38,7 @@
     
     self.appOptions.removeFilesAfterAddingTorrent = [defaults boolForKey:@"removeFilesAfterAddingTorrent"];
     self.appOptions.removeTorrentWithLocalData = [defaults boolForKey:@"removeTorrentWithLocalData"];
+    self.appOptions.startTorrentAfterAdding = [defaults boolForKey:@"startTorrentAfterAdding"];
 }
 
 -(BOOL)isConnectOptionsDefaultsChanged {

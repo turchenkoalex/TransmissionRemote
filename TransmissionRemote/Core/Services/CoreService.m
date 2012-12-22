@@ -121,7 +121,7 @@ const double ReconnectIntervalUnactive = 60.0;
         }
         
         for (NSData *data in filesData) {
-            [_rpcAssistant addTorrentWithMetadata:data]; 
+            [_rpcAssistant addTorrentWithMetadata:data andStart:_optionsAssistant.appOptions.startTorrentAfterAdding];
         }
     }
 }
@@ -204,6 +204,10 @@ const double ReconnectIntervalUnactive = 60.0;
     @synchronized(_watingAddTorrents) {
         [_watingAddTorrents addObject:[NSString stringWithFormat:@"%@", torrentId]];
     }
+}
+
+-(void)torrentServiceAssistantDidChangeTorrents:(NSArray *)torrentIdArray {
+    [_rpcAssistant loadTorrentsDataForTorrentIdArray:torrentIdArray];
 }
 
 #pragma mark - <RpcServiceAssistantDelegate>

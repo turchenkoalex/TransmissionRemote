@@ -9,9 +9,11 @@
 #import <Cocoa/Cocoa.h>
 #import "CoreService.h"
 #import "Torrent.h"
+#import "TorrentMoveController.h"
 
 @interface TorrentController : NSWindowController {
     NSArray *_files;
+    TorrentMoveController *_torrentMoveController;
 }
 
 -(id)initWithSevice:(CoreService *)service andTorrent:(Torrent *)torrent;
@@ -25,5 +27,6 @@
 - (IBAction)applyChanges:(id)sender;
 - (IBAction)enableFileAction:(id)sender;
 - (IBAction)disableFileAction:(id)sender;
+- (IBAction)changeLocation:(id)sender;
 
 @end

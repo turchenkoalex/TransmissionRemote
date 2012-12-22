@@ -30,6 +30,7 @@
     NSString *_torrentsUpdateByIds;
     NSString *_torrentSetFilesWanted;
     NSString *_torrentSetFilesUnwanted;
+    NSString *_torrentSetLocation;
 }
 
 -(id)initWithDelegate:(id <RpcProtocolDelegate>)aDelegate;
@@ -45,10 +46,12 @@
 -(RpcRequestHeader *) torrentsStartRequestWithTorrentIdArray:(NSArray *)torrentIdArray andRequiring:(BOOL)requiredNow;
 -(RpcRequestHeader *) torrentsVerifyRequestWithTorrentIdArray:(NSArray *)torrentIdArray;
 -(RpcRequestHeader *) torrentsRemoveRequestWithTorrentIdArray:(NSArray *)torrentIdArray andRemoveLocalData:(BOOL)removeLocalData;
--(RpcRequestHeader *) torrentsAddTorrentRequestWithData:(NSString *)torrentData;
+-(RpcRequestHeader *) torrentsAddTorrentRequestWithData:(NSString *)torrentData andStart:(BOOL)start;
+-(RpcRequestHeader *) torrentsAddTorrentRequestWithURL:(NSString *)url andStart:(BOOL)start;
 -(RpcRequestHeader *) torrent:(Torrent *)torrent SetWantedFiles:(NSArray *)filesIndexes;
 -(RpcRequestHeader *) torrent:(Torrent *)torrent SetUnwantedFiles:(NSArray *)filesIndexes;
 -(RpcRequestHeader *) torrentsUpdateRequestWithTorrentIdArray:(NSArray *)torrentIdArray;
+-(RpcRequestHeader *) torrents:(NSArray *)torrents setLocation:(NSString *)location andMove:(BOOL)move;
 
 #pragma mark - Response
 

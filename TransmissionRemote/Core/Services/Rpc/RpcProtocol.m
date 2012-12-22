@@ -27,10 +27,11 @@
         _torrentStartNowBody = @"{ \"method\": \"torrent-start-now\", \"arguments\": { \"ids\": [%@] } }";
         _torrentVerifyBody = @"{ \"method\": \"torrent-verify\", \"arguments\": { \"ids\": [%@] } }";
         _torrentRemoveBody = @"{ \"method\": \"torrent-remove\", \"arguments\": { \"ids\": [%@], \"delete-local-data\": %@ } }";
-        _torrentAddFileBody = @"{ \"method\": \"torrent-add\", \"arguments\": { \"paused\": true, \"metainfo\": \"%@\" } }";
-        _torrentAddUrlBody = @"{ \"method\": \"torrent-add\", \"arguments\": { \"paused\": true, \"filename\": \"%@\" } }";
+        _torrentAddFileBody = @"{ \"method\": \"torrent-add\", \"arguments\": { \"paused\": %@, \"metainfo\": \"%@\" } }";
+        _torrentAddUrlBody = @"{ \"method\": \"torrent-add\", \"arguments\": { \"paused\": %@, \"filename\": \"%@\" } }";
         _torrentSetFilesWanted = @"{ \"method\": \"torrent-set\", \"arguments\": { \"ids\": [%@], \"files-wanted\": [%@] } }";
         _torrentSetFilesUnwanted = @"{ \"method\": \"torrent-set\", \"arguments\": { \"ids\": [%@], \"files-unwanted\": [%@] } }";
+        _torrentSetLocation = @"{ \"method\": \"torrent-set-location\", \"arguments\": { \"ids\": [%@], \"location\": \"%@\", \"move\": %@ } }";
     }
     return self;
 }
@@ -104,8 +105,12 @@
     return [RpcRequestHeader requestHeaderWithType:REQUEST_TORRENT_REMOVE andBody:[NSString stringWithFormat:_torrentRemoveBody, [torrentIdArray componentsJoinedByString:@","], [self stringFromBOOL:removeLocalData]]];
 }
 
--(RpcRequestHeader *) torrentsAddTorrentRequestWithData:(NSString *)torrentData {
-    return [RpcRequestHeader requestHeaderWithType:REQUEST_TORRENT_ADD andBody:[NSString stringWithFormat:_torrentAddFileBody, torrentData]];
+-(RpcRequestHeader *) torrentsAddTorrentRequestWithData:(NSString *)torrentData andStart:(BOOL)start{
+    return [RpcRequestHeader requestHeaderWithType:REQUEST_TORRENT_ADD andBody:[NSString stringWithFormat:_torrentAddFileBody, [self stringFromBOOL:!start], torrentData]];
+}
+
+-(RpcRequestHeader *) torrentsAddTorrentRequestWithURL:(NSString *)url andStart:(BOOL)start {
+    return [RpcRequestHeader requestHeaderWithType:REQUEST_TORRENT_ADD andBody:[NSString stringWithFormat:_torrentAddUrlBody, [self stringFromBOOL:!start], url]];
 }
 
 -(RpcRequestHeader *) torrent:(Torrent *)torrent SetWantedFiles:(NSArray *)filesIndexes {
@@ -120,6 +125,10 @@
 
 -(RpcRequestHeader *) torrentsUpdateRequestWithTorrentIdArray:(NSArray *)torrentIdArray {
     return [RpcRequestHeader requestHeaderWithType:REQUEST_TORRENT_UPDATE andBody:[NSString stringWithFormat:_torrentsUpdateByIds, [torrentIdArray componentsJoinedByString:@","]]];
+}
+
+-(RpcRequestHeader *) torrents:(NSArray *)torrents setLocation:(NSString *)location andMove:(BOOL)move {
+    return [RpcRequestHeader requestHeaderWithType:REQUEST_TORRENT_LOCATION andBody:[NSString stringWithFormat:_torrentSetLocation, [torrents componentsJoinedByString:@","], location, [self stringFromBOOL:move]] andData:[torrents valueForKeyPath:@"id"]];
 }
 
 #pragma mark - Response
@@ -169,6 +178,7 @@
                     case REQUEST_SESSION_GET: {
                             ServerStatus *serverStatus = [[ServerStatus alloc] init];
                             serverStatus.connected = YES;
+                            serverStatus.downloadDirectory = [arguments objectForKey:@"download-dir"];
                             serverStatus.version = [NSString stringWithFormat:@"Transmission %@", [arguments objectForKey:@"version"]];
                             serverStatus.speedLimit = [[arguments objectForKey:@"alt-speed-enabled"] boolValue];
                             [_delegate rpcProtocolDidReceiveServerStatus:serverStatus];
@@ -182,6 +192,10 @@
                             [_delegate rpcProtocolDidReceiveChangeOfTorrent:header.data];
                         }
                         break;
+                    case REQUEST_TORRENT_LOCATION:
+                        if (header.data) {
+                            [_delegate rpcProtocolDidReceiveChangeOfTorrents:header.data];
+                        }
                     default:
                         break;
                 }

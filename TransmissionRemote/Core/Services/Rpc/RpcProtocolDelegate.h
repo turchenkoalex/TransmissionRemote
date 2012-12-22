@@ -18,5 +18,6 @@
 -(void)rpcProtocolDidReceiveAddedTorrentId:(NSString *)torrentId;
 -(void)rpcProtocolDidReceiveServerStatus:(ServerStatus *)serverStatus;
 -(void)rpcProtocolDidReceiveChangeOfTorrent:(NSString *)torrentId;
+-(void)rpcProtocolDidReceiveChangeOfTorrents:(NSArray *)torrentIdArray;
 
 @end

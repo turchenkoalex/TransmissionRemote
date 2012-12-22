@@ -33,6 +33,8 @@
 -(void)torrent:(Torrent *)torrent SetWantedFiles:(NSArray *)filesIndexes;
 -(void)torrent:(Torrent *)torrent SetUnwantedFiles:(NSArray *)filesIndexes;
 -(void)updateTorrentsDataForTorrentIdArray:(NSArray *)torrentIdArray;
--(void)addTorrentWithMetadata:(NSData *)metadata;
+-(void)addTorrentWithMetadata:(NSData *)metadata andStart:(BOOL)start;
+-(void)addTorrentWithURL:(NSString *)url andStart:(BOOL)start;
+-(void)torrents:(NSArray *)torrents setLocation:(NSString *)location andMove:(BOOL)move;
 
 @end

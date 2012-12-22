@@ -190,6 +190,14 @@
     }
 }
 
+- (IBAction)changeLocation:(id)sender {
+    if (!_torrentMoveController) {
+        _torrentMoveController = [[TorrentMoveController alloc] initWithSevice:_coreService andTorrent:_torrent];
+    }
+
+    [NSApp beginSheet:_torrentMoveController.window modalForWindow:self.window modalDelegate:self didEndSelector:nil contextInfo:nil];
+}
+
 #pragma mark - Observing
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {

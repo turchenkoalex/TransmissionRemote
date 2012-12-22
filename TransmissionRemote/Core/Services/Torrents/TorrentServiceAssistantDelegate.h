@@ -21,6 +21,7 @@
 -(void)torrentServiceAssistantDidDownloadedTorrents:(NSArray *)torrentsArray;
 -(void)torrentServiceAssistantDidCheckedTorrents:(NSArray *)torrentsArray;
 -(void)torrentServiceAssistantDidChangeTorrent:(NSString *)torrentId;
+-(void)torrentServiceAssistantDidChangeTorrents:(NSArray *)torrentIdArray;
 -(void)torrentServiceAssistantDidAddTorrent:(id)torrentId;
 
 @end

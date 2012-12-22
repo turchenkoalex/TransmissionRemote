@@ -10,20 +10,4 @@
 
 @implementation AppOptions
 
-#pragma mark - <NSCoding>
-
--(id)initWithCoder:(NSCoder *)aDecoder {
-    self = [[[self class] alloc] init];
-    if (self) {
-        _removeFilesAfterAddingTorrent = [aDecoder decodeBoolForKey:@"removeFilesAfterAddingTorrent"];
-        _removeTorrentWithLocalData = [aDecoder decodeBoolForKey:@"removeTorrentWithLocalData"];
-    }
-    return self;
-}
-
--(void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeBool:_removeFilesAfterAddingTorrent forKey:@"removeFilesAfterAddingTorrent"];
-    [aCoder encodeBool:_removeTorrentWithLocalData forKey:@"removeTorrentWithLocalData"];
-}
-
 @end
