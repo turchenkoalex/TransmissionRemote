@@ -9,6 +9,23 @@
 #import "Torrent+Statusing.h"
 #import "NSByteSpeedFormatter.h"
 
+static const NSString* TorrentStatusNames[] = {
+    @"Unactive",
+    @"Downloading",
+    @"Seeding",
+    @"Verifing",
+    @"Stopped",
+    @"Error"
+};
+
+static const NSString* TorrentStatusImages[] = {
+    @"GrayDot",
+    @"BlueDot",
+    @"GreenDot",
+    @"YellowDot",
+    @"RedDot"
+};
+
 @implementation Torrent (Statusing)
 
 -(TorrentStatus)torrentStatus {
@@ -48,6 +65,7 @@
     } else {
         NSByteSpeedFormatter *formatter = [[NSByteSpeedFormatter alloc] init];
         [formatter setAllowsNonnumericFormatting:NO];
+        [formatter setCountStyle:NSByteCountFormatterCountStyleBinary];
         
         return [NSString stringWithFormat:@"%ld. %@: ↓ %@, ↑ %@, Peers %ld", self.queuePosition + 1, self.statusName, [formatter stringFromByteCount:self.rateDownload], [formatter stringFromByteCount:self.rateUpload], self.peersConnected];
     }
