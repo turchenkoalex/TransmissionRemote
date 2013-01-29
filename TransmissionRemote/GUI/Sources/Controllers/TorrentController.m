@@ -201,7 +201,7 @@
 #pragma mark - Observing
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if (object == _torrent && keyPath == @"fileStats") {
+    if (object == _torrent && [keyPath isEqualToString:@"fileStats"]) {
         [self updateFilesArrayWithStatisticsArray:_torrent.fileStats];
     }
 }

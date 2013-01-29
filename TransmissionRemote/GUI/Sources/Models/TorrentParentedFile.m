@@ -63,7 +63,7 @@
 #pragma mark - Observing
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if (keyPath == @"wanted") {
+    if ([keyPath isEqualToString:@"wanted"]) {
         if ([object wanted]) {
             if (!self.wanted) {
                 self.wanted = YES;
