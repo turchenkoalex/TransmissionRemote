@@ -12,7 +12,7 @@ static const char *alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvw
 - (NSString *)encodeToBase64String {
 	NSUInteger length = [self length];
 
-	int encodedLength = (4 * ((length / 3) + (1 - (3 - (length % 3)) / 3))) + 1;
+	NSUInteger encodedLength = (4 * ((length / 3) + (1 - (3 - (length % 3)) / 3))) + 1;
     char *outputBuffer = malloc(encodedLength);
 	unsigned char *inputBuffer = (unsigned char *)[self bytes];
 	
