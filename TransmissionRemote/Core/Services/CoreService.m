@@ -54,7 +54,7 @@ const double ReconnectIntervalUnactive = 60.0;
 -(void)disconnect {
     [NSObject cancelPreviousPerformRequestsWithTarget:_rpcAssistant];
     self.serverStatus.connected = NO;
-    self.serverStatus.version = @"Disconnected";
+    self.serverStatus.version = NSLocalizedString(@"Disconnected", "Disconnected");
     self.rateDownload = 0;
     self.rateUpload = 0;
     [_torrentsAssistant removeAllTorrents];

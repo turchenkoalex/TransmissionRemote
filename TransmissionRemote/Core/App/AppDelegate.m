@@ -122,17 +122,15 @@
 }
 
 -(void)serviceDidDownloadedTorrentsNotification:(NSNotification *)notification {
-    NSArray *torrents = [notification object];
-    for (Torrent *torrent in torrents) {
-        [self postUserNotificationWithTitle:@"Download complete" andMessage:torrent.name andValue:torrent.id];
-    }
+    [self notifyUserAboutTorrents:[notification object]
+                        withTitle:NSLocalizedString(@"Download complete title", "Title")
+                 andMessageFormat:NSLocalizedString(@"Download complete message", "Message")];
 }
 
 -(void)serviceDidCheckedTorrentsNotification:(NSNotification *)notification {
-    NSArray *torrents = [notification object];
-    for (Torrent *torrent in torrents) {
-        [self postUserNotificationWithTitle:@"Verify complete" andMessage:torrent.name andValue:torrent.id];
-    }
+    [self notifyUserAboutTorrents:[notification object]
+                        withTitle:NSLocalizedString(@"Verify complete title", "Title")
+                 andMessageFormat:NSLocalizedString(@"Verify complete message", "Message")];
 }
 
 -(void)serviceDidAddedTorrentsNotification:(NSNotification *)notification {
@@ -218,7 +216,12 @@
     NSArray *selectedTorrents = [self selectedTorrens];
     if ([selectedTorrents count] > 0) {
         NSString *names = [[selectedTorrents valueForKeyPath:@"name"] componentsJoinedByString:@", "];
-        NSAlert *alert = [NSAlert alertWithMessageText:@"Are you shure?" defaultButton:@"Remove" alternateButton:@"Cancel" otherButton:nil informativeTextWithFormat:@"Removing torrents: %@", names];
+        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Remove message", "Message")
+                                         defaultButton:NSLocalizedString(@"Remove", "Remove")
+                                       alternateButton:NSLocalizedString(@"Cancel", "Cancel")
+                                           otherButton:nil
+                             informativeTextWithFormat:NSLocalizedString(@"Remove information", "Information"), names];
+        
         void (^blockCallback)(NSInteger) = ^(NSInteger returnCode) {
             if (returnCode == NSAlertDefaultReturn) {
                 [_coreService.rpcAssistant removeTorrentsArray:selectedTorrents withLocalData:_coreService.optionsAssistant.appOptions.removeTorrentWithLocalData];
@@ -241,7 +244,7 @@
 
 -(void)postUserNotificationWithTitle:(NSString *)aTitle andMessage:(NSString *)aMessage andValue:(id)value {
     NSUserNotification *notification = [[NSUserNotification alloc] init];
-    notification.title = @"Transmission Remote";
+    notification.title = NSLocalizedString(@"Notification title", "Transmission Remote");
     notification.subtitle = aTitle;
     notification.informativeText = aMessage;
     notification.soundName = NSUserNotificationDefaultSoundName;
@@ -259,6 +262,14 @@
     [[NSUserNotificationCenter defaultUserNotificationCenter] removeDeliveredNotification:notification];
     if (value) {
         [[self window] makeKeyAndOrderFront:nil];
+    }
+}
+
+-(void)notifyUserAboutTorrents:(NSArray *)torrents withTitle:(NSString *)title andMessageFormat:(NSString *)messageFormat {
+    if (torrents) {
+        for (Torrent *torrent in torrents) {
+            [self postUserNotificationWithTitle:title andMessage:[NSString stringWithFormat:messageFormat, torrent.name] andValue:torrent.id];
+        }
     }
 }
 

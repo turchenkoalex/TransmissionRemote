@@ -16,9 +16,9 @@
 
 -(NSString *)stringFromByteCount:(long long)byteCount {
     if (byteCount <= 1000) {
-        return [NSString stringWithFormat:@"%lld B/s", byteCount];
+        return [NSString stringWithFormat:NSLocalizedString(@"Bytes per second", "Speed"), byteCount];
     } else {
-        return [NSString stringWithFormat:@"%@/s", [super stringFromByteCount:byteCount]];
+        return [NSString stringWithFormat:NSLocalizedString(@"Size per second", "Speed"), [super stringFromByteCount:byteCount]];
     }
 }
 

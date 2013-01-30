@@ -51,23 +51,28 @@ static const NSString* TorrentStatusImages[] = {
     return [TorrentStatusNames[self.torrentStatus] copy];
 }
 
+-(NSString *)localizedStatusName {
+    return NSLocalizedString([self statusName], "Status");
+}
+
 -(NSImage *)statusImage {
     return [NSImage imageNamed:[TorrentStatusImages[self.torrentStatus] copy]];
 }
 
 -(NSString *)statusInformation {
+    NSString *localizedStatus = [self localizedStatusName];
     if (self.torrentStatus == STATUS_VERIFY) {
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         [formatter setNumberStyle:NSNumberFormatterPercentStyle];
-        return [NSString stringWithFormat:@"%ld. %@: %@", self.queuePosition + 1, self.statusName, [formatter stringFromNumber:[NSNumber numberWithDouble:self.recheckProgress]]];
+        return [NSString stringWithFormat:@"%ld. %@: %@", self.queuePosition + 1, localizedStatus, [formatter stringFromNumber:[NSNumber numberWithDouble:self.recheckProgress]]];
     } else if (self.torrentStatus == STATUS_UNACTIVE) {
-        return [NSString stringWithFormat:@"%ld. %@", self.queuePosition + 1, self.statusName];
+        return [NSString stringWithFormat:@"%ld. %@", self.queuePosition + 1, localizedStatus];
     } else {
         NSByteSpeedFormatter *formatter = [[NSByteSpeedFormatter alloc] init];
         [formatter setAllowsNonnumericFormatting:NO];
         [formatter setCountStyle:NSByteCountFormatterCountStyleBinary];
         
-        return [NSString stringWithFormat:@"%ld. %@: ↓ %@, ↑ %@, Peers %ld", self.queuePosition + 1, self.statusName, [formatter stringFromByteCount:self.rateDownload], [formatter stringFromByteCount:self.rateUpload], self.peersConnected];
+        return [NSString stringWithFormat:@"%ld. %@: ↓ %@, ↑ %@, %@ %ld", self.queuePosition + 1, localizedStatus, [formatter stringFromByteCount:self.rateDownload], [formatter stringFromByteCount:self.rateUpload], NSLocalizedString(@"Peers", "Peers"), self.peersConnected];
     }
 }
 

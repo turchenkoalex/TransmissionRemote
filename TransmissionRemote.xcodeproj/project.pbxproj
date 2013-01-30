@@ -13,6 +13,7 @@
 		11413AD5166BE55200F1AAF5 /* Transmission.icns in Resources */ = {isa = PBXBuildFile; fileRef = 11413AD4166BE55200F1AAF5 /* Transmission.icns */; };
 		11413AD7166BE5BD00F1AAF5 /* TransmissionDocument.icns in Resources */ = {isa = PBXBuildFile; fileRef = 11413AD6166BE5BD00F1AAF5 /* TransmissionDocument.icns */; };
 		114E7570166BEED400190138 /* Torrent+Statusing.m in Sources */ = {isa = PBXBuildFile; fileRef = 114E756F166BEED400190138 /* Torrent+Statusing.m */; };
+		1169B3B416B9A2AE0034284B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1169B3B316B9A2AE0034284B /* Localizable.strings */; };
 		117899F8167499D600CF32DD /* TorrentParentedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 117899F7167499D600CF32DD /* TorrentParentedFile.m */; };
 		11922BE316862ECA00979648 /* TorrentMoveController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11922BE216862ECA00979648 /* TorrentMoveController.m */; };
 		11922BE916862F0200979648 /* TorrentMove.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11922BE716862F0200979648 /* TorrentMove.xib */; };
@@ -75,6 +76,7 @@
 		11413AD6166BE5BD00F1AAF5 /* TransmissionDocument.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TransmissionDocument.icns; sourceTree = "<group>"; };
 		114E756E166BEED400190138 /* Torrent+Statusing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Torrent+Statusing.h"; sourceTree = "<group>"; };
 		114E756F166BEED400190138 /* Torrent+Statusing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Torrent+Statusing.m"; sourceTree = "<group>"; };
+		1169B3B316B9A2AE0034284B /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		117899F6167499D600CF32DD /* TorrentParentedFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TorrentParentedFile.h; sourceTree = "<group>"; };
 		117899F7167499D600CF32DD /* TorrentParentedFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TorrentParentedFile.m; sourceTree = "<group>"; };
 		11922BE116862ECA00979648 /* TorrentMoveController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TorrentMoveController.h; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				119EE7B7166B4E6E00659FAF /* MainMenu.xib */,
 				11FADD2616710F3300C92CBD /* OptionsWindow.xib */,
 				11FADD2E167129AC00C92CBD /* TorrentWindow.xib */,
+				1169B3B316B9A2AE0034284B /* Localizable.strings */,
 				119EE7B9166B4E6E00659FAF /* Images */,
 			);
 			path = Resources;
@@ -492,6 +495,7 @@
 				11FADD2816710F3300C92CBD /* OptionsWindow.xib in Resources */,
 				11FADD30167129AC00C92CBD /* TorrentWindow.xib in Resources */,
 				11922BE916862F0200979648 /* TorrentMove.xib in Resources */,
+				1169B3B416B9A2AE0034284B /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
