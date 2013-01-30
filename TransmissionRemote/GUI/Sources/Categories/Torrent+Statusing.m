@@ -48,11 +48,7 @@ static const NSString* TorrentStatusImages[] = {
 }
 
 -(NSString *)statusName {
-    return [TorrentStatusNames[self.torrentStatus] copy];
-}
-
--(NSString *)localizedStatusName {
-    return NSLocalizedString([self statusName], "Status");
+    return NSLocalizedString([TorrentStatusNames[self.torrentStatus] copy], "Status");;
 }
 
 -(NSImage *)statusImage {
@@ -60,19 +56,18 @@ static const NSString* TorrentStatusImages[] = {
 }
 
 -(NSString *)statusInformation {
-    NSString *localizedStatus = [self localizedStatusName];
     if (self.torrentStatus == STATUS_VERIFY) {
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         [formatter setNumberStyle:NSNumberFormatterPercentStyle];
-        return [NSString stringWithFormat:@"%ld. %@: %@", self.queuePosition + 1, localizedStatus, [formatter stringFromNumber:[NSNumber numberWithDouble:self.recheckProgress]]];
+        return [NSString stringWithFormat:@"%ld. %@: %@", self.queuePosition + 1, self.statusName, [formatter stringFromNumber:[NSNumber numberWithDouble:self.recheckProgress]]];
     } else if (self.torrentStatus == STATUS_UNACTIVE) {
-        return [NSString stringWithFormat:@"%ld. %@", self.queuePosition + 1, localizedStatus];
+        return [NSString stringWithFormat:@"%ld. %@", self.queuePosition + 1, self.statusName];
     } else {
         NSByteSpeedFormatter *formatter = [[NSByteSpeedFormatter alloc] init];
         [formatter setAllowsNonnumericFormatting:NO];
         [formatter setCountStyle:NSByteCountFormatterCountStyleBinary];
         
-        return [NSString stringWithFormat:@"%ld. %@: ↓ %@, ↑ %@, %@ %ld", self.queuePosition + 1, localizedStatus, [formatter stringFromByteCount:self.rateDownload], [formatter stringFromByteCount:self.rateUpload], NSLocalizedString(@"Peers", "Peers"), self.peersConnected];
+        return [NSString stringWithFormat:@"%ld. %@: ↓ %@, ↑ %@, %@ %ld", self.queuePosition + 1, self.statusName, [formatter stringFromByteCount:self.rateDownload], [formatter stringFromByteCount:self.rateUpload], NSLocalizedString(@"Peers", "Peers"), self.peersConnected];
     }
 }
 

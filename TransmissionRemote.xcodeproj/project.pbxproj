@@ -13,7 +13,6 @@
 		11413AD5166BE55200F1AAF5 /* Transmission.icns in Resources */ = {isa = PBXBuildFile; fileRef = 11413AD4166BE55200F1AAF5 /* Transmission.icns */; };
 		11413AD7166BE5BD00F1AAF5 /* TransmissionDocument.icns in Resources */ = {isa = PBXBuildFile; fileRef = 11413AD6166BE5BD00F1AAF5 /* TransmissionDocument.icns */; };
 		114E7570166BEED400190138 /* Torrent+Statusing.m in Sources */ = {isa = PBXBuildFile; fileRef = 114E756F166BEED400190138 /* Torrent+Statusing.m */; };
-		1169B3B416B9A2AE0034284B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1169B3B316B9A2AE0034284B /* Localizable.strings */; };
 		117899F8167499D600CF32DD /* TorrentParentedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 117899F7167499D600CF32DD /* TorrentParentedFile.m */; };
 		11922BE316862ECA00979648 /* TorrentMoveController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11922BE216862ECA00979648 /* TorrentMoveController.m */; };
 		11922BE916862F0200979648 /* TorrentMove.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11922BE716862F0200979648 /* TorrentMove.xib */; };
@@ -55,6 +54,7 @@
 		119EE7EC166B561700659FAF /* RpcProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 119EE7EB166B561700659FAF /* RpcProtocol.m */; };
 		119EE7F2166B6C4200659FAF /* RpcServiceAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = 119EE7F1166B6C4200659FAF /* RpcServiceAssistant.m */; };
 		119EE7F5166B6C8500659FAF /* CoreService.m in Sources */ = {isa = PBXBuildFile; fileRef = 119EE7F4166B6C8500659FAF /* CoreService.m */; };
+		11B4ACF816B9AC5A005312A3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11B4ACFA16B9AC5A005312A3 /* Localizable.strings */; };
 		11EAE950166E71AC0053A777 /* BlueGreenDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 11EAE94F166E71AC0053A777 /* BlueGreenDot.png */; };
 		11FADD2416710EFC00C92CBD /* OptionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FADD2216710EFC00C92CBD /* OptionsController.m */; };
 		11FADD2816710F3300C92CBD /* OptionsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11FADD2616710F3300C92CBD /* OptionsWindow.xib */; };
@@ -76,7 +76,6 @@
 		11413AD6166BE5BD00F1AAF5 /* TransmissionDocument.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = TransmissionDocument.icns; sourceTree = "<group>"; };
 		114E756E166BEED400190138 /* Torrent+Statusing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Torrent+Statusing.h"; sourceTree = "<group>"; };
 		114E756F166BEED400190138 /* Torrent+Statusing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Torrent+Statusing.m"; sourceTree = "<group>"; };
-		1169B3B316B9A2AE0034284B /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		117899F6167499D600CF32DD /* TorrentParentedFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TorrentParentedFile.h; sourceTree = "<group>"; };
 		117899F7167499D600CF32DD /* TorrentParentedFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TorrentParentedFile.m; sourceTree = "<group>"; };
 		11922BE116862ECA00979648 /* TorrentMoveController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TorrentMoveController.h; sourceTree = "<group>"; };
@@ -143,6 +142,14 @@
 		119EE7F1166B6C4200659FAF /* RpcServiceAssistant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RpcServiceAssistant.m; sourceTree = "<group>"; };
 		119EE7F3166B6C8500659FAF /* CoreService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreService.h; sourceTree = "<group>"; };
 		119EE7F4166B6C8500659FAF /* CoreService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreService.m; sourceTree = "<group>"; };
+		11B4ACF216B9AC18005312A3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/TorrentMove.xib; sourceTree = "<group>"; };
+		11B4ACF316B9AC18005312A3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		11B4ACF416B9AC18005312A3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/OptionsWindow.xib; sourceTree = "<group>"; };
+		11B4ACF516B9AC18005312A3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/TorrentWindow.xib; sourceTree = "<group>"; };
+		11B4ACF616B9AC18005312A3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = ru; path = ru.lproj/Credits.rtf; sourceTree = "<group>"; };
+		11B4ACF716B9AC18005312A3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		11B4ACF916B9AC5A005312A3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		11B4ACFB16B9AC5E005312A3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		11EAE94F166E71AC0053A777 /* BlueGreenDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueGreenDot.png; sourceTree = "<group>"; };
 		11FADD2116710EFC00C92CBD /* OptionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsController.h; sourceTree = "<group>"; };
 		11FADD2216710EFC00C92CBD /* OptionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsController.m; sourceTree = "<group>"; };
@@ -353,7 +360,7 @@
 				119EE7B7166B4E6E00659FAF /* MainMenu.xib */,
 				11FADD2616710F3300C92CBD /* OptionsWindow.xib */,
 				11FADD2E167129AC00C92CBD /* TorrentWindow.xib */,
-				1169B3B316B9A2AE0034284B /* Localizable.strings */,
+				11B4ACFA16B9AC5A005312A3 /* Localizable.strings */,
 				119EE7B9166B4E6E00659FAF /* Images */,
 			);
 			path = Resources;
@@ -452,6 +459,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ru,
 			);
 			mainGroup = 119EE755166B4C7D00659FAF;
 			productRefGroup = 119EE761166B4C7D00659FAF /* Products */;
@@ -495,7 +503,7 @@
 				11FADD2816710F3300C92CBD /* OptionsWindow.xib in Resources */,
 				11FADD30167129AC00C92CBD /* TorrentWindow.xib in Resources */,
 				11922BE916862F0200979648 /* TorrentMove.xib in Resources */,
-				1169B3B416B9A2AE0034284B /* Localizable.strings in Resources */,
+				11B4ACF816B9AC5A005312A3 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +548,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				11922BE816862F0200979648 /* en */,
+				11B4ACF216B9AC18005312A3 /* ru */,
 			);
 			name = TorrentMove.xib;
 			sourceTree = "<group>";
@@ -548,6 +557,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				119EE7B4166B4E6E00659FAF /* en */,
+				11B4ACF616B9AC18005312A3 /* ru */,
 			);
 			name = Credits.rtf;
 			path = GUI/Resources;
@@ -557,6 +567,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				119EE7B6166B4E6E00659FAF /* en */,
+				11B4ACF716B9AC18005312A3 /* ru */,
 			);
 			name = InfoPlist.strings;
 			path = GUI/Resources;
@@ -566,14 +577,25 @@
 			isa = PBXVariantGroup;
 			children = (
 				119EE7B8166B4E6E00659FAF /* en */,
+				11B4ACF316B9AC18005312A3 /* ru */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		11B4ACFA16B9AC5A005312A3 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				11B4ACF916B9AC5A005312A3 /* ru */,
+				11B4ACFB16B9AC5E005312A3 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		11FADD2616710F3300C92CBD /* OptionsWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				11FADD2716710F3300C92CBD /* en */,
+				11B4ACF416B9AC18005312A3 /* ru */,
 			);
 			name = OptionsWindow.xib;
 			sourceTree = "<group>";
@@ -582,6 +604,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				11FADD2F167129AC00C92CBD /* en */,
+				11B4ACF516B9AC18005312A3 /* ru */,
 			);
 			name = TorrentWindow.xib;
 			sourceTree = "<group>";

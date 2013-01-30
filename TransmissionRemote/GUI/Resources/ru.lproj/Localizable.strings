@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  TransmissionRemote
+
+  Created by Александр Турченко on 30.01.13.
+  Copyright (c) 2013 TurchenkoAlex. All rights reserved.
+*/
+
+"Notification title" = "Transmission Remote";
+
+"Download complete title" = "Загрузка завершена";
+"Download complete message" = "%@";
+
+"Remove message" = "Вы уверены?";
+"Remove" = "Удалить";
+"Cancel" = "Отмена";
+"Remove information" = "Удаляемые торренты: %@";
+
+"Bytes per second" = "%lld Б/с";
+"Size per second" = "%@/с";
+
+"Disconnected" = "Отключен";
+
+"Peers" = "Пиры:";
+
+"Unactive" = "Неактивно";
+"Downloading" = "Загрузка";
+"Seeding" = "Раздача";
+"Verifing" = "Проверка";
+"Stopped" = "Остановлено";
+"Error" = "Ошибка";
