@@ -10,6 +10,8 @@
 
 "Download complete title" = "Загрузка завершена";
 "Download complete message" = "%@";
+"Verify complete title" = "Проверка завершена";
+"Verify complete message" = "%@";
 
 "Remove message" = "Вы уверены?";
 "Remove" = "Удалить";

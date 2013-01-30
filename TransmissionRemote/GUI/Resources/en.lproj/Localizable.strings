@@ -10,6 +10,8 @@
 
 "Download complete title" = "Download complete";
 "Download complete message" = "%@";
+"Verify complete title" = "Verify complete";
+"Verify complete message" = "%@";
 
 "Remove message" = "Are you shure?";
 "Remove" = "Remove";

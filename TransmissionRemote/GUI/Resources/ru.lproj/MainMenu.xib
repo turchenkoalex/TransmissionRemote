@@ -380,11 +380,9 @@
 							<string key="NSToolbarItemPaletteLabel">Статус</string>
 							<nil key="NSToolbarItemToolTip"/>
 							<object class="NSSegmentedControl" key="NSToolbarItemView" id="1035473914">
-								<reference key="NSNextResponder"/>
+								<nil key="NSNextResponder"/>
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{0, 14}, {166, 28}}</string>
-								<reference key="NSSuperview"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSSegmentedCell" key="NSCell" id="761453520">
@@ -468,11 +466,9 @@
 							<string key="NSToolbarItemPaletteLabel">Поиск</string>
 							<nil key="NSToolbarItemToolTip"/>
 							<object class="NSSearchField" key="NSToolbarItemView" id="507483501">
-								<reference key="NSNextResponder"/>
+								<nil key="NSNextResponder"/>
 								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{0, 14}, {96, 22}}</string>
-								<reference key="NSSuperview"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="NSEnabled">YES</bool>
 								<object class="NSSearchFieldCell" key="NSCell" id="66858013">
@@ -552,7 +548,7 @@
 						<object class="NSToolbarFlexibleSpaceItem" key="NSToolbarFlexibleSpaceItem" id="382265512">
 							<string key="NSToolbarItemIdentifier">NSToolbarFlexibleSpaceItem</string>
 							<string key="NSToolbarItemLabel"/>
-							<string key="NSToolbarItemPaletteLabel">Распорка</string>
+							<string key="NSToolbarItemPaletteLabel">Flexible Space</string>
 							<nil key="NSToolbarItemToolTip"/>
 							<nil key="NSToolbarItemView"/>
 							<nil key="NSToolbarItemImage"/>
@@ -579,7 +575,7 @@
 						<object class="NSToolbarSpaceItem" key="NSToolbarSpaceItem" id="518284469">
 							<string key="NSToolbarItemIdentifier">NSToolbarSpaceItem</string>
 							<string key="NSToolbarItemLabel"/>
-							<string key="NSToolbarItemPaletteLabel">Пробел</string>
+							<string key="NSToolbarItemPaletteLabel">Space</string>
 							<nil key="NSToolbarItemToolTip"/>
 							<nil key="NSToolbarItemView"/>
 							<nil key="NSToolbarItemImage"/>
@@ -620,7 +616,7 @@
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<string key="NSWindowContentMinSize">{400, 200}</string>
 				<object class="NSView" key="NSWindowView" id="439893737">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSButton" id="947881339">
@@ -628,7 +624,6 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{476, 2}, {35, 17}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="1012018210">
@@ -1050,7 +1045,6 @@
 						</object>
 					</array>
 					<string key="NSFrameSize">{525, 432}</string>
-					<reference key="NSSuperview"/>
 					<reference key="NSNextKeyView" ref="773115658"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
