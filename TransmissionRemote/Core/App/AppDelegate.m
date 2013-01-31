@@ -13,8 +13,18 @@
 
 @implementation AppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
+-(id)init {
+    self = [super init];
+    if (self) {
+        [[NSAppleEventManager sharedAppleEventManager] setEventHandler:self
+                                                           andSelector:@selector(handleGetURLEvent:withReplyEvent:)
+                                                         forEventClass:kInternetEventClass
+                                                            andEventID:kAEGetURL];
+    }
+    return self;
+}
+
+-(void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     _torrentWindows = [NSMutableArray array];
     [self startNotificationsObserving];
     self.torrentStatusFilter = FILTER_STATUS_ALL;
@@ -275,7 +285,7 @@
 
 #pragma mark - NSAlert
 
-- (void) alertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
+-(void)alertDidEnd:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
     ((__bridge void(^)(NSInteger result))contextInfo)(returnCode);
     Block_release(contextInfo);
 }
@@ -289,6 +299,11 @@
 
 -(void)application:(NSApplication *)sender openFiles:(NSArray *)filenames {
     [_coreService addTorrentFiles:filenames];
+}
+
+-(void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
+    NSString *url = [[event paramDescriptorForKeyword:keyDirectObject] stringValue];
+    [_coreService addTorrentURL:url];
 }
 
 @end

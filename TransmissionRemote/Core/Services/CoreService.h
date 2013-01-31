@@ -16,6 +16,7 @@
 @interface CoreService : NSObject <RpcServiceAssistantDelegate, TorrentServiceAssistantDelegate> {
     NSNumber *_refreshInterval;
     NSMutableArray *_filesQueue;
+    NSMutableArray *_urlsQueue;
     NSMutableSet *_watingAddTorrents;
 }
 
@@ -33,5 +34,6 @@
 -(void)activityUp;
 -(void)activityDown;
 -(void)addTorrentFiles:(NSArray *)filenames;
+-(void)addTorrentURL:(NSString *)url;
 
 @end

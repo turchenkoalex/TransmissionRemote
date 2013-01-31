@@ -23,6 +23,7 @@ const double ReconnectIntervalUnactive = 60.0;
         _optionsAssistant = [[OptionsServiceAssistant alloc] init];
         _refreshInterval = [NSNumber numberWithDouble:RefreshIntervalActive];
         _filesQueue = [NSMutableArray array];
+        _urlsQueue = [NSMutableArray array];
         _watingAddTorrents = [NSMutableSet set];
     }
     return self;
@@ -126,6 +127,26 @@ const double ReconnectIntervalUnactive = 60.0;
     }
 }
 
+-(void)addTorrentURL:(NSString *)url {
+    if (url) {
+        @synchronized(_urlsQueue) {
+            [_urlsQueue addObject:url];
+        }
+        [self proceedUrlsQueue];
+    }
+}
+
+-(void)proceedUrlsQueue {
+    if (_serverStatus && _serverStatus.connected) {
+        @synchronized(_urlsQueue) {
+            for(NSString *url in _urlsQueue) {
+                [_rpcAssistant addTorrentWithURL:url andStart:_optionsAssistant.appOptions.startTorrentAfterAdding];
+            }
+            [_urlsQueue removeAllObjects];
+        }
+    }
+}
+
 #pragma mark - <TorrentServiceAssistantDelegate>
 
 -(void)torrentServiceAssistantDidInitializeTorrentsArray {
@@ -181,6 +202,7 @@ const double ReconnectIntervalUnactive = 60.0;
         }
     }
     [self proceedFilesQueue];
+    [self proceedUrlsQueue];
 }
 
 -(void)torrentServiceAssistantDidCheckedTorrents:(NSArray *)torrentsArray {
