@@ -13,15 +13,8 @@
 
 @implementation AppDelegate
 
--(id)init {
-    self = [super init];
-    if (self) {
-        [[NSAppleEventManager sharedAppleEventManager] setEventHandler:self
-                                                           andSelector:@selector(handleGetURLEvent:withReplyEvent:)
-                                                         forEventClass:kInternetEventClass
-                                                            andEventID:kAEGetURL];
-    }
-    return self;
+-(void)applicationWillFinishLaunching:(NSNotification *)notification {
+    [self regsiterURLHandling];
 }
 
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -299,6 +292,15 @@
 
 -(void)application:(NSApplication *)sender openFiles:(NSArray *)filenames {
     [_coreService addTorrentFiles:filenames];
+}
+
+#pragma mark - URL Schema
+
+-(void)regsiterURLHandling {
+    [[NSAppleEventManager sharedAppleEventManager] setEventHandler:self
+                                                       andSelector:@selector(handleGetURLEvent:withReplyEvent:)
+                                                     forEventClass:kInternetEventClass
+                                                        andEventID:kAEGetURL];
 }
 
 -(void)handleGetURLEvent:(NSAppleEventDescriptor *)event withReplyEvent:(NSAppleEventDescriptor *)replyEvent {
