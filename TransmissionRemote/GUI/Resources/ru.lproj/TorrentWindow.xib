@@ -66,6 +66,7 @@
 							<string key="NSFrame">{{419, 14}, {75, 28}}</string>
 							<reference key="NSSuperview" ref="1006"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="14691169">
@@ -310,7 +311,7 @@
 											<string key="NSFrameSize">{467, 205}</string>
 											<reference key="NSSuperview" ref="600388427"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="208446499"/>
+											<reference key="NSNextKeyView" ref="197338392"/>
 											<string key="NSReuseIdentifierKey">_NS:13</string>
 											<bool key="NSEnabled">YES</bool>
 											<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -547,7 +548,7 @@
 							<string key="NSFrame">{{20, 46}, {469, 223}}</string>
 							<reference key="NSSuperview" ref="1006"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="600388427"/>
+							<reference key="NSNextKeyView" ref="208446499"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<int key="NSsFlags">133682</int>
 							<reference key="NSVScroller" ref="197338392"/>
@@ -612,7 +613,7 @@
 				<array class="NSMutableArray" key="NSMenuItems">
 					<object class="NSMenuItem" id="653048586">
 						<reference key="NSMenu" ref="832034498"/>
-						<string key="NSTitle">Enable</string>
+						<string key="NSTitle">Загружать</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<object class="NSCustomResource" key="NSOnImage" id="870995058">
@@ -626,7 +627,7 @@
 					</object>
 					<object class="NSMenuItem" id="802094281">
 						<reference key="NSMenu" ref="832034498"/>
-						<string key="NSTitle">Disable</string>
+						<string key="NSTitle">Не загружать</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
 						<reference key="NSOnImage" ref="870995058"/>
