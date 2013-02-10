@@ -149,6 +149,10 @@
     return [[self arrayFromTorrentFile:torrentFile] valueForKeyPath:@"index"];
 }
 
+-(void)dealloc {
+    [_torrent removeObserver:self forKeyPath:@"fileStats"];
+}
+
 #pragma mark - IB Actions
 
 -(NSArray *)selectedFiles {
@@ -161,7 +165,6 @@
 }
 
 -(void)closeTorrentWindow {
-    [_torrent removeObserver:self forKeyPath:@"fileStats"];
     [self.window orderOut:nil];
     [NSApp endSheet:self.window];
 }

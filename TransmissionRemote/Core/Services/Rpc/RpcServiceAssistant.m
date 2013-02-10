@@ -111,14 +111,15 @@
 }
 
 -(void)rpcRequestDidFailWithAuthorizationErrorForRpcRequestHeader:(RpcRequestHeader *)aRequestHeader {
-    NSLog(@"FailWithAuthorizationErrorForRpcRequestHeader: %@", aRequestHeader);
     if (_delegate) {
         [_delegate requestFailedWithAuthorizationError];
     }
 }
 
 -(void)rpcRequestDidFailWithError:(NSError *)error forRpcRequestHeader:(RpcRequestHeader *)aRequestHeader {
-    NSLog(@"FailWithError: %@", error);
+    if (_delegate) {
+        [_delegate request:aRequestHeader failedWithError:error];
+    }
 }
 
 @end

@@ -12,5 +12,6 @@
 
 -(NSURL *)rpcServiceURL;
 -(void)requestFailedWithAuthorizationError;
+-(void)request:(RpcRequestHeader *)requestHeader failedWithError:(NSError *)error;
 
 @end

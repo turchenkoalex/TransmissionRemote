@@ -62,11 +62,13 @@ const double ReconnectIntervalUnactive = 60.0;
 }
 
 -(void)updateRecentlyChangedTorrents {
-    double delay = RefreshIntervalActive;
-    @synchronized(_refreshInterval) {
-        delay = [_refreshInterval doubleValue];
+    if (self.serverStatus.connected) {
+        double delay = RefreshIntervalActive;
+        @synchronized(_refreshInterval) {
+            delay = [_refreshInterval doubleValue];
+        }
+        [_rpcAssistant performSelector:@selector(updateRecentlyChangedTorrents) withObject:nil afterDelay:delay];
     }
-    [_rpcAssistant performSelector:@selector(updateRecentlyChangedTorrents) withObject:nil afterDelay:delay];
 }
 
 -(void)activityUp {
@@ -240,6 +242,10 @@ const double ReconnectIntervalUnactive = 60.0;
 
 -(void)requestFailedWithAuthorizationError {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"RequestFailedWithAuthorizationError" object:nil];
+}
+
+-(void)request:(RpcRequestHeader *)requestHeader failedWithError:(NSError *)error {
+    [self disconnect];
 }
 
 #pragma mark - Notifications

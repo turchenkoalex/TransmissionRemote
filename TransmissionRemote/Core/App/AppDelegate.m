@@ -167,10 +167,16 @@
 }
 
 -(void)serviceDidRemovedTorrentsNotification:(NSNotification *)notification {
-//    NSArray *torrents = [notification object];
-//    for (Torrent *torrent in torrents) {
-        
-//    }
+    if ([_torrentWindows count] > 0) {
+        NSArray *torrents = [notification object];
+        for (Torrent *torrent in torrents) {
+            for(TorrentController *controller in _torrentWindows) {
+                if([[controller torrent] isEqual:torrent]) {
+                    [controller closeTorrentWindow];
+                }
+            }
+        }
+    }
 }
 
 -(void)requestFailedWithAuthorizationErrorNotification:(NSNotification *)notification {
@@ -205,7 +211,11 @@
     if (torrent) {
         TorrentController *controller = [[TorrentController alloc] initWithSevice:_coreService andTorrent:torrent];
         [_torrentWindows addObject:controller];
-        [NSApp beginSheet:controller.window modalForWindow:self.window modalDelegate:self didEndSelector:@selector(torrentWindowDidEnd:returnCode:contextInfo:) contextInfo:(__bridge void*)controller];
+        [NSApp beginSheet:controller.window
+           modalForWindow:self.window
+            modalDelegate:self
+           didEndSelector:@selector(torrentWindowDidEnd:returnCode:contextInfo:)
+              contextInfo:(__bridge void*)controller];
     }
 }
 

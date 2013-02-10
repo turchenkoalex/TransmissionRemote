@@ -19,8 +19,7 @@
     return self;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
@@ -32,20 +31,16 @@
 #pragma mark -
 #pragma mark MASPreferencesViewController
 
-- (NSString *)identifier
-{
+- (NSString *)identifier {
     return @"AdvancedPreferences";
 }
 
-- (NSImage *)toolbarItemImage
-{
+- (NSImage *)toolbarItemImage {
     return [NSImage imageNamed:NSImageNameAdvanced];
 }
 
-- (NSString *)toolbarItemLabel
-{
+- (NSString *)toolbarItemLabel {
     return NSLocalizedString(@"Advanced", @"Toolbar item name for the Advanced preference pane");
 }
-
 
 @end

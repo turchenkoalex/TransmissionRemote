@@ -22,8 +22,7 @@
     return self;    
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
@@ -35,23 +34,20 @@
 #pragma mark -
 #pragma mark MASPreferencesViewController
 
-- (NSString *)identifier
-{
+-(NSString *)identifier {
     return @"NetworkPreferences";
 }
 
-- (NSImage *)toolbarItemImage
-{
+-(NSImage *)toolbarItemImage {
     return [NSImage imageNamed:NSImageNameNetwork];
 }
 
-- (NSString *)toolbarItemLabel
-{
+-(NSString *)toolbarItemLabel {
     return NSLocalizedString(@"Network", @"Toolbar item name for the Network preference pane");
 }
 
 -(BOOL)commitEditing {
-    if ([_coreService.optionsAssistant isConnectOptionsDefaultsChanged]) {
+    if ([_coreService.optionsAssistant isConnectOptionsDefaultsChanged] || ![_coreService.serverStatus connected]) {
         [_coreService disconnect];
         [_coreService connect];
     }
