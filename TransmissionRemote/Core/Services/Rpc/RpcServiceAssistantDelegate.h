@@ -11,5 +11,6 @@
 @protocol RpcServiceAssistantDelegate <NSObject>
 
 -(NSURL *)rpcServiceURL;
+-(void)requestFailedWithAuthorizationError;
 
 @end

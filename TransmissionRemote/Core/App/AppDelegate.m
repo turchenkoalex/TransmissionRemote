@@ -127,6 +127,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(serviceDidCheckedTorrentsNotification:) name:@"TorrentsChecked" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(serviceDidAddedTorrentsNotification:) name:@"TorrentsAdded" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(serviceDidRemovedTorrentsNotification:) name:@"TorrentsRemoved" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestFailedWithAuthorizationErrorNotification:) name:@"RequestFailedWithAuthorizationError" object:nil];
+
     [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 }
 
@@ -136,6 +138,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"TorrentsChecked" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"TorrentsAdded" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"TorrentsRemoved" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RequestFailedWithAuthorizationError" object:nil];
 }
 
 -(void)serviceDidChangedTorrentsArrayNotification:(NSNotification *)notification {
@@ -164,9 +167,20 @@
 }
 
 -(void)serviceDidRemovedTorrentsNotification:(NSNotification *)notification {
-    NSArray *torrents = [notification object];
-    for (Torrent *torrent in torrents) {
-    }
+//    NSArray *torrents = [notification object];
+//    for (Torrent *torrent in torrents) {
+        
+//    }
+}
+
+-(void)requestFailedWithAuthorizationErrorNotification:(NSNotification *)notification {
+    NSString *title = NSLocalizedString(@"Authorization error title", "Authorization error alert title");
+    NSAlert *alert = [NSAlert alertWithMessageText:title
+                                     defaultButton:@"OK"
+                                   alternateButton:nil
+                                       otherButton:nil
+                         informativeTextWithFormat:NSLocalizedString(@"Authorization error message", "Authorization error alert message")];
+    [alert beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
 }
 
 #pragma mark - IB Actions

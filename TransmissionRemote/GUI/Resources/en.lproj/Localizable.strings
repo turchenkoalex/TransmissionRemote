@@ -35,3 +35,6 @@
 "Preferences" = "Preferences";
 "Network" = "Network";
 "Advanced" = "Advanced";
+
+"Authorization error title" = "Authorization error";
+"Authorization error message" = "Login or password was wrong.\nPlease, change credential and try again.";

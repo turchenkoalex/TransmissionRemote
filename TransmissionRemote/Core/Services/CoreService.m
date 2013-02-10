@@ -238,6 +238,10 @@ const double ReconnectIntervalUnactive = 60.0;
     return [_optionsAssistant.connectOptions rpcServerURL];
 }
 
+-(void)requestFailedWithAuthorizationError {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RequestFailedWithAuthorizationError" object:nil];
+}
+
 #pragma mark - Notifications
 
 -(void)notifyAboutTorrentsArrayChanging {
