@@ -137,6 +137,8 @@
                 Torrent *finded = [_torrentsDictionary objectForKey:torrent.id];
                 if (finded) {
                     finded.downloadDir = torrent.downloadDir;
+                    finded.files = torrent.files;
+                    finded.fileStats = torrent.fileStats;
                 } else {
                     [_torrentsDictionary setValue:torrent forKey:torrent.id];
                     [addedTorrents addObject:torrent];

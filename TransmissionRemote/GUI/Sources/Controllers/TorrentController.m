@@ -20,11 +20,20 @@
     if (self) {
         _coreService = service;
         _torrent = torrent;
-        _files = [self filesArrayFromTorrent:torrent];
-        _filesTree = [self filesTreeFromFilesArray:_files];
         [_torrent addObserver:self forKeyPath:@"fileStats" options:0 context:nil];
+        [self prepeareTorrentFiles];
      }
     return self;
+}
+
+-(void)prepeareTorrentFiles {
+    if (![[_torrent files] count]) {
+        [[_coreService rpcAssistant] loadTorrentsDataForTorrentIdArray:@[_torrent]];
+        [self performSelector:@selector(prepeareTorrentFiles) withObject:nil afterDelay:5.0];
+    } else {
+        _files = [self filesArrayFromTorrent:_torrent];
+        self.filesTree = [self filesTreeFromFilesArray:_files];
+    }
 }
 
 - (id)initWithWindow:(NSWindow *)window

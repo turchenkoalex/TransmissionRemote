@@ -20,7 +20,7 @@
 
 @property (readonly) CoreService *coreService;
 @property (readonly, weak) Torrent *torrent;
-@property (readonly) NSArray *filesTree;
+@property NSArray *filesTree;
 @property (weak) IBOutlet NSOutlineView *filesOutlineView;
 @property (strong) IBOutlet NSTreeController *filesTreeController;
 
