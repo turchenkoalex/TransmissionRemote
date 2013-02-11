@@ -30,6 +30,7 @@
 }
 
 - (IBAction)cancelAction:(id)sender {
+    self.downloadDirectory = [self.torrent downloadDir];
     [self closeWindow];
 }
 

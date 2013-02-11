@@ -57,6 +57,13 @@
     [_filesOutlineView expandItem:nil expandChildren:YES];
 }
 
+-(TorrentMoveController *)torrentMoveController {
+    if (!_torrentMoveController) {
+        _torrentMoveController = [[TorrentMoveController alloc] initWithSevice:_coreService andTorrent:_torrent];
+    }
+    return _torrentMoveController;
+}
+
 #pragma mark - Files
 
 -(NSArray *)filesArrayFromTorrent:(Torrent *)torrent {
@@ -203,11 +210,7 @@
 }
 
 - (IBAction)changeLocation:(id)sender {
-    if (!_torrentMoveController) {
-        _torrentMoveController = [[TorrentMoveController alloc] initWithSevice:_coreService andTorrent:_torrent];
-    }
-
-    [NSApp beginSheet:_torrentMoveController.window modalForWindow:self.window modalDelegate:self didEndSelector:nil contextInfo:nil];
+    [NSApp beginSheet:self.torrentMoveController.window modalForWindow:self.window modalDelegate:self didEndSelector:nil contextInfo:nil];
 }
 
 #pragma mark - Observing
