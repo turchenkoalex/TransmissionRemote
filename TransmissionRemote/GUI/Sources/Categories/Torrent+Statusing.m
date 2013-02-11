@@ -71,6 +71,14 @@ static const NSString* TorrentStatusImages[] = {
     }
 }
 
+-(NSColor *)uploadRatioColor {
+    if ([self uploadRatio] < 1.0) {
+        return [NSColor redColor];
+    } else {
+        return [NSColor grayColor];
+    }
+}
+
 #pragma mark - Observed KeyPathes
 
 +(NSSet *)keyPathsForValuesAffectingTorrentStatus {
@@ -87,6 +95,10 @@ static const NSString* TorrentStatusImages[] = {
 
 +(NSSet *)keyPathsForValuesAffectingStatusInformation {
     return [NSSet setWithObjects:@"torrentStatus", @"queuePosition", @"rateDownload", @"rateUpload", @"peersConnected", nil];
+}
+
++(NSSet *)keyPathsForValuesAffectingUploadRatioColor {
+    return [NSSet setWithObjects:@"uploadRatio", nil];
 }
 
 @end

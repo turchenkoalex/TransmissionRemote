@@ -22,5 +22,6 @@ typedef NS_ENUM(NSUInteger, TorrentStatus) {
 @property (readonly) NSString *statusName;
 @property (readonly) NSImage *statusImage;
 @property (readonly) NSString *statusInformation;
+@property (readonly) NSColor *uploadRatioColor;
 
 @end
