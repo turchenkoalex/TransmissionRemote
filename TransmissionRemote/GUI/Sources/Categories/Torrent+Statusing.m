@@ -72,10 +72,11 @@ static const NSString* TorrentStatusImages[] = {
 }
 
 -(NSColor *)uploadRatioColor {
-    if ([self uploadRatio] < 1.0) {
-        return [NSColor redColor];
+    double currentRatio = [self uploadRatio];
+    if (currentRatio < 1.0 && currentRatio != -1.0) {
+        return [NSColor purpleColor];
     } else {
-        return [NSColor grayColor];
+        return [NSColor lightGrayColor];
     }
 }
 
