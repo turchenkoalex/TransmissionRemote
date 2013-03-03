@@ -176,4 +176,10 @@
     }
 }
 
+-(void)rpcProtocolDidReceiveDuplicateTorrentError:(RpcRequestHeader *)requestHeader {
+    if (_delegate) {
+        [_delegate torrentServiceAssistantDidReceiveDuplicateTorrentError:requestHeader];
+    }
+}
+
 @end

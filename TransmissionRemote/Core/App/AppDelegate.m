@@ -128,7 +128,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(serviceDidAddedTorrentsNotification:) name:@"TorrentsAdded" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(serviceDidRemovedTorrentsNotification:) name:@"TorrentsRemoved" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestFailedWithAuthorizationErrorNotification:) name:@"RequestFailedWithAuthorizationError" object:nil];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(requestFailedWithDuplicateTorrentErrorNotification:) name:@"RequestFailedWithDuplicateTorrentErrorNotification" object:nil];
+    
     [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 }
 
@@ -139,6 +140,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"TorrentsAdded" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"TorrentsRemoved" object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RequestFailedWithAuthorizationError" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"RequestFailedWithDuplicateTorrentErrorNotification" object:nil];
 }
 
 -(void)serviceDidChangedTorrentsArrayNotification:(NSNotification *)notification {
@@ -187,6 +189,19 @@
                                        otherButton:nil
                          informativeTextWithFormat:NSLocalizedString(@"Authorization error message", "Authorization error alert message")];
     [alert beginSheetModalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
+}
+
+-(void)requestFailedWithDuplicateTorrentErrorNotification:(NSNotification *)notification {
+    NSString *title = NSLocalizedString(@"Duplicate torrent error alert title", "Duplicate torrent error alert title");
+    NSAlert *alert = [NSAlert alertWithMessageText:title
+                                     defaultButton:@"OK"
+                                   alternateButton:nil
+                                       otherButton:nil
+                         informativeTextWithFormat:NSLocalizedString(@"Duplicate torrent error alert message", "Duplicate torrent error alert message")];
+    [alert beginSheetModalForWindow:self.window
+                      modalDelegate:nil
+                     didEndSelector:nil
+                        contextInfo:nil];
 }
 
 #pragma mark - IB Actions

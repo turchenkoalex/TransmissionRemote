@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ServerStatus.h"
+@class RpcRequestHeader;
 
 @protocol RpcProtocolDelegate <NSObject>
 
@@ -19,5 +20,6 @@
 -(void)rpcProtocolDidReceiveServerStatus:(ServerStatus *)serverStatus;
 -(void)rpcProtocolDidReceiveChangeOfTorrent:(NSString *)torrentId;
 -(void)rpcProtocolDidReceiveChangeOfTorrents:(NSArray *)torrentIdArray;
+-(void)rpcProtocolDidReceiveDuplicateTorrentError:(RpcRequestHeader *)requestHeader;
 
 @end

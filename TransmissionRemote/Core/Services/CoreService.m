@@ -234,6 +234,11 @@ const double ReconnectIntervalUnactive = 60.0;
     [_rpcAssistant loadTorrentsDataForTorrentIdArray:torrentIdArray];
 }
 
+-(void)torrentServiceAssistantDidReceiveDuplicateTorrentError:(RpcRequestHeader *)requestHeader {
+    NSObject *obj = [requestHeader data];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RequestFailedWithDuplicateTorrentErrorNotification" object:obj];
+}
+
 #pragma mark - <RpcServiceAssistantDelegate>
 
 -(NSURL *)rpcServiceURL {

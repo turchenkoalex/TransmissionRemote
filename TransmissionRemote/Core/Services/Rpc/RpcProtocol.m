@@ -154,7 +154,8 @@
         NSLog(@"Serialization error: %@\n%@", error, [[NSString alloc] initWithData:aData encoding:NSUTF8StringEncoding]);
         return NO;
     } else {
-        BOOL success = [[jsonData valueForKey:@"result"] isEqualToString:@"success"];
+        NSString *jsonResult = [jsonData valueForKey:@"result"];
+        BOOL success = [jsonResult isEqualToString:@"success"];
         if (success) {
             // success request
             NSDictionary *arguments = [jsonData valueForKey:@"arguments"];
@@ -200,6 +201,8 @@
                         break;
                 }
             }
+        } else if ([jsonResult isEqualToString:@"duplicate torrent"]) {
+            [_delegate rpcProtocolDidReceiveDuplicateTorrentError: header];
         } else {
             // error request
             NSLog(@"Response result error: %@", [[NSString alloc] initWithData:aData encoding:NSUTF8StringEncoding]);

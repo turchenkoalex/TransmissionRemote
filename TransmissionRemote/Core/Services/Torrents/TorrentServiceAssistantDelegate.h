@@ -23,5 +23,6 @@
 -(void)torrentServiceAssistantDidChangeTorrent:(NSString *)torrentId;
 -(void)torrentServiceAssistantDidChangeTorrents:(NSArray *)torrentIdArray;
 -(void)torrentServiceAssistantDidAddTorrent:(id)torrentId;
+-(void)torrentServiceAssistantDidReceiveDuplicateTorrentError:(RpcRequestHeader *)requestHeader;
 
 @end

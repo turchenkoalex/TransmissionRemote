@@ -38,3 +38,6 @@
 
 "Authorization error title" = "Ошибка авторизации";
 "Authorization error message" = "Логин или пароль введены не правильно.\nПожалуйста, измените учетные данные и попробуйте еще раз.";
+
+"Duplicate torrent error alert title" = "Ошибка добавления торрента";
+"Duplicate torrent error alert message" = "Торрент уже был добавлен ранее.";

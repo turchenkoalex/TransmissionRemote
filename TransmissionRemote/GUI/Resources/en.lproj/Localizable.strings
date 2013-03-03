@@ -38,3 +38,6 @@
 
 "Authorization error title" = "Authorization error";
 "Authorization error message" = "Login or password was wrong.\nPlease, change credential and try again.";
+
+"Duplicate torrent error alert title" = "Adding torrent error";
+"Duplicate torrent error alert message" = "Torrent duplicated";
