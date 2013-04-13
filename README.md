@@ -95,11 +95,11 @@ TransmissionRemote - Cocoa OS X (10.8) RPC клиент для управлен�
 
 Настройки программы (`⌘ + ,`):
 
-![Окно настроек подключения][options]
+![Окно настроек подключения][preferences]
 
 Управление торрент файлами:
 
-![Меню управления][menu]
+![Окно управления торрентом][torrentwindow]
 
 ## Альтернативные продукты
 
@@ -115,7 +115,7 @@ TransmissionRemote - Cocoa OS X (10.8) RPC клиент для управлен�
 
 [transmission]: http://transmissionbt.com
 [rpcwiki]: http://ru.wikipedia.org/wiki/Remote_Procedure_Call
-[mainwindow]: https://raw.github.com/TurchenkoAlex/osx-project-2/master/screenshots/mainwindow.png
-[menu]: https://raw.github.com/TurchenkoAlex/osx-project-2/master/screenshots/menu.png
-[options]: https://raw.github.com/TurchenkoAlex/osx-project-2/master/screenshots/options.png
-[rpcspec]: https://raw.github.com/TurchenkoAlex/osx-project-2/master/rpc-spec.txt
+[mainwindow]: https://raw.github.com/TurchenkoAlex/TransmissionRemote/master/screenshots/main-window.png
+[torrentwindow]: https://raw.github.com/TurchenkoAlex/TransmissionRemote/master/screenshots/torrent-window.png
+[preferences]: https://raw.github.com/TurchenkoAlex/TransmissionRemote/master/screenshots/preferences.png
+[rpcspec]: https://raw.github.com/TurchenkoAlex/TransmissionRemote/master/rpc-spec.txt
